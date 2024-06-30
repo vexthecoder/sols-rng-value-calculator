@@ -10,7 +10,6 @@ body {
 
 .grid-container {
     display: grid;
-    /* grid-template-columns: repeat(94, 1fr); */
     gap: 10px;
     padding: 20px;
     max-width: 90vw;
@@ -42,6 +41,13 @@ body {
     border: 1px solid #ccc;
     margin-right: 5px;
     text-align: center;
+    -moz-appearance: textfield;
+}
+
+.quantity::-webkit-outer-spin-button,
+.quantity::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .add-button {
