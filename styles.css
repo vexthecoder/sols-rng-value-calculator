@@ -80,6 +80,10 @@ body {
     background-color: #218838;
 }
 
+.remove-button {
+    margin-left: 5px; /* Adds gap between add and remove buttons */
+}
+
 .total-container {
     position: fixed;
     bottom: 0;
