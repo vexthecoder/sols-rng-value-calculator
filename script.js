@@ -12,4 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
             input.value = '1';
         });
     });
+
+    const clearButton = document.querySelector('.clear-button');
+    clearButton.addEventListener('click', () => {
+        total = 0;
+        document.getElementById('total').innerText = total;
+    });
 });
