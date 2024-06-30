@@ -7,6 +7,17 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.light-mode {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+body.dark-mode {
+    background-color: #1c1c1c;
+    color: #ffffff;
 }
 
 .grid-container {
@@ -22,6 +33,11 @@ body {
     border-radius: 10px;
     padding: 10px;
     text-align: center;
+    transition: background-color 0.3s;
+}
+
+body.dark-mode .grid-item {
+    background-color: #333333;
 }
 
 .grid-item img {
@@ -59,6 +75,7 @@ body {
     background-color: #007bff;
     color: white;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .add-button:hover {
@@ -79,6 +96,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transition: background-color 0.3s;
+}
+
+body.dark-mode .total-box {
+    background-color: #333333;
 }
 
 .clear-button {
@@ -89,8 +111,27 @@ body {
     color: white;
     cursor: pointer;
     margin-left: 20px;
+    transition: background-color 0.3s;
 }
 
 .clear-button:hover {
     background-color: #cc0000;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.theme-toggle:hover {
+    background-color: #0056b3;
 }
