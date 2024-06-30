@@ -5,7 +5,7 @@ body {
     background-color: #f0f0f0;
     color: #333;
     transition: background-color 0.5s, color 0.5s;
-    position: relative; /* Ensure body is positioned relative for absolute positioning */
+    position: relative;
 }
 
 .theme-toggle {
@@ -98,7 +98,7 @@ body {
 }
 
 .total-container span {
-    margin-left: 5px; /* Add space between number and colon */
+    margin-left: 5px;
 }
 
 .clear-button {
@@ -109,7 +109,7 @@ body {
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin-left: 10px; /* Add gap between inventory value and clear button */
+    margin-left: 10px;
 }
 
 .clear-button:hover {
