@@ -6,10 +6,12 @@ body {
     justify-content: center;
     margin: 0;
     padding: 0;
+    height: 100vh;
 }
 
 .grid-container {
     display: grid;
+    grid-template-columns: repeat(10, 1fr); /* Adjust the number of columns to fit your layout */
     gap: 10px;
     padding: 20px;
     max-width: 90vw;
@@ -64,6 +66,31 @@ body {
 }
 
 .total-container {
-    margin-top: 20px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
     font-size: 1.5em;
+}
+
+.total-box {
+    background-color: #f0f0f0;
+    border-radius: 10px 10px 0 0;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.clear-button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff0000;
+    color: white;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.clear-button:hover {
+    background-color: #cc0000;
 }
