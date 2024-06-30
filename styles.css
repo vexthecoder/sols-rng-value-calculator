@@ -9,7 +9,7 @@ body {
 }
 
 .theme-toggle {
-    position: absolute;
+    position: fixed;
     top: 20px;
     right: 20px;
     width: 40px;
@@ -148,6 +148,14 @@ body {
 
 .dark-mode .clear-button:hover {
     background-color: #c82333;
+}
+
+.dark-mode .footer {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.dark-mode .footer a {
+    color: #fff;
 }
 
 .footer {
