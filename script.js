@@ -69,11 +69,16 @@ function getCookie(name) {
 }
 
 function applyTheme(theme) {
+    const body = document.body;
+
+    // Apply smooth transition between themes
+    body.style.transition = 'background-color 0.5s, color 0.5s';
+
     if (theme === 'dark') {
-        document.body.classList.add('dark-mode');
-        document.body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+        body.classList.remove('light-mode');
     } else {
-        document.body.classList.add('light-mode');
-        document.body.classList.remove('dark-mode');
+        body.classList.add('light-mode');
+        body.classList.remove('dark-mode');
     }
 }
