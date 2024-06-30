@@ -6,6 +6,7 @@ body {
     padding: 0;
     background-color: #f0f0f0;
     color: #333;
+    transition: background-color 0.3s, color 0.3s; /* Add transition for background-color and text color */
 }
 
 .theme-toggle {
@@ -42,6 +43,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    transition: background-color 0.3s, color 0.3s; /* Add transition for background-color and text color */
 }
 
 .grid-item img {
@@ -92,6 +94,7 @@ body {
     background-color: rgba(255, 255, 255, 0.8); /* Adjust background color as needed */
     border-top-left-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s; /* Add transition for background-color and text color */
 }
 
 .total-box {
@@ -116,6 +119,7 @@ body {
 .dark-mode {
     background-color: #333;
     color: #fff;
+    transition: background-color 0.3s, color 0.3s; /* Add transition for background-color and text color */
 }
 
 .dark-mode .grid-item {
