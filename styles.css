@@ -44,6 +44,12 @@ body {
     text-align: center;
 }
 
+.grid-item img {
+    border-radius: 8px; /* Rounded corners for images */
+    max-width: 100%;
+    height: auto;
+}
+
 .input-container {
     display: flex;
     justify-content: center;
@@ -54,10 +60,13 @@ body {
 .quantity {
     width: 50px;
     text-align: center;
+    padding: 5px;
+    border: 1px solid #ccc; /* Grey border */
+    border-radius: 5px;
+    margin: 0 5px;
 }
 
 .add-button, .remove-button {
-    margin-left: 5px;
     padding: 5px 10px;
     border: none;
     border-radius: 5px;
@@ -87,7 +96,6 @@ body {
 }
 
 .clear-button {
-    margin-left: 10px;
     padding: 5px 10px;
     border: none;
     border-radius: 5px;
