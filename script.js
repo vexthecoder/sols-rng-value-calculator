@@ -20,6 +20,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    const removeButtons = document.querySelectorAll('.remove-button');
+    removeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const input = button.previousElementSibling.previousElementSibling;
+            const value = parseInt(input.value) || 0;
+            const multiplier = button.closest('.grid-item').getAttribute('data-multiplier');
+            total -= value * multiplier;
+            document.getElementById('total').innerText = total;
+            input.value = '1';
+        });
+    });
+
     const clearButton = document.querySelector('.clear-button');
     clearButton.addEventListener('click', () => {
         total = 0;
