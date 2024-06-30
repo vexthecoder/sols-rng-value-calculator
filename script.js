@@ -1,3 +1,7 @@
+// script.js
+
+let total = 0;
+
 document.addEventListener('DOMContentLoaded', () => {
     const currentTheme = getCookie('theme') || 'dark'; // Default to dark mode
     applyTheme(currentTheme);
@@ -15,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const value = parseInt(input.value) || 0;
             const multiplier = button.closest('.grid-item').getAttribute('data-multiplier');
             total += value * multiplier;
+            if (total < 0) total = 0; // Ensure total doesn't go below 0
             document.getElementById('total').innerText = total;
             input.value = '1';
         });
@@ -27,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const value = parseInt(input.value) || 0;
             const multiplier = button.closest('.grid-item').getAttribute('data-multiplier');
             total -= value * multiplier;
+            if (total < 0) total = 0; // Ensure total doesn't go below 0
             document.getElementById('total').innerText = total;
             input.value = '1';
         });
