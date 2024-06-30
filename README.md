@@ -13,6 +13,8 @@ A simple calculator for Sol's RNG.
 ## In-Progress
 
 - Inventory Value Saving
+- Dropdown Categories
+- Aura/Category Searching
 - Other Sol's RNG related calculators
 - Other Device Support
 
