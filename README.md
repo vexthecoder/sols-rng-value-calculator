@@ -18,4 +18,4 @@ A simple calculator for Sol's RNG.
 
 
 ### Contact
-Contact me on [Discord](https://discordapp.com/users/1018875765565177976) if you find bugs or want to request a feature/calculator to be made.
+Contact me on [Discord](https://discord.com/users/1018875765565177976) if you find bugs or want to request a feature/calculator to be made.
