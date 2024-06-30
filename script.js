@@ -1,6 +1,6 @@
 // script.js
 
-let total = 0;
+let total = getInventoryValueFromCookie() || 0;
 
 document.addEventListener('DOMContentLoaded', () => {
     const currentTheme = getCookie('theme') || 'dark'; // Default to dark mode
@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (total < 0) total = 0; // Ensure total doesn't go below 0
             document.getElementById('total').innerText = total;
             input.value = '1';
+            saveInventoryValueToCookie(total);
         });
     });
 
@@ -35,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (total < 0) total = 0; // Ensure total doesn't go below 0
             document.getElementById('total').innerText = total;
             input.value = '1';
+            saveInventoryValueToCookie(total);
         });
     });
 
@@ -42,7 +44,18 @@ document.addEventListener('DOMContentLoaded', () => {
     clearButton.addEventListener('click', () => {
         total = 0;
         document.getElementById('total').innerText = total;
+        saveInventoryValueToCookie(total);
     });
+
+    // Function to save inventory value to cookie
+    function saveInventoryValueToCookie(value) {
+        setCookie('inventory_value', value, 365);
+    }
+
+    // Function to retrieve inventory value from cookie
+    function getInventoryValueFromCookie() {
+        return parseInt(getCookie('inventory_value')) || 0;
+    }
 });
 
 function setCookie(name, value, days) {
