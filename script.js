@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const multiplier = button.closest('.grid-item').getAttribute('data-multiplier');
             total += value * multiplier;
             document.getElementById('total').innerText = total;
-            input.value = '';
+            input.value = '1';
         });
     });
 });
