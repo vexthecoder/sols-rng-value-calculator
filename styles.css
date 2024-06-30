@@ -6,7 +6,7 @@ body {
     padding: 0;
     background-color: #f0f0f0;
     color: #333;
-    transition: background-color 0.3s, color 0.3s; /* Add transition for background-color and text color */
+    transition: background-color 0.5s, color 0.5s;
 }
 
 .theme-toggle {
@@ -43,11 +43,11 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    transition: background-color 0.3s, color 0.3s; /* Add transition for background-color and text color */
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .grid-item img {
-    border-radius: 8px; /* Rounded corners for images */
+    border-radius: 8px;
     max-width: 100%;
     height: auto;
 }
@@ -63,7 +63,7 @@ body {
     width: 50px;
     text-align: center;
     padding: 5px;
-    border: 1px solid #ccc; /* Grey border */
+    border: 1px solid #ccc;
     border-radius: 5px;
     margin: 0 5px;
 }
@@ -83,23 +83,23 @@ body {
 }
 
 .remove-button {
-    margin-left: 5px; /* Adds gap between add and remove buttons */
+    margin-left: 5px;
 }
 
 .total-container {
     position: fixed;
-    bottom: 0;
-    right: 0;
+    bottom: 10px; /* Adjust bottom spacing as needed */
+    right: 10px; /* Adjust right spacing as needed */
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0.8); /* Adjust background color as needed */
+    background-color: rgba(255, 255, 255, 0.8);
     border-top-left-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, color 0.3s; /* Add transition for background-color and text color */
+    transition: background-color 0.3s, color 0.3s;
+    z-index: 1000;
 }
 
-.total-box {
-    display: flex;
-    align-items: center;
+.total-container span {
+    margin-left: 5px; /* Add space between number and colon */
 }
 
 .clear-button {
@@ -110,6 +110,7 @@ body {
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-left: 10px; /* Add gap between inventory value and clear button */
 }
 
 .clear-button:hover {
@@ -119,7 +120,6 @@ body {
 .dark-mode {
     background-color: #333;
     color: #fff;
-    transition: background-color 0.3s, color 0.3s; /* Add transition for background-color and text color */
 }
 
 .dark-mode .grid-item {
@@ -139,7 +139,7 @@ body {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-.dark-mode .total-box {
+.dark-mode .total-container span {
     color: #fff;
 }
 
