@@ -3,30 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Grid</title>
+    <title>Sol's RNG Value Calculator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="grid-container">
-        <!-- Example of one grid item with a specific multiplier -->
-        <div class="grid-item" data-multiplier="5">
-            <img src="path/to/your/image1.jpg" alt="Image 1">
+        <div class="grid-item" data-multiplier="2">
+            <img src="https://static.wikia.nocookie.net/sol-rng/images/e/ef/Common_Aura.gif" alt="Common">
             <div class="input-container">
-                <input type="number" class="quantity" placeholder="0">
+                <input type="number" class="quantity" value="1" min="1" max="99999">
                 <button class="add-button">Add</button>
             </div>
         </div>
-        <div class="grid-item" data-multiplier="10">
-            <img src="path/to/your/image2.jpg" alt="Image 2">
+        <div class="grid-item" data-multiplier="4">
+            <img src="https://static.wikia.nocookie.net/sol-rng/images/0/0d/Uncommon_Aura.gif" alt="Uncommon">
             <div class="input-container">
-                <input type="number" class="quantity" placeholder="0">
+                <input type="number" class="quantity" value="1" min="1">
                 <button class="add-button">Add</button>
             </div>
         </div>
-        <!-- Repeat for the remaining 92 items -->
+
     </div>
     <div class="total-container">
-        Total: <span id="total">0</span>
+        Your Inventory Value: <span id="total">0</span>
     </div>
 
     <script src="script.js"></script>
