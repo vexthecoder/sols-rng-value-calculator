@@ -89,13 +89,14 @@ body {
 
 .total-container {
     position: absolute;
-    bottom: 0px;
-    right: 0px;
+    bottom: 10px; /* Adjust bottom spacing as needed */
+    right: 10px; /* Adjust right spacing as needed */
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.8);
     border-top-left-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, color 0.3s;
+    z-index: 1000;
 }
 
 .total-container span {
