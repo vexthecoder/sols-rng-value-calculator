@@ -1,7 +1,7 @@
 let total = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
-    const currentTheme = getCookie('theme') || 'dark'; // Default to dark mode
+    const currentTheme = getCookie('theme') || 'dark';
     applyTheme(currentTheme);
 
     document.getElementById('theme-toggle').addEventListener('click', () => {
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const value = parseInt(input.value) || 0;
             const multiplier = button.closest('.grid-item').getAttribute('data-multiplier');
             total += value * multiplier;
-            if (total < 0) total = 0; // Ensure total doesn't go below 0
+            if (total < 0) total = 0;
             document.getElementById('total').innerText = total;
             input.value = '1';
         });
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const value = parseInt(input.value) || 0;
             const multiplier = button.closest('.grid-item').getAttribute('data-multiplier');
             total -= value * multiplier;
-            if (total < 0) total = 0; // Ensure total doesn't go below 0
+            if (total < 0) total = 0;
             document.getElementById('total').innerText = total;
             input.value = '1';
         });
@@ -69,7 +69,6 @@ function getCookie(name) {
 function applyTheme(theme) {
     const body = document.body;
 
-    // Apply smooth transition between themes
     body.style.transition = 'background-color 0.5s, color 0.5s';
 
     if (theme === 'dark') {
