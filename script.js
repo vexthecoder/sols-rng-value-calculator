@@ -1,3 +1,32 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const currentTheme = getCookie('theme') || 'dark'; // Default to dark mode
+    applyTheme(currentTheme);
+
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+        const newTheme = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
+        applyTheme(newTheme);
+        setCookie('theme', newTheme, 365);
+    });
+
+    const addButtons = document.querySelectorAll('.add-button');
+    addButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const input = button.previousElementSibling;
+            const value = parseInt(input.value) || 0;
+            const multiplier = button.closest('.grid-item').getAttribute('data-multiplier');
+            total += value * multiplier;
+            document.getElementById('total').innerText = total;
+            input.value = '1';
+        });
+    });
+
+    const clearButton = document.querySelector('.clear-button');
+    clearButton.addEventListener('click', () => {
+        total = 0;
+        document.getElementById('total').innerText = total;
+    });
+});
+
 function setCookie(name, value, days) {
     const date = new Date();
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -30,34 +59,3 @@ function applyTheme(theme) {
         document.body.classList.remove('dark-mode');
     }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    const currentTheme = getCookie('theme') || 'light';
-    applyTheme(currentTheme);
-
-    document.getElementById('theme-toggle').addEventListener('click', () => {
-        const newTheme = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
-        applyTheme(newTheme);
-        setCookie('theme', newTheme, 365);
-    });
-
-    const addButtons = document.querySelectorAll('.add-button');
-    addButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const input = button.previousElementSibling;
-            const value = parseInt(input.value) || 0;
-            const multiplier = button.closest('.grid-item').getAttribute('data-multiplier');
-            total += value * multiplier;
-            document.getElementById('total').innerText = total;
-            input.value = '1';
-        });
-    });
-
-    const clearButton = document.querySelector('.clear-button');
-    clearButton.addEventListener('click', () => {
-        total = 0;
-        document.getElementById('total').innerText = total;
-    });
-});
-
-let total = 0;
