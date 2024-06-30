@@ -88,7 +88,7 @@ body {
 }
 
 .total-container {
-    position: relative;
+    position: absolute;
     bottom: 0px;
     right: 0px;
     padding: 10px;
@@ -96,7 +96,6 @@ body {
     border-top-left-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, color 0.3s;
-    zindex: 0;
 }
 
 .total-container span {
