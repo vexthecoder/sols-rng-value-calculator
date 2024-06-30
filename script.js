@@ -1,5 +1,3 @@
-// script.js
-
 let total = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -82,3 +80,13 @@ function applyTheme(theme) {
         body.classList.remove('dark-mode');
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const userAgent = navigator.userAgent.toLowerCase();
+    const isMobile = /(iphone|ipod|ipad|android|blackberry|windows phone)/.test(userAgent);
+
+    if (isMobile) {
+        alert("This website is optimized for PC and Mac users. You may experience limited functionality on your current device.");
+    }
+});
+
