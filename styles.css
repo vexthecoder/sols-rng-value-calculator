@@ -130,6 +130,7 @@ body.dark-mode .total-box {
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
+    z-index: 1000;
 }
 
 .theme-toggle:hover {
