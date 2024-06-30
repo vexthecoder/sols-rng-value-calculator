@@ -1,4 +1,3 @@
-
 # Sol's RNG Value Calculator
 
 A simple calculator for Sol's RNG.
@@ -8,5 +7,15 @@ A simple calculator for Sol's RNG.
 
 - All 94 Auras
 - Multi Add
-- Inventory Value Saves
+- Light/Dark Mode switching
 
+
+## In-Progress
+
+- Inventory Value Saving
+- Other Sol's RNG related calculators
+- Other Device Support
+
+
+### Contact
+Contact me on (Discord)[https://discord.com/users/1018875765565177976] if you find bugs or want to request a feature/calculator to be made.
