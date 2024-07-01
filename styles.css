@@ -265,14 +265,17 @@ body::-webkit-scrollbar {
 }
 
 .dark-mode .search-container {
+    background-color: #444;
     color: #fff;
 }
 
-.dark-mode #searchInput {
+.dark-mode .searchInput {
+    background-color: #444;
     color: #fff;
 }
 
-.dark-mode #searchInput::placeholder {
+.dark-mode .searchInput::placeholder {
+    background-color: #444;
     color: #B6B6B6
 }
 
@@ -290,7 +293,7 @@ body::-webkit-scrollbar {
     z-index: 1000;
 }
 
-#searchInput {
+.searchInput {
     width: calc(100% - 20px);
     padding: 8px;
     font-size: 14px;
@@ -299,6 +302,6 @@ body::-webkit-scrollbar {
     border-radius: 20px;
 }
 
-#searchInput::placeholder {
+.searchInput::placeholder {
     color: #999;
 }
