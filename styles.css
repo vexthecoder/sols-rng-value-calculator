@@ -59,6 +59,7 @@ body::-webkit-scrollbar {
     padding: 20px;
     max-width: 90vw;
     margin: 0 auto;
+    padding-top: 120px;
     padding-bottom: 100px;
 }
 
@@ -264,12 +265,12 @@ body::-webkit-scrollbar {
 }
 
 .search-container {
-    position: fixed;
+    position: absolute;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
     width: 80%;
-    max-width: 600px; /* Adjust max-width as per your design */
+    max-width: 1200px; /* Adjust max-width as per your design */
     background-color: #fff;
     border-radius: 20px;
     padding: 10px;
