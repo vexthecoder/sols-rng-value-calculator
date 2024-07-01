@@ -47,8 +47,12 @@ body {
 
 .grid-item img {
     border-radius: 8px;
-    max-width: 100%;
-    height: auto;
+    width: 150px;
+    height: 150px;
+}
+
+.grid-item .image-label {
+    text-align: center;
 }
 
 .input-container {
@@ -124,6 +128,10 @@ body {
 .dark-mode .grid-item {
     background-color: #444;
     color: #fff;
+}
+
+.dark-mode .grid-item .image-label {
+    color: #fff
 }
 
 .dark-mode .add-button, .dark-mode .remove-button {
