@@ -7,10 +7,13 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search for auras/categories..." />
+    </div>
     <button id="settings-toggle" class="settings-toggle">⚙️</button>
     <button id="theme-toggle" class="theme-toggle">🌓</button>
     <div class="grid-container">
-        <div class="grid-item" data-multiplier="2">
+        <div class="grid-item" data-multiplier="2" data-keywords="common">
             <div class="image-label">Common</div>
             <img src="https://static.wikia.nocookie.net/sol-rng/images/e/ef/Common_Aura.gif" alt="Common">
             <div class="input-container">
@@ -19,7 +22,7 @@
                 <button class="remove-button">Remove</button>
             </div>
         </div>
-        <div class="grid-item" data-multiplier="4">
+        <div class="grid-item" data-multiplier="4" data-keywords="uncommon">
             <div class="image-label">Uncommon</div>
             <img src="https://static.wikia.nocookie.net/sol-rng/images/0/0d/Uncommon_Aura.gif" alt="Uncommon">
             <div class="input-container">
@@ -28,7 +31,7 @@
                 <button class="remove-button">Remove</button>
             </div>
         </div>
-        <div class="grid-item" data-multiplier="5">
+        <div class="grid-item" data-multiplier="5"  data-keywords="good">
             <div class="image-label">Good</div>
             <img src="https://static.wikia.nocookie.net/sol-rng/images/3/3c/GoodAura.gif" alt="Good">
             <div class="input-container">
@@ -37,7 +40,7 @@
                 <button class="remove-button">Remove</button>
             </div>
         </div>
-        <div class="grid-item" data-multiplier="8">
+        <div class="grid-item" data-multiplier="8"  data-keywords="natural">
             <div class="image-label">Natural</div>
             <img src="https://static.wikia.nocookie.net/sol-rng/images/9/91/NaturalAura.gif/" alt="Natural">
             <div class="input-container">
@@ -46,7 +49,7 @@
                 <button class="remove-button">Remove</button>
             </div>
         </div>
-        <div class="grid-item" data-multiplier="16">
+        <div class="grid-item" data-multiplier="16" data-keywords="rare">
             <div class="image-label">Rare</div>
             <img src="https://static.wikia.nocookie.net/sol-rng/images/2/2c/Rare_Aura.gif/" alt="Rare">
             <div class="input-container">
@@ -55,7 +58,7 @@
                 <button class="remove-button">Remove</button>
             </div>
         </div>
-        <div class="grid-item" data-multiplier="32">
+        <div class="grid-item" data-multiplier="32" data-keywords="divinus">
             <div class="image-label">Divinus</div>
             <img src="https://static.wikia.nocookie.net/sol-rng/images/1/10/DivinusAura.gif/" alt="Divinus">
             <div class="input-container">
@@ -64,7 +67,7 @@
                 <button class="remove-button">Remove</button>
             </div>
         </div>
-        <div class="grid-item" data-multiplier="64">
+        <div class="grid-item" data-multiplier="64" data-keywords="crystallized">
             <div class="image-label">Crystallized</div>
             <img src="https://static.wikia.nocookie.net/sol-rng/images/4/48/CrystalAura.gif/" alt="Crystallized">
             <div class="input-container">
@@ -73,7 +76,7 @@
                 <button class="remove-button">Remove</button>
             </div>
         </div>
-        <div class="grid-item" data-multiplier="128">
+        <div class="grid-item" data-multiplier="128" data-keywords="rage general">
             <div class="image-label">Rage</div>
             <img src="https://static.wikia.nocookie.net/sol-rng/images/5/5f/RageAura.gif/" alt="Rage">
             <div class="input-container">
@@ -82,7 +85,7 @@
                 <button class="remove-button">Remove</button>
             </div>
         </div>
-        <div class="grid-item" data-multiplier="150">
+        <div class="grid-item" data-multiplier="150" data-keywords="topaz general">
             <div class="image-label">Topaz</div>
             <img src="https://static.wikia.nocookie.net/sol-rng/images/1/14/TopazCollectionNight.gif/" alt="Topaz">
             <div class="input-container">
