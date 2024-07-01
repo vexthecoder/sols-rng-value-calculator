@@ -8,14 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
         setCookie('theme', newTheme, 365);
     });
 
-    // Settings toggle functionality
     document.getElementById('settings-toggle').addEventListener('click', () => {
         const modal = document.getElementById('settings-modal');
         modal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
     });
 
-    // Close settings modal
     document.getElementById('settings-close').addEventListener('click', () => {
         const modal = document.getElementById('settings-modal');
         modal.style.display = 'none';
