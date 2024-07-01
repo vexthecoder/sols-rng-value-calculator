@@ -8,9 +8,24 @@ body {
     position: relative;
 }
 
-.theme-toggle, .settings-toggle {
+.theme-toggle {
     position: fixed;
     top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    z-index: 1000;
+}
+
+.settings-toggle {
+    position: fixed;
+    padding-top: 20px;
     right: 20px;
     width: 40px;
     height: 40px;
