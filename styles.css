@@ -9,7 +9,7 @@ body {
 }
 
 .theme-toggle {
-    position: absolute;
+    position: fixed;
     top: 20px;
     right: 20px;
     width: 40px;
@@ -91,7 +91,7 @@ body {
 }
 
 .total-container {
-    position: absolute;
+    position: fixed;
     bottom: 0px;
     right: 0px;
     padding: 10px;
@@ -122,8 +122,8 @@ body {
 
 .footer {
     position: fixed;
-    bottom: 20px;
-    left: 20px;
+    bottom: 0px;
+    left: 0px;
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.8);
     border-top-right-radius: 10px;
