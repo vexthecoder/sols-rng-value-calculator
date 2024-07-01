@@ -1,3 +1,5 @@
+let total = 0;
+
 document.addEventListener('DOMContentLoaded', () => {
     const currentTheme = getCookie('theme') || 'dark';
     applyTheme(currentTheme);
@@ -9,15 +11,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('settings-toggle').addEventListener('click', () => {
-        const modal = document.getElementById('settings-modal');
-        modal.style.display = 'flex';
+        const settingsModal = document.querySelector('.settings-modal');
+        settingsModal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
     });
 
     document.getElementById('settings-close').addEventListener('click', () => {
-        const modal = document.getElementById('settings-modal');
-        modal.style.display = 'none';
+        const settingsModal = document.querySelector('.settings-modal');
+        settingsModal.style.display = 'none';
         document.body.style.overflow = 'auto';
+    });
+
+    const searchInput = document.getElementById('searchInput');
+    const gridItems = document.querySelectorAll('.grid-item');
+
+    searchInput.addEventListener('input', () => {
+        const searchValue = searchInput.value.toLowerCase().trim();
+
+        gridItems.forEach(item => {
+            const keywords = item.getAttribute('data-keywords').toLowerCase().split(' ');
+            const itemLabel = item.querySelector('.image-label').textContent.toLowerCase();
+            const matchesKeyword = keywords.some(keyword => keyword.includes(searchValue));
+
+            if (itemLabel.includes(searchValue) || matchesKeyword) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
     });
 
     const addButtons = document.querySelectorAll('.add-button');
