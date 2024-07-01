@@ -1,3 +1,5 @@
+/* Updated CSS */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -25,7 +27,7 @@ body {
 
 .settings-toggle {
     position: fixed;
-    padding-top: 20px;
+    top: 70px;
     right: 20px;
     width: 40px;
     height: 40px;
@@ -204,7 +206,7 @@ body {
 }
 
 .dark-mode .grid-item .image-label {
-    color: #fff
+    color: #fff;
 }
 
 .dark-mode .add-button, .dark-mode .remove-button {
