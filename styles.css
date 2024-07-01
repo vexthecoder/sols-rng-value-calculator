@@ -186,3 +186,7 @@ body {
 .dark-mode .footer a {
     color: #fff;
 }
+
+.dark-mode .footer a:hover {
+    color: #007bff;
+}
