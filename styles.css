@@ -9,7 +9,7 @@ body {
 }
 
 .theme-toggle {
-    position: fixed;
+    position: absolute;
     top: 20px;
     right: 20px;
     width: 40px;
@@ -34,6 +34,7 @@ body {
     padding: 20px;
     max-width: 90vw;
     margin: 0 auto;
+    padding-bottom: 100px; /* Add extra padding at the bottom */
 }
 
 .grid-item {
@@ -45,14 +46,15 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
+.image-label {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
 .grid-item img {
     border-radius: 8px;
     width: 150px;
     height: 150px;
-}
-
-.grid-item .image-label {
-    text-align: center;
 }
 
 .input-container {
@@ -69,6 +71,8 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
     margin: 0 5px;
+    background-color: #f0f0f0;
+    color: #333;
 }
 
 .add-button, .remove-button {
@@ -79,18 +83,15 @@ body {
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-left: 5px;
 }
 
 .add-button:hover, .remove-button:hover {
     background-color: #218838;
 }
 
-.remove-button {
-    margin-left: 5px;
-}
-
 .total-container {
-    position: fixed;
+    position: absolute;
     bottom: 0px;
     right: 0px;
     padding: 10px;
@@ -98,11 +99,10 @@ body {
     border-top-left-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, color 0.3s;
-    z-index: 1000;
 }
 
 .total-container span {
-    margin-left: 5px;
+    margin-left: 5px; /* Add space between number and colon */
 }
 
 .clear-button {
@@ -113,11 +113,32 @@ body {
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin-left: 10px;
+    margin-left: 10px; /* Add gap between inventory value and clear button */
 }
 
 .clear-button:hover {
     background-color: #c82333;
+}
+
+.footer {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-top-right-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.footer a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: #007bff;
 }
 
 .dark-mode {
@@ -164,25 +185,4 @@ body {
 
 .dark-mode .footer a {
     color: #fff;
-}
-
-.footer {
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-top-right-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-}
-
-.footer a {
-    color: #333;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.footer a:hover {
-    color: #007bff;
 }
