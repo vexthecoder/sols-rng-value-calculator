@@ -79,8 +79,8 @@ body::-webkit-scrollbar {
 
 .grid-item img {
     border-radius: 8px;
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
 }
 
 .input-container {
