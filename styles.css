@@ -264,13 +264,25 @@ body::-webkit-scrollbar {
     color: #007bff;
 }
 
+.dark-mode .search-container {
+    color: #fff;
+}
+
+.dark-mode #searchInput {
+    color: #fff;
+}
+
+.dark-mode #searchInput::placeholder {
+    color: #B6B6B6
+}
+
 .search-container {
     position: absolute;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
     width: 80%;
-    max-width: 1200px; /* Adjust max-width as per your design */
+    max-width: 1200px;
     background-color: #fff;
     border-radius: 20px;
     padding: 10px;
@@ -279,7 +291,7 @@ body::-webkit-scrollbar {
 }
 
 #searchInput {
-    width: calc(100% - 20px); /* Adjust width */
+    width: calc(100% - 20px);
     padding: 8px;
     font-size: 14px;
     border: none;
