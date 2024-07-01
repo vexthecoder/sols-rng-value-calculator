@@ -264,11 +264,6 @@ body::-webkit-scrollbar {
     color: #007bff;
 }
 
-.dark-mode .search-container {
-    background-color: #444;
-    color: #fff;
-}
-
 .search-container {
     position: absolute;
     top: 20px;
