@@ -1,21 +1,15 @@
-let total = 0;
-
 document.addEventListener('DOMContentLoaded', () => {
-    const currentTheme = getCookie('theme') || 'dark';
-    applyTheme(currentTheme);
-    document.getElementById('theme-select').value = currentTheme;
+    let total = 0;
+    alert("This website is still in the Beta phase.\nNew features are slowly being added until the entire website is finished.\nFeel free to gives constructive feedback on discord (@vexthecoder).")
 
-    const gifToggle = getCookie('gifToggle') === 'true';
-    applyGifToggle(gifToggle);
-    document.getElementById('gif-toggle').checked = gifToggle;
+    const savedGifToggle = getCookie('gifToggle') === 'true';
+    const savedTheme = getCookie('theme') || 'light';
+    applyGifToggle(savedGifToggle);
+    applyTheme(savedTheme);
+    document.getElementById('gif-toggle').checked = savedGifToggle;
+    document.getElementById('theme-select').value = savedTheme;
 
-    document.querySelector('.theme-toggle').addEventListener('click', () => {
-        const settingsModal = document.querySelector('.settings-modal');
-        settingsModal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    });
-
-    document.getElementById('settings-toggle').addEventListener('click', () => {
+    document.querySelector('.settings-toggle').addEventListener('click', () => {
         const settingsModal = document.querySelector('.settings-modal');
         settingsModal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
@@ -137,5 +131,3 @@ function applyGifToggle(gifToggle) {
         }
     });
 }
-
-alert("This website is still in the Beta phase.\nNew features are slowly being added until the entire website is finished.\nFeel free to gives constructive feedback on discord (@vexthecoder).")
