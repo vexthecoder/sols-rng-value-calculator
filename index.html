@@ -11,7 +11,6 @@
         <input type="text" id="searchInput" placeholder="Search for auras/categories..." />
     </div>
     <button id="settings-toggle" class="settings-toggle">⚙️</button>
-    <button id="theme-toggle" class="theme-toggle">🌓</button>
     <div class="grid-container">
         <div class="grid-item" data-multiplier="2" data-keywords="2">
             <div class="image-label">Common</div><br>
@@ -976,14 +975,20 @@
 
     <div class="settings-modal">
         <div class="settings-content">
-            <button id="settings-close" class="settings-close">&times;</button>
-            <h2>Settings</h2>
+            <button id="settings-close" class="settings-close">✖</button>
             <div class="settings-option">
                 <label for="gif-toggle">Switch to GIFs</label>
                 <label class="switch">
                     <input type="checkbox" id="gif-toggle">
                     <span class="slider round"></span>
                 </label>
+            </div>
+            <div class="settings-option">
+                <label for="theme-select">Theme</label>
+                <select id="theme-select" class="dropdown">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                </select>
             </div>
         </div>
     </div>
