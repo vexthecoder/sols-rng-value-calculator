@@ -1,7 +1,7 @@
 let total = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
-    const currentTheme = getCookie('theme') || 'dark'; // Default to dark mode
+    const currentTheme = getCookie('theme') || 'dark';
     applyTheme(currentTheme);
     document.getElementById('theme-select').value = currentTheme;
 
@@ -12,13 +12,19 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.theme-toggle').addEventListener('click', () => {
         const settingsModal = document.querySelector('.settings-modal');
         settingsModal.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Disable scrolling on the main page
+        document.body.style.overflow = 'hidden';
+    });
+
+    document.getElementById('settings-toggle').addEventListener('click', () => {
+        const settingsModal = document.querySelector('.settings-modal');
+        settingsModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
     });
 
     document.getElementById('settings-close').addEventListener('click', () => {
         const settingsModal = document.querySelector('.settings-modal');
         settingsModal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Enable scrolling on the main page
+        document.body.style.overflow = 'auto';
     });
 
     document.getElementById('gif-toggle').addEventListener('change', (event) => {
@@ -45,9 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const matchesKeyword = keywords.some(keyword => keyword.includes(searchValue));
 
             if (itemLabel.includes(searchValue) || matchesKeyword) {
-                item.style.display = 'block'; // Show matching items
+                item.style.display = 'block';
             } else {
-                item.style.display = 'none'; // Hide non-matching items
+                item.style.display = 'none';
             }
         });
     });
@@ -59,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const value = parseInt(input.value) || 0;
             const multiplier = button.closest('.grid-item').getAttribute('data-multiplier');
             total += value * multiplier;
-            if (total < 0) total = 0; // Ensure total doesn't go below 0
+            if (total < 0) total = 0;
             document.getElementById('total').innerText = total;
             input.value = '1';
         });
@@ -72,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const value = parseInt(input.value) || 0;
             const multiplier = button.closest('.grid-item').getAttribute('data-multiplier');
             total -= value * multiplier;
-            if (total < 0) total = 0; // Ensure total doesn't go below 0
+            if (total < 0) total = 0;
             document.getElementById('total').innerText = total;
             input.value = '1';
         });
