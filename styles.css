@@ -210,6 +210,14 @@ body::-webkit-scrollbar {
     color: #007bff;
 }
 
+.dark-mode .gif-toggle-text {
+    color: #fff;
+}
+
+.dark-mode .theme-select-text {
+    color: #fff;
+}
+
 .search-container {
     position: absolute;
     top: 20px;
@@ -265,7 +273,7 @@ body::-webkit-scrollbar {
     position: absolute;
     top: 10px;
     right: 10px;
-    font-size: 24px;
+    font-size: 30px;
     border: none;
     background-color: transparent;
     color: #333;
@@ -288,18 +296,6 @@ body::-webkit-scrollbar {
     margin: 0;
     flex: 1;
     text-align: left;
-}
-
-input:checked + .slider {
-    background-color: #007bff;
-}
-
-input:checked + .slider:before {
-    transform: translateX(26px);
-}
-
-input:focus + .slider {
-    box-shadow: 0 0 1px #007bff;
 }
 
 .settings-item {
@@ -358,5 +354,7 @@ input[type="checkbox"]:checked + .toggle-slider {
 }
 
 input[type="checkbox"]:checked + .toggle-slider:before {
-    transform: translateX(35px);
+    transform: translateX(33px);
 }
+
+
