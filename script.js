@@ -1,35 +1,36 @@
 let total = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
-    const currentTheme = getCookie('theme') || 'dark';
+    const currentTheme = getCookie('theme') || 'dark'; // Default to dark mode
     applyTheme(currentTheme);
+    document.getElementById('theme-select').value = currentTheme;
 
     const gifToggle = getCookie('gifToggle') === 'true';
     applyGifToggle(gifToggle);
     document.getElementById('gif-toggle').checked = gifToggle;
 
-    document.getElementById('theme-toggle').addEventListener('click', () => {
-        const newTheme = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
-        applyTheme(newTheme);
-        setCookie('theme', newTheme, 365);
-    });
-
-    document.getElementById('settings-toggle').addEventListener('click', () => {
+    document.querySelector('.theme-toggle').addEventListener('click', () => {
         const settingsModal = document.querySelector('.settings-modal');
         settingsModal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden'; // Disable scrolling on the main page
     });
 
     document.getElementById('settings-close').addEventListener('click', () => {
         const settingsModal = document.querySelector('.settings-modal');
         settingsModal.style.display = 'none';
-        document.body.style.overflow = 'auto';
+        document.body.style.overflow = 'auto'; // Enable scrolling on the main page
     });
 
     document.getElementById('gif-toggle').addEventListener('change', (event) => {
         const isChecked = event.target.checked;
         applyGifToggle(isChecked);
         setCookie('gifToggle', isChecked, 365);
+    });
+
+    document.getElementById('theme-select').addEventListener('change', (event) => {
+        const selectedTheme = event.target.value;
+        applyTheme(selectedTheme);
+        setCookie('theme', selectedTheme, 365);
     });
 
     const searchInput = document.getElementById('searchInput');
@@ -44,9 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const matchesKeyword = keywords.some(keyword => keyword.includes(searchValue));
 
             if (itemLabel.includes(searchValue) || matchesKeyword) {
-                item.style.display = 'block';
+                item.style.display = 'block'; // Show matching items
             } else {
-                item.style.display = 'none';
+                item.style.display = 'none'; // Hide non-matching items
             }
         });
     });
@@ -58,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const value = parseInt(input.value) || 0;
             const multiplier = button.closest('.grid-item').getAttribute('data-multiplier');
             total += value * multiplier;
-            if (total < 0) total = 0;
+            if (total < 0) total = 0; // Ensure total doesn't go below 0
             document.getElementById('total').innerText = total;
             input.value = '1';
         });
@@ -71,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const value = parseInt(input.value) || 0;
             const multiplier = button.closest('.grid-item').getAttribute('data-multiplier');
             total -= value * multiplier;
-            if (total < 0) total = 0;
+            if (total < 0) total = 0; // Ensure total doesn't go below 0
             document.getElementById('total').innerText = total;
             input.value = '1';
         });
