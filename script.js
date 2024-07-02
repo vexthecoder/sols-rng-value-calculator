@@ -12,13 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.settings-toggle').addEventListener('click', () => {
         const settingsModal = document.querySelector('.settings-modal');
         settingsModal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
     });
 
     document.getElementById('settings-close').addEventListener('click', () => {
         const settingsModal = document.querySelector('.settings-modal');
         settingsModal.style.display = 'none';
-        document.body.style.overflow = 'auto';
     });
 
     document.getElementById('gif-toggle').addEventListener('change', (event) => {
