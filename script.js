@@ -1,13 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
     let total = 0;
     
+    const noAlertCookie = getCookie('noAlert') === 'true';
+
+    if (!noAlertCookie) {
+        alert("This website is still in the Beta phase.\nNew features are slowly being added until the entire website is finished.\nFeel free to give constructive feedback on discord (@vexthecoder).");
+        setCookie('noAlert', 'true', 365);
+    }
+
     const savedGifToggle = getCookie('gifToggle') === 'true';
     const savedTheme = getCookie('theme') || 'light';
     applyGifToggle(savedGifToggle);
     applyTheme(savedTheme);
     document.getElementById('gif-toggle').checked = savedGifToggle;
     document.getElementById('theme-select').value = savedTheme;
-    alert("This website is still in the Beta phase.\nNew features are slowly being added until the entire website is finished.\nFeel free to gives constructive feedback on discord (@vexthecoder).")
 
     document.querySelector('.settings-toggle').addEventListener('click', () => {
         const settingsModal = document.querySelector('.settings-modal');
@@ -22,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('gif-toggle').addEventListener('change', (event) => {
         const isChecked = event.target.checked;
         applyGifToggle(isChecked);
-        setCookie('gifToggle', isChecked, 365);
+        setCookie('gifToggle', isChecked.toString(), 365);
     });
 
     document.getElementById('theme-select').addEventListener('change', (event) => {
