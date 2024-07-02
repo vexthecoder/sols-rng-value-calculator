@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const noAlertCookie = getCookie('noAlert') === 'true';
 
     if (!noAlertCookie) {
-        alert("This website is still in the Beta phase.\nNew features are slowly being added until the entire website is finished.\nFeel free to give constructive feedback on discord (@vexthecoder).");
+        alert('This website is still in the Beta phase.\nNew features are slowly being added until the entire website is finished.\nFeel free to give constructive feedback on discord (@vexthecoder).\n \nClicking "OK" will make this message never appear again.');
         setCookie('noAlert', 'true', 365);
     }
 
