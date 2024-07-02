@@ -976,17 +976,17 @@
     <div class="settings-modal">
         <div class="settings-content">
             <h2>Settings</h2>
-            <button id="settings-close" class="settings-close">✖</button>
-            <div class="settings-option">
+            <button id="settings-close" class="settings-close">×</button>
+            <div class="settings-item">
                 <label for="gif-toggle">Switch to GIFs</label>
-                <label class="switch">
+                <div class="toggle">
                     <input type="checkbox" id="gif-toggle">
-                    <span class="slider round"></span>
-                </label>
+                    <label for="gif-toggle" class="toggle-slider"></label>
+                </div>
             </div>
-            <div class="settings-option">
+            <div class="settings-item">
                 <label for="theme-select">Theme</label>
-                <select id="theme-select" class="dropdown">
+                <select id="theme-select">
                     <option value="light">Light</option>
                     <option value="dark">Dark</option>
                 </select>
@@ -1000,6 +1000,7 @@
             <button class="clear-button">Clear</button>
         </div>
     </div>
+    
     <div class="footer">
     Made with love by <b></b><a href="https://discord.com/users/1018875765565177976" target="_blank">vex</a></b><br>
     Open source on <b><a href="https://github.com/vexthecoder/sols-rng-value-calculator" target="_blank">GitHub</a></b>
