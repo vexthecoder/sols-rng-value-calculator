@@ -130,3 +130,5 @@ function applyGifToggle(gifToggle) {
         }
     });
 }
+
+alert("This website is still in the Beta phase.\nNew features are slowly being added until the entire website is finished.\nFeel free to gives constructive feedback on discord (@vexthecoder).")
