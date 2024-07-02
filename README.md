@@ -5,9 +5,11 @@ A simple calculator for Sol's RNG.
 
 ## Features
 
-- All 94 Auras
+- 94 Auras
 - Multi Add
-- Light and Dark Themes
+- Settings (Settings Save)
+- - GIF Toggle
+- - Light and Dark Themes
 - Aura/Category Searching
 
 
