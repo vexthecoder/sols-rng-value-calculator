@@ -1,17 +1,20 @@
+// script.js
+
 document.addEventListener('DOMContentLoaded', () => {
     let total = 0;
-    alert("This website is still in the Beta phase.\nNew features are slowly being added until the entire website is finished.\nFeel free to gives constructive feedback on discord (@vexthecoder).")
-
+    
     const savedGifToggle = getCookie('gifToggle') === 'true';
     const savedTheme = getCookie('theme') || 'light';
     applyGifToggle(savedGifToggle);
     applyTheme(savedTheme);
     document.getElementById('gif-toggle').checked = savedGifToggle;
     document.getElementById('theme-select').value = savedTheme;
+    alert("This website is still in the Beta phase.\nNew features are slowly being added until the entire website is finished.\nFeel free to gives constructive feedback on discord (@vexthecoder).")
 
     document.querySelector('.settings-toggle').addEventListener('click', () => {
         const settingsModal = document.querySelector('.settings-modal');
         settingsModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
     });
 
     document.getElementById('settings-close').addEventListener('click', () => {
