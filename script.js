@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentTheme = getCookie('theme') || 'dark';
     applyTheme(currentTheme);
 
+    const gifToggle = getCookie('gifToggle') === 'true';
+    applyGifToggle(gifToggle);
+    document.getElementById('gif-toggle').checked = gifToggle;
+
     document.getElementById('theme-toggle').addEventListener('click', () => {
         const newTheme = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
         applyTheme(newTheme);
@@ -20,6 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const settingsModal = document.querySelector('.settings-modal');
         settingsModal.style.display = 'none';
         document.body.style.overflow = 'auto';
+    });
+
+    document.getElementById('gif-toggle').addEventListener('change', (event) => {
+        const isChecked = event.target.checked;
+        applyGifToggle(isChecked);
+        setCookie('gifToggle', isChecked, 365);
     });
 
     const searchInput = document.getElementById('searchInput');
@@ -105,4 +115,18 @@ function applyTheme(theme) {
         document.body.classList.add('light-mode');
         document.body.classList.remove('dark-mode');
     }
+}
+
+function applyGifToggle(gifToggle) {
+    const gridItems = document.querySelectorAll('.grid-item img');
+
+    gridItems.forEach(img => {
+        const imgSrc = img.getAttribute('data-img-src');
+        const gifSrc = img.getAttribute('data-gif-src');
+        if (gifToggle) {
+            img.src = gifSrc;
+        } else {
+            img.src = imgSrc;
+        }
+    });
 }
