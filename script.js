@@ -1,13 +1,11 @@
 document.addEventListener('DOMContentLoaded', async () => {
     let total = 0;
-
     const versionNumber = await fetchVersionNumber();
+    const noAlertCookie = getCookie('noAlert');
 
-    const noAlertCookie = getCookie('noAlert') === 'true';
-    
-    if (!noAlertCookie) {
+    if (noAlertCookie !== versionNumber) {
         alert(`This website is still in the Beta phase.\nNew features are slowly being added until the entire website is finished.\nFeel free to give constructive feedback on discord (@vexthecoder).\nVersion: ${versionNumber}`);
-        setCookie('noAlert', 'true', 365);
+        setCookie('noAlert', versionNumber, 365);
     }
 
     const savedGifToggle = getCookie('gifToggle') === 'true';
