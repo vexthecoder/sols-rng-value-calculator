@@ -4,15 +4,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     const noAlertCookie = getCookie('noAlert');
 
     if (noAlertCookie !== versionNumber) {
-        alert(`This website is still in the Beta phase.\nNew features are slowly being added until the entire website is finished.\nFeel free to give constructive feedback on discord (@vexthecoder).\nVersion: ${versionNumber}`);
+        alert(`This website is still in the Beta phase.\nNew features are slowly being added until the entire website is finished.\nFeel free to give constructive feedback on discord (@vexthecoder).\n \nBy clicking "OK", you will not receive this notification until a new update has been released. The version number is listed below. \nVersion: ${versionNumber}`);
         setCookie('noAlert', versionNumber, 365);
     }
 
-    const themes = await fetchThemes();
     const savedGifToggle = getCookie('gifToggle') === 'true';
-    const savedTheme = getCookie('theme') || 'light';
+    const savedTheme = getCookie('theme') || 'light'; // Default theme
     applyGifToggle(savedGifToggle);
-    applyTheme(savedTheme, themes);
+    applyTheme(savedTheme);
     document.getElementById('gif-toggle').checked = savedGifToggle;
     document.getElementById('theme-select').value = savedTheme;
 
@@ -34,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     document.getElementById('theme-select').addEventListener('change', (event) => {
         const selectedTheme = event.target.value;
-        applyTheme(selectedTheme, themes);
+        applyTheme(selectedTheme);
         setCookie('theme', selectedTheme, 365);
     });
 
@@ -101,17 +100,6 @@ async function fetchVersionNumber() {
     }
 }
 
-async function fetchThemes() {
-    try {
-        const response = await fetch('themes.json');
-        const themes = await response.json();
-        return themes;
-    } catch (error) {
-        console.error('Error fetching themes:', error);
-        return {};
-    }
-}
-
 function setCookie(name, value, days) {
     const date = new Date();
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -135,13 +123,31 @@ function getCookie(name) {
     return "";
 }
 
-function applyTheme(theme, themes) {
-    const root = document.documentElement;
-    const themeProperties = themes[theme];
-    for (let property in themeProperties) {
-        root.style.setProperty(property, themeProperties[property]);
+function applyTheme(theme) {
+    const themeData = getThemeData(theme);
+    if (themeData) {
+        Object.keys(themeData).forEach(property => {
+            document.documentElement.style.setProperty(property, themeData[property]);
+        });
     }
-    document.getElementById('settings-icon').style.fill = themeProperties['--settings-icon-color'];
+}
+
+function getThemeData(theme) {
+    return fetch('themes.json')
+        .then(response => response.json())
+        .then(data => {
+            const themes = data.themes;
+            if (themes && themes[theme]) {
+                return themes[theme];
+            } else {
+                console.error(`Theme '${theme}' not found.`);
+                return null;
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching themes:', error);
+            return null;
+        });
 }
 
 function applyGifToggle(gifToggle) {
