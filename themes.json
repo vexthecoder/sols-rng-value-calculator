@@ -27,18 +27,60 @@
         "--settings-close-color": "#fff",
         "--settings-icon-color": "#fff"
     },
-    "test": {
-        "--background-color": "#1a1a1a",
-        "--text-color": "#e0e0e0",
-        "--button-background-color": "#28a745",
+    "radiant": {
+        "--background-color": "#ffe0b2",
+        "--text-color": "#3e2723",
+        "--button-background-color": "#ff9800",
         "--button-text-color": "#fff",
-        "--button-hover-background-color": "#218838",
-        "--grid-item-background-color": "#2a2a2a",
-        "--grid-item-text-color": "#e0e0e0",
-        "--total-container-background-color": "rgba(42, 42, 42, 0.8)",
-        "--footer-background-color": "rgba(42, 42, 42, 0.8)",
-        "--settings-content-background-color": "#2a2a2a",
-        "--settings-close-color": "#e0e0e0",
-        "--settings-icon-color": "#e0e0e0"
+        "--button-hover-background-color": "#e65100",
+        "--grid-item-background-color": "#ffcc80",
+        "--grid-item-text-color": "#3e2723",
+        "--total-container-background-color": "rgba(255, 204, 128, 0.8)",
+        "--footer-background-color": "rgba(255, 204, 128, 0.8)",
+        "--settings-content-background-color": "#ffcc80",
+        "--settings-close-color": "#3e2723",
+        "--settings-icon-color": "#3e2723"
+    },
+    "chrome": {
+        "--background-color": "#e0e0e0",
+        "--text-color": "#212121",
+        "--button-background-color": "#757575",
+        "--button-text-color": "#fff",
+        "--button-hover-background-color": "#616161",
+        "--grid-item-background-color": "#bdbdbd",
+        "--grid-item-text-color": "#212121",
+        "--total-container-background-color": "rgba(189, 189, 189, 0.8)",
+        "--footer-background-color": "rgba(189, 189, 189, 0.8)",
+        "--settings-content-background-color": "#bdbdbd",
+        "--settings-close-color": "#212121",
+        "--settings-icon-color": "#212121"
+    },
+    "discord": {
+        "--background-color": "#7289da",
+        "--text-color": "#ffffff",
+        "--button-background-color": "#99aab5",
+        "--button-text-color": "#ffffff",
+        "--button-hover-background-color": "#2c2f33",
+        "--grid-item-background-color": "#2c2f33",
+        "--grid-item-text-color": "#ffffff",
+        "--total-container-background-color": "rgba(44, 47, 51, 0.8)",
+        "--footer-background-color": "rgba(44, 47, 51, 0.8)",
+        "--settings-content-background-color": "#2c2f33",
+        "--settings-close-color": "#ffffff",
+        "--settings-icon-color": "#ffffff"
+    },
+    "flow": {
+        "--background-color": "#1b1b2f",
+        "--text-color": "#e43f5a",
+        "--button-background-color": "#162447",
+        "--button-text-color": "#e43f5a",
+        "--button-hover-background-color": "#1f4068",
+        "--grid-item-background-color": "#1f4068",
+        "--grid-item-text-color": "#e43f5a",
+        "--total-container-background-color": "rgba(31, 64, 104, 0.8)",
+        "--footer-background-color": "rgba(31, 64, 104, 0.8)",
+        "--settings-content-background-color": "#1f4068",
+        "--settings-close-color": "#e43f5a",
+        "--settings-icon-color": "#e43f5a"
     }
 }
