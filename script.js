@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     const savedGifToggle = getCookie('gifToggle') === 'true';
-    const savedTheme = getCookie('theme') || 'light'; // Default theme
+    const savedTheme = getCookie('theme') || 'light';
     applyGifToggle(savedGifToggle);
     applyTheme(savedTheme);
     document.getElementById('gif-toggle').checked = savedGifToggle;
@@ -100,54 +100,9 @@ async function fetchVersionNumber() {
     }
 }
 
-function setCookie(name, value, days) {
-    const date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    const expires = "expires=" + date.toUTCString();
-    document.cookie = name + "=" + value + ";" + expires + ";path=/";
-}
-
-function getCookie(name) {
-    const cname = name + "=";
-    const decodedCookie = decodeURIComponent(document.cookie);
-    const ca = decodedCookie.split(';');
-    for(let i = 0; i < ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) === ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(cname) === 0) {
-            return c.substring(cname.length, c.length);
-        }
-    }
-    return "";
-}
-
 function applyTheme(theme) {
-    const themeData = getThemeData(theme);
-    if (themeData) {
-        Object.keys(themeData).forEach(property => {
-            document.documentElement.style.setProperty(property, themeData[property]);
-        });
-    }
-}
-
-function getThemeData(theme) {
-    return fetch('themes.json')
-        .then(response => response.json())
-        .then(data => {
-            const themes = data.themes;
-            if (themes && themes[theme]) {
-                return themes[theme];
-            } else {
-                console.error(`Theme '${theme}' not found.`);
-                return null;
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching themes:', error);
-            return null;
-        });
+    document.body.className = '';
+    document.body.classList.add(theme + '-mode');
 }
 
 function applyGifToggle(gifToggle) {
@@ -162,4 +117,27 @@ function applyGifToggle(gifToggle) {
             img.src = imgSrc;
         }
     });
+}
+
+function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
+function getCookie(name) {
+    const cname = name + "=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(cname) === 0) {
+            return c.substring(cname.length, c.length);
+        }
+    }
+    return "";
 }
