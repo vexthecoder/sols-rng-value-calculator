@@ -8,10 +8,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         setCookie('noAlert', versionNumber, 365);
     }
 
+    const themes = await fetchThemes();
     const savedGifToggle = getCookie('gifToggle') === 'true';
     const savedTheme = getCookie('theme') || 'light';
     applyGifToggle(savedGifToggle);
-    applyTheme(savedTheme);
+    applyTheme(savedTheme, themes);
     document.getElementById('gif-toggle').checked = savedGifToggle;
     document.getElementById('theme-select').value = savedTheme;
 
@@ -33,7 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     document.getElementById('theme-select').addEventListener('change', (event) => {
         const selectedTheme = event.target.value;
-        applyTheme(selectedTheme);
+        applyTheme(selectedTheme, themes);
         setCookie('theme', selectedTheme, 365);
     });
 
@@ -100,6 +101,17 @@ async function fetchVersionNumber() {
     }
 }
 
+async function fetchThemes() {
+    try {
+        const response = await fetch('themes.json');
+        const themes = await response.json();
+        return themes;
+    } catch (error) {
+        console.error('Error fetching themes:', error);
+        return {};
+    }
+}
+
 function setCookie(name, value, days) {
     const date = new Date();
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -123,14 +135,13 @@ function getCookie(name) {
     return "";
 }
 
-function applyTheme(theme) {
-    if (theme === 'dark') {
-        document.body.classList.add('dark-mode');
-        document.body.classList.remove('light-mode');
-    } else {
-        document.body.classList.add('light-mode');
-        document.body.classList.remove('dark-mode');
+function applyTheme(theme, themes) {
+    const root = document.documentElement;
+    const themeProperties = themes[theme];
+    for (let property in themeProperties) {
+        root.style.setProperty(property, themeProperties[property]);
     }
+    document.getElementById('settings-icon').style.fill = themeProperties['--settings-icon-color'];
 }
 
 function applyGifToggle(gifToggle) {
