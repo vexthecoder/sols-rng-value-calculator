@@ -2,195 +2,234 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    transition: background-color 0.5s, color 0.5s;
-    position: relative;
-}
-
-.theme-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    border: none;
-    border-radius: 50%;
-    background-color: var(--button-background-color);
-    color: var(--button-text-color);
-    cursor: pointer;
-    transition: background-color 0.3s;
-    z-index: 1000;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .settings-toggle {
+    cursor: pointer;
     position: fixed;
-    padding-top: 20px;
+    top: 20px;
     right: 20px;
-    width: 40px;
-    height: 40px;
-    border: none;
-    border-radius: 50%;
-    background-color: var(--button-background-color);
-    color: var(--button-text-color);
-    cursor: pointer;
-    transition: background-color 0.3s;
     z-index: 1000;
-}
-
-.theme-toggle:hover,
-.settings-toggle:hover {
-    background-color: var(--button-hover-background-color);
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
-    padding: 20px;
-    max-width: 90vw;
-    margin: 0 auto;
-    padding-bottom: 100px;
-}
-
-.grid-item {
-    background-color: var(--grid-item-background-color);
-    color: var(--grid-item-text-color);
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.image-label {
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.grid-item img {
-    border-radius: 8px;
-    width: 150px;
-    height: 150px;
-}
-
-.input-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.quantity {
-    width: 50px;
-    text-align: center;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin: 0 5px;
-    background-color: var(--background-color);
-    color: var(--text-color);
-}
-
-.add-button,
-.remove-button {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: var(--button-background-color);
-    color: var(--button-text-color);
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-left: 5px;
-}
-
-.add-button:hover,
-.remove-button:hover {
-    background-color: var(--button-hover-background-color);
-}
-
-.total-container {
-    position: fixed;
-    bottom: 0px;
-    right: 0px;
-    padding: 10px;
-    background-color: var(--total-container-background-color);
-    border-top-left-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.total-container span {
-    margin-left: 5px;
-}
-
-.clear-button {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #dc3545;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-left: 10px;
-}
-
-.clear-button:hover {
-    background-color: #c82333;
 }
 
 .settings-modal {
     display: none;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 2000;
-    justify-content: center;
-    align-items: center;
+    z-index: 1000;
 }
 
 .settings-content {
     background-color: var(--settings-content-background-color);
-    padding: 40px;
+    padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    position: relative;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .settings-close {
+    cursor: pointer;
     position: absolute;
     top: 10px;
     right: 10px;
-    font-size: 24px;
-    border: none;
-    background-color: transparent;
     color: var(--settings-close-color);
-    cursor: pointer;
 }
 
 .settings-close:hover {
-    color: var(--button-hover-background-color);
+    color: #000;
+}
+
+.settings-icon {
+    width: 16px;
+    height: 16px;
+    fill: var(--settings-icon-color);
+    margin-right: 5px;
+}
+
+.settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.settings-title {
+    font-size: 20px;
+}
+
+.settings-option {
+    margin-bottom: 10px;
+}
+
+.settings-label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.settings-input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.settings-button {
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.settings-button:hover {
+    background-color: var(--button-hover-background-color);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.grid-item {
+    background-color: var(--grid-item-background-color);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.grid-item:hover {
+    background-color: #f0f0f0;
+}
+
+.image-label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--grid-item-text-color);
+}
+
+.total-container {
+    background-color: var(--total-container-background-color);
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .footer {
     position: fixed;
-    bottom: 0px;
-    left: 0px;
-    padding: 10px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
     background-color: var(--footer-background-color);
-    border-top-right-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    border-top: 1px solid #ccc;
+    z-index: 100;
 }
 
-.footer a {
-    color: var(--text-color);
-    text-decoration: none;
-    transition: color 0.3s;
+.light-mode {
+    --background-color: #f0f0f0;
+    --text-color: #333;
+    --button-background-color: #007bff;
+    --button-text-color: #fff;
+    --button-hover-background-color: #0056b3;
+    --grid-item-background-color: #fff;
+    --grid-item-text-color: #333;
+    --total-container-background-color: rgba(255, 255, 255, 0.8);
+    --footer-background-color: rgba(255, 255, 255, 0.8);
+    --settings-content-background-color: #fff;
+    --settings-close-color: #333;
+    --settings-icon-color: #333;
 }
 
-.footer a:hover {
-    color: var(--button-hover-background-color);
+.dark-mode {
+    --background-color: #333;
+    --text-color: #fff;
+    --button-background-color: #007bff;
+    --button-text-color: #fff;
+    --button-hover-background-color: #0056b3;
+    --grid-item-background-color: #444;
+    --grid-item-text-color: #fff;
+    --total-container-background-color: rgba(0, 0, 0, 0.8);
+    --footer-background-color: rgba(0, 0, 0, 0.8);
+    --settings-content-background-color: #333;
+    --settings-close-color: #fff;
+    --settings-icon-color: #fff;
+}
+
+.radiant-mode {
+    --background-color: #ffcc00;
+    --text-color: #333;
+    --button-background-color: #ff6600;
+    --button-text-color: #fff;
+    --button-hover-background-color: #e65100;
+    --grid-item-background-color: #ffee58;
+    --grid-item-text-color: #333;
+    --total-container-background-color: rgba(255, 204, 0, 0.8);
+    --footer-background-color: rgba(255, 204, 0, 0.8);
+    --settings-content-background-color: #fff176;
+    --settings-close-color: #333;
+    --settings-icon-color: #333;
+}
+
+.chrome-mode {
+    --background-color: #4285f4;
+    --text-color: #fff;
+    --button-background-color: #0f9d58;
+    --button-text-color: #fff;
+    --button-hover-background-color: #0a7e39;
+    --grid-item-background-color: #fff;
+    --grid-item-text-color: #333;
+    --total-container-background-color: rgba(66, 133, 244, 0.8);
+    --footer-background-color: rgba(66, 133, 244, 0.8);
+    --settings-content-background-color: #f5f5f5;
+    --settings-close-color: #333;
+    --settings-icon-color: #333;
+}
+
+.discord-mode {
+    --background-color: #7289da;
+    --text-color: #fff;
+    --button-background-color: #7289da;
+    --button-text-color: #fff;
+    --button-hover-background-color: #677bc4;
+    --grid-item-background-color: #ffffff;
+    --grid-item-text-color: #333;
+    --total-container-background-color: rgba(114, 137, 218, 0.8);
+    --footer-background-color: rgba(114, 137, 218, 0.8);
+    --settings-content-background-color: #ffffff;
+    --settings-close-color: #333;
+    --settings-icon-color: #333;
+}
+
+.flow-mode {
+    --background-color: #00796b;
+    --text-color: #fff;
+    --button-background-color: #388e3c;
+    --button-text-color: #fff;
+    --button-hover-background-color: #2e7d32;
+    --grid-item-background-color: #b2dfdb;
+    --grid-item-text-color: #333;
+    --total-container-background-color: rgba(0, 121, 107, 0.8);
+    --footer-background-color: rgba(0, 121, 107, 0.8);
+    --settings-content-background-color: #ffffff;
+    --settings-close-color: #333;
+    --settings-icon-color: #333;
 }
