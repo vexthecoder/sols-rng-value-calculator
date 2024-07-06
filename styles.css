@@ -99,9 +99,13 @@ body {
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(5, 1fr);
     gap: 20px;
     padding: 20px;
+    max-width: 90vw;
+    margin: 0 auto;
+    padding-top: 95px;
+    padding-bottom: 100px
 }
 
 .grid-item {
@@ -114,7 +118,7 @@ body {
 }
 
 .grid-item:hover {
-    background-color: #f0f0f0;
+    background-color: var(--grid-item-background-color-hover;
 }
 
 .grid-item img {
@@ -132,26 +136,78 @@ body {
     color: var(--grid-item-text-color);
 }
 
+.grid-item img {
+    border-radius: 8px;
+    width: 200px;
+    height: 200px;
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.quantity {
+    width: 50px;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 0 5px;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.add-button, .remove-button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 5px;
+}
+
+.add-button:hover, .remove-button:hover {
+    background-color: #218838;
+}
+
 .total-container {
     background-color: var(--total-container-background-color);
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 0px;
+    right: 0px;
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+.total-container span {
+    margin-left: 5px;
+}
+
 .footer {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
+    bottom: 0px;
+    left: 0px;
+    padding: 10px;
     background-color: var(--footer-background-color);
-    border-top: 1px solid #ccc;
-    z-index: 100;
+    border-top-right-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.footer a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: #007bff;
 }
 
 .light-mode {
@@ -161,12 +217,14 @@ body {
     --button-text-color: #fff;
     --button-hover-background-color: #0056b3;
     --grid-item-background-color: #fff;
+    --grid-item-background-color-hover: ;
     --grid-item-text-color: #333;
     --total-container-background-color: rgba(255, 255, 255, 0.8);
     --footer-background-color: rgba(255, 255, 255, 0.8);
     --settings-content-background-color: #fff;
     --settings-close-color: #333;
     --settings-icon-color: #333;
+    --background-quantity-color: #fff;
 }
 
 .dark-mode {
@@ -176,12 +234,14 @@ body {
     --button-text-color: #fff;
     --button-hover-background-color: #0056b3;
     --grid-item-background-color: #444;
+    --grid-item-background-color-hover: ;
     --grid-item-text-color: #fff;
     --total-container-background-color: rgba(0, 0, 0, 0.8);
     --footer-background-color: rgba(0, 0, 0, 0.8);
     --settings-content-background-color: #333;
     --settings-close-color: #fff;
     --settings-icon-color: #fff;
+    --background-quantity-color: #333;
 }
 
 .radiant-mode {
@@ -191,12 +251,14 @@ body {
     --button-text-color: #fff;
     --button-hover-background-color: #e65100;
     --grid-item-background-color: #ffee58;
+    --grid-item-background-color-hover: ;
     --grid-item-text-color: #333;
     --total-container-background-color: rgba(255, 204, 0, 0.8);
     --footer-background-color: rgba(255, 204, 0, 0.8);
     --settings-content-background-color: #fff176;
     --settings-close-color: #333;
     --settings-icon-color: #333;
+    --background-quantity-color: #fff;
 }
 
 .chrome-mode {
@@ -206,12 +268,14 @@ body {
     --button-text-color: #fff;
     --button-hover-background-color: #0a7e39;
     --grid-item-background-color: #fff;
+    --grid-item-background-color-hover: ;
     --grid-item-text-color: #333;
     --total-container-background-color: rgba(66, 133, 244, 0.8);
     --footer-background-color: rgba(66, 133, 244, 0.8);
     --settings-content-background-color: #f5f5f5;
     --settings-close-color: #333;
     --settings-icon-color: #333;
+    --background-quantity-color: #fff;
 }
 
 .discord-mode {
@@ -221,12 +285,14 @@ body {
     --button-text-color: #fff;
     --button-hover-background-color: #677bc4;
     --grid-item-background-color: #ffffff;
+    --grid-item-background-color-hover: ;
     --grid-item-text-color: #333;
     --total-container-background-color: rgba(114, 137, 218, 0.8);
     --footer-background-color: rgba(114, 137, 218, 0.8);
     --settings-content-background-color: #ffffff;
     --settings-close-color: #333;
     --settings-icon-color: #333;
+    --background-quantity-color: #fff;
 }
 
 .flow-mode {
@@ -236,10 +302,12 @@ body {
     --button-text-color: #fff;
     --button-hover-background-color: #2e7d32;
     --grid-item-background-color: #b2dfdb;
+    --grid-item-background-color-hover: ;
     --grid-item-text-color: #333;
     --total-container-background-color: rgba(0, 121, 107, 0.8);
     --footer-background-color: rgba(0, 121, 107, 0.8);
     --settings-content-background-color: #ffffff;
     --settings-close-color: #333;
     --settings-icon-color: #333;
+    --background-quantity-color: #fff;
 }
