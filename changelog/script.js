@@ -1,5 +1,5 @@
 const logFiles = [
-    'version-1.0.3.txt'
+    'version-1.0.4.txt'
 ];
 
 async function loadChangelogs() {
