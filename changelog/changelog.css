@@ -1,0 +1,22 @@
+.changelog-container {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.changelog-item {
+    margin-bottom: 10px;
+}
+.changelog-title {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 3px;
+    margin-bottom: 5px;
+}
+.changelog-content {
+    display: none;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    background-color: #fafafa;
+}
