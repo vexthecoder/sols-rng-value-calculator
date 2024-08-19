@@ -4,9 +4,11 @@
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
 .changelog-item {
     margin-bottom: 10px;
 }
+
 .changelog-title {
     cursor: pointer;
     padding: 10px;
@@ -14,9 +16,20 @@
     border-radius: 3px;
     margin-bottom: 5px;
 }
+
 .changelog-content {
     display: none;
     padding: 10px;
     border-top: 1px solid #ccc;
     background-color: #fafafa;
+}
+
+.arrow-left::before {
+    content: '\25B6';
+    margin-left: 8px;
+}
+
+.arrow-down::before {
+    content: '\25BC';
+    margin-left: 8px;
 }

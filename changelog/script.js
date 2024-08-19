@@ -18,6 +18,10 @@ async function loadChangelogs() {
             changelogTitle.className = 'changelog-title';
             changelogTitle.textContent = `${category} ${versionNumber}`;
 
+            const arrowSpan = document.createElement('span');
+            arrowSpan.className = 'arrow-left';
+            changelogTitle.appendChild(arrowSpan);
+
             const changelogContent = document.createElement('div');
             changelogContent.className = 'changelog-content';
             changelogContent.style.display = 'none';
@@ -31,13 +35,15 @@ async function loadChangelogs() {
                     const response = await fetch(`/changelog/logs/${file}`);
                     if (response.ok) {
                         const text = await response.text();
-                        changelogContent.textContent = text;
+                        changelogContent.innerHTML = marked(text);
                     } else {
                         changelogContent.textContent = "Failed to load content.";
                     }
                     changelogContent.style.display = 'block';
+                    arrowSpan.className = 'arrow-down';
                 } else {
                     changelogContent.style.display = 'none';
+                    arrowSpan.className = 'arrow-left';
                 }
             });
         }
