@@ -16,11 +16,7 @@ async function loadChangelogs() {
 
             const changelogTitle = document.createElement('div');
             changelogTitle.className = 'changelog-title';
-            changelogTitle.textContent = `${category} ${versionNumber}`;
-
-            const arrowSpan = document.createElement('span');
-            arrowSpan.className = 'arrow-left';
-            changelogTitle.appendChild(arrowSpan);
+            changelogTitle.innerHTML = `${category} ${versionNumber} <span class="arrow arrow-left"></span>`;
 
             const changelogContent = document.createElement('div');
             changelogContent.className = 'changelog-content';
@@ -31,6 +27,7 @@ async function loadChangelogs() {
             container.appendChild(changelogItem);
 
             changelogTitle.addEventListener('click', async () => {
+                const arrow = changelogTitle.querySelector('.arrow');
                 if (changelogContent.style.display === 'none') {
                     const response = await fetch(`/changelog/logs/${file}`);
                     if (response.ok) {
@@ -40,10 +37,10 @@ async function loadChangelogs() {
                         changelogContent.textContent = "Failed to load content.";
                     }
                     changelogContent.style.display = 'block';
-                    arrowSpan.className = 'arrow-down';
+                    arrow.className = 'arrow arrow-down';
                 } else {
                     changelogContent.style.display = 'none';
-                    arrowSpan.className = 'arrow-left';
+                    arrow.className = 'arrow arrow-left';
                 }
             });
         }
