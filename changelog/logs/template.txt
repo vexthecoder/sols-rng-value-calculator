@@ -1,4 +1,4 @@
-# Version X.X.X - [Date]
+## Version X.X.X - [Date]
 
 ### New Features
 - Description of new features.
