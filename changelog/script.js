@@ -29,15 +29,18 @@ async function loadChangelogs() {
             changelogTitle.addEventListener('click', async () => {
                 const arrow = changelogTitle.querySelector('.arrow');
                 if (changelogContent.style.display === 'none') {
+                    console.log(`Fetching content for ${file}`);
                     const response = await fetch(`/changelog/logs/${file}`);
                     if (response.ok) {
                         const text = await response.text();
+                        console.log(`Fetched content for ${file}:`, text);
                         changelogContent.innerHTML = marked(text);
+                        changelogContent.style.display = 'block';
+                        arrow.className = 'arrow arrow-down';
                     } else {
                         changelogContent.textContent = "Failed to load content.";
+                        changelogContent.style.display = 'block';
                     }
-                    changelogContent.style.display = 'block';
-                    arrow.className = 'arrow arrow-down';
                 } else {
                     changelogContent.style.display = 'none';
                     arrow.className = 'arrow arrow-left';
