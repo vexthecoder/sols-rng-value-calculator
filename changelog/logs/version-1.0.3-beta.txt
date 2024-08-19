@@ -1,0 +1,10 @@
+# Version 1.0.3 - August 19, 2024
+
+### New Features
+- Dynamically loading changelog.
+
+### Bug Fixes
+- No bugs to fix.
+
+### Improvements
+- No new improvements.
