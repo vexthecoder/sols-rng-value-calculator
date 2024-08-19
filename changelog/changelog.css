@@ -5,10 +5,11 @@
 
 .changelog-container {
     margin: 15px;
-    padding: 5px;
+    padding: 0px;
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 0px;
+    margin-top: 5px;
 }
 
 .changelog-item {
