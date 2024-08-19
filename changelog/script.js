@@ -34,7 +34,13 @@ async function loadChangelogs() {
                     if (response.ok) {
                         const text = await response.text();
                         console.log(`Fetched content for ${file}:`, text);
-                        changelogContent.innerHTML = marked(text);
+                        
+                        if (typeof marked === 'function') {
+                            changelogContent.innerHTML = marked(text);
+                        } else {
+                            changelogContent.textContent = text;
+                        }
+                        
                         changelogContent.style.display = 'block';
                         arrow.className = 'arrow arrow-down';
                     } else {
