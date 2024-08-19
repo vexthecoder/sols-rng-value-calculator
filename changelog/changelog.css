@@ -42,3 +42,32 @@ body.dark-mode {
 body.dark-mode .changelog-item {
     background-color: #1e1e1e;
 }
+
+body.dark-mode .changelog-content {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+body.dark-mode .changelog-container {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+body.dark-mode .changelog-title {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+body.dark-mode .arrow-down::before {
+    content: '\25BC';
+    margin-left: 8px;
+    background-color: #ffffff;
+    color: #ffffff;
+}
+
+body.dark-mode .arrow-left::before {
+    content: '\25B6';
+    margin-left: 8px;
+    background-color: #ffffff;
+    color: #ffffff;
+}
