@@ -5,7 +5,7 @@ A simple calculator for Sol's RNG.
 
 ## Features
 
-- 94 Auras
+- Era 8.5 Compatibility
 - Multi Add
 - Settings (Settings Save)
 - - GIF Toggle
