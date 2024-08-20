@@ -239,16 +239,19 @@ body::-webkit-scrollbar {
 .dark-mode #theme-select {
     background-color: #444;
     color: #fff;
+    border-color: #444;
 }
 
 .dark-mode #theme-select option {
     background-color: #444;
     color: #fff;
+    border-color: #444;
 }
 
 .dark-mode .quantity {
     background-color: #333;
     color: #fff;
+    border-color: #333;
 }
 
 .search-container {
