@@ -2,17 +2,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     let total = 0;
     const versionNumber = await fetchVersionNumber();
     const noAlertCookie = getCookie('noAlert');
+    const currentUrl = window.location.href;
 
-    document.addEventListener("DOMContentLoaded", function () {
-        const currentUrl = window.location.href;
-        if (currentUrl.includes("/index.html")) {
-            window.location.replace(currentUrl.replace("/index.html", ""));
-        } else if (noAlertCookie !== versionNumber) {
-            alert(`This website is still in the Beta phase.\nNew features are slowly being added until the entire website is finished.\nFeel free to give constructive feedback on discord (@vexthecoder).\nVersion: ${versionNumber}`);
-            setCookie('noAlert', versionNumber, 365);
-        }
-    });
-
+    if (!currentUrl.includes("/index.html") && noAlertCookie !== versionNumber) {
+        alert(`This website is still in the Beta phase.\nNew features are slowly being added until the entire website is finished.\nFeel free to give constructive feedback on discord (@vexthecoder).\nVersion: ${versionNumber}`);
+        setCookie('noAlert', versionNumber, 365);
+    }
 
     const savedGifToggle = getCookie('gifToggle') === 'true';
     const savedTheme = getCookie('theme') || 'light';
@@ -152,3 +147,10 @@ function applyGifToggle(gifToggle) {
         }
     });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const currentUrl = window.location.href;
+    if (currentUrl.includes("/index.html")) {
+        window.location.replace(currentUrl.replace("/index.html", ""));
+    }
+});
