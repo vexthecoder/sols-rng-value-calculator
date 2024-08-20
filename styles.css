@@ -218,6 +218,34 @@ body::-webkit-scrollbar {
     color: #fff;
 }
 
+.dark-mode .search-container {
+    background-color: #444;
+    color: #fff;
+}
+
+.dark-mode #searchInput {
+    background-color: #444;
+    color: #fff;
+}
+
+.dark-mode #searchInput::placeholder {
+    color: #e6e6e6;
+}
+
+.dark-mode .toggle-slider {
+    background-color: #444;
+}
+
+.dark-mode #theme-select {
+    background-color: #444;
+    color: #fff;
+}
+
+.dark-mode #theme-select option {
+    background-color: #444;
+    color: #fff;
+}
+
 .search-container {
     position: absolute;
     top: 20px;
