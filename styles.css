@@ -246,6 +246,11 @@ body::-webkit-scrollbar {
     color: #fff;
 }
 
+.dark-mode .quantity {
+    background-color: #333;
+    color: #fff;
+}
+
 .search-container {
     position: absolute;
     top: 20px;
