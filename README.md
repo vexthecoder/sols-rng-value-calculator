@@ -5,7 +5,7 @@ A simple inventory value calculator for Sol's RNG.
 
 ## Features
 
-- Updated to Era 9
+- Updated for Era 9
 - Multi Add
 - Settings (Settings Save)
 - - GIF Toggle
