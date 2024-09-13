@@ -1,11 +1,11 @@
 # Sol's RNG Value Calculator
 
-A simple calculator for Sol's RNG.
+A simple inventory value calculator for Sol's RNG.
 
 
 ## Features
 
-- Era 8.5 Compatibility
+- Updated for Era 9
 - Multi Add
 - Settings (Settings Save)
 - - GIF Toggle

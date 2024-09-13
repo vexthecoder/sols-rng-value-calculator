@@ -1,8 +1,9 @@
 const logFiles = [
     // Newer versions go above older versions.
-    'version-1.0.6.txt',
-    'version-1.0.5.txt',
-    'version-1.0.4.txt'
+    "version-1.0.7.md",
+    'version-1.0.6.md',
+    'version-1.0.5.md',
+    'version-1.0.4.md'
 ];
 
 async function loadChangelogs() {
@@ -12,7 +13,7 @@ async function loadChangelogs() {
         for (const file of logFiles) {
             const category = categorizeFile(file);
 
-            const versionNumber = file.replace('version-', '').replace('.txt', '');
+            const versionNumber = file.replace('version-', '').replace('.md', '');
 
             const changelogItem = document.createElement('div');
             changelogItem.className = 'changelog-item';
@@ -58,7 +59,7 @@ async function loadChangelogs() {
         }
     } catch (error) {
         console.error('Error loading changelogs:', error);
-        container.textContent = 'Failed to load changelogs.';
+        container.textContent = 'Failed to load changelogs. Please reload. If the issue persists, contact vexthecoder on discord with the console error log.';
     }
 }
 
