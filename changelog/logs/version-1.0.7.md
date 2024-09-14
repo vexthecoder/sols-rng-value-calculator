@@ -10,6 +10,7 @@
 
 ### Bug Fixes
 - Celestial : Divine is now listed after Hades.
+- Aquamarine now shows the correct image and gif.
 
 ### Improvements
 - No new improvements.
