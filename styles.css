@@ -24,7 +24,7 @@ body::-webkit-scrollbar {
     height: 40px;
     border: none;
     border-radius: 50%;
-    background-color: #c6c6c6;
+    background-color: #fff;
     color: black;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -32,7 +32,7 @@ body::-webkit-scrollbar {
 }
 
 .settings-open:hover {
-    background-color: #8a8a8a;
+    background-color: #cccccc;
 }
 
 .dark-mode .settings-open {
@@ -93,7 +93,7 @@ body::-webkit-scrollbar {
     color: #333;
 }
 
-.add-button, .remove-button {
+.add-button {
     padding: 5px 10px;
     border: none;
     border-radius: 5px;
@@ -104,8 +104,16 @@ body::-webkit-scrollbar {
     margin-left: 5px;
 }
 
-.add-button:hover, .remove-button:hover {
+.remove-button {
+    background-color: #dc3545;
+}
+
+.add-button:hover {
     background-color: #218838;
+}
+
+.remove-button:hover {
+    background-color: #c82333;;
 }
 
 .total-container {
@@ -173,12 +181,20 @@ body::-webkit-scrollbar {
     color: #fff;
 }
 
-.dark-mode .add-button, .dark-mode .remove-button {
+.dark-mode .add-button {
     background-color: #28a745;
 }
 
-.dark-mode .add-button:hover, .dark-mode .remove-button:hover {
+.dark-mode .remove-button {
+    background-color: #dc3545;
+}
+
+.dark-mode .add-button:hover {
     background-color: #218838;
+}
+
+.dark-mode .remove-button:hover {
+    background-color: #c82333;
 }
 
 .dark-mode .total-container {

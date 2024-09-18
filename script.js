@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const searchValue = searchInput.value.toLowerCase().trim();
 
         gridItems.forEach(item => {
-            const keywords = item.getAttribute('data-keywords').toLowerCase().split(' ');
+            const keywords = item.getAttribute('search-terms').toLowerCase().split(' ');
             const itemLabel = item.querySelector('.image-label').textContent.toLowerCase();
             const matchesKeyword = keywords.some(keyword => keyword.includes(searchValue));
 
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         button.addEventListener('click', () => {
             const input = button.previousElementSibling;
             const value = parseInt(input.value) || 0;
-            const multiplier = button.closest('.grid-item').getAttribute('data-multiplier');
+            const multiplier = button.closest('.grid-item').getAttribute('data-rarity');
             total += value * multiplier;
             if (total < 0) total = 0;
             document.getElementById('total').innerText = total;
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         button.addEventListener('click', () => {
             const input = button.previousElementSibling.previousElementSibling;
             const value = parseInt(input.value) || 0;
-            const multiplier = button.closest('.grid-item').getAttribute('data-multiplier');
+            const multiplier = button.closest('.grid-item').getAttribute('data-rarity');
             total -= value * multiplier;
             if (total < 0) total = 0;
             document.getElementById('total').innerText = total;
