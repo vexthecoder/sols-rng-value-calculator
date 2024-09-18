@@ -37,6 +37,7 @@ body::-webkit-scrollbar {
 
 .dark-mode .settings-open {
     background-color: #484848;
+    color: white;
 }
 
 .dark-mode .settings-open:hover {
