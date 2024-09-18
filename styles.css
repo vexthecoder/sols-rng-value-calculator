@@ -24,15 +24,23 @@ body::-webkit-scrollbar {
     height: 40px;
     border: none;
     border-radius: 50%;
-    background-color: #606060;
-    color: white;
+    background-color: #c6c6c6;
+    color: black;
     cursor: pointer;
     transition: background-color 0.3s;
     z-index: 1000;
 }
 
 .settings-open:hover {
+    background-color: #8a8a8a;
+}
+
+.dark-mode .settings-open {
     background-color: #484848;
+}
+
+.dark-mode .settings-open:hover {
+    background-color: #606060;
 }
 
 .grid-container {
@@ -195,11 +203,11 @@ body::-webkit-scrollbar {
 }
 
 .dark-mode .settings-close {
-    color: #606060;
+    color: #484848;;
 }
 
 .dark-mode .settings-close:hover {
-    color: #484848
+    color: #606060;
 }
 
 .dark-mode .footer {
