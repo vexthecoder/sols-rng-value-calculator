@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('gif-toggle').checked = savedGifToggle;
     document.getElementById('theme-select').value = savedTheme;
 
-    document.querySelector('.settings-toggle').addEventListener('click', () => {
+    document.querySelector('.settings-open').addEventListener('click', () => {
         const settingsModal = document.querySelector('.settings-modal');
         settingsModal.style.display = 'flex';
     });
