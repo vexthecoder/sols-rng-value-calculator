@@ -2,7 +2,7 @@
 
 ### Bug Fixes
 - Fixed gifs not loading.
-- Fixed ${versionNumber} issue when loading into a new update with the new popup system.
+- Fixed ${versionNumber} issue when loading into a new update.
 - Settings button now shows proper color scheme according to chosen theme.
 
 ### Improvements
