@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         try {
             const response = await fetch('version');
             const versionText = await response.text();
-            return versionText.text.trim();
+            return versionText.trim();
             console.error('Error fetching version number:', error);
         } catch (error) {
             console.error('Error fetching version number:', error);
