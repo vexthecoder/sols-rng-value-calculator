@@ -1,4 +1,5 @@
-## Version 1.0.8 - September 18th, 2024
+## Version 1.1.0 - September 18th, 2024
+### Big Update!
 
 ### Additions
 - Added gifs for each aura which previously had no gifs.
@@ -12,3 +13,5 @@
 
 ### Improvements
 - Decreased the spacing between the title of the aura and the rarity.
+- Revamped the settings menu.
+- Removed the glow around the settings menu.

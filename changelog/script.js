@@ -1,6 +1,6 @@
 const logFiles = [
     // Newer versions go above older versions.
-    'version-1.0.5.md',
+    'version-1.1.md',
     'version-1.0.4.md',
     'version-1.0.3.md',
     'version-1.0.2.md',

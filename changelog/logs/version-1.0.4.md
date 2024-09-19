@@ -1,4 +1,4 @@
-## Version 1.0.7 - September 13th, 2024
+## Version 1.0.4 - September 13th, 2024
 
 ### Additions
 - Updated to Era 9.

@@ -1,4 +1,4 @@
-## Version 1.0.6 - August 20, 2024
+## Version 1.0.3 - August 20, 2024
 
 ### Additions
 - No new additions.
