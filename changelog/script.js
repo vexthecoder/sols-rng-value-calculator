@@ -1,5 +1,6 @@
-const logFiles = [
+const logs = [
     // Newer versions go above older versions.
+    'version-1.1.md',
     'fix-1.0.4-1.md',
     'version-1.0.4.md',
     'version-1.0.3.md',
@@ -11,7 +12,7 @@ async function loadChangelogs() {
     const container = document.getElementById('changelog-container');
 
     try {
-        for (const file of logFiles) {
+        for (const file of logs) {
             const category = categorizeFile(file);
 
             const versionNumber = file.replace('version-', '').replace('fix-', '').replace('-', ' #').replace('.md', '');
