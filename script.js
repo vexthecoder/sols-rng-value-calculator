@@ -4,6 +4,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     const noAlertCookie = getCookie('noAlert');
     const currentUrl = window.location.href;
 
+    async function fetchVersionNumber() {
+        try {
+            const response = await fetch('version');
+            const versionText = await response.text();
+            return versionText.text.trim();
+            console.error('Error fetching version number:', error);
+        } catch (error) {
+            console.error('Error fetching version number:', error);
+            return 'unknown';
+        }
+    }
+
     if (!currentUrl.includes("/index.html") && noAlertCookie !== versionNumber) {
         alert("This website is still in the Beta phase.\nNew features are slowly being added until the entire website is finished.\nFeel free to give constructive feedback on discord (@vexthecoder).\nVersion: ${versionNumber}");
         setCookie('noAlert', versionNumber, 365);
@@ -90,17 +102,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('total').innerText = total;
     });
 });
-
-async function fetchVersionNumber() {
-    try {
-        const response = await fetch('version');
-        const versionText = await response.text();
-        return versionText.trim();
-    } catch (error) {
-        console.error('Error fetching version number:', error);
-        return 'unknown';
-    }
-}
 
 function setCookie(name, value, days) {
     const date = new Date();
