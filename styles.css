@@ -16,7 +16,7 @@ body::-webkit-scrollbar {
     display: none;
 }
 
-.settings-toggle {
+.settings-open {
     position: fixed;
     top: 20px;
     right: 20px;
@@ -24,15 +24,24 @@ body::-webkit-scrollbar {
     height: 40px;
     border: none;
     border-radius: 50%;
-    background-color: #007bff;
-    color: white;
+    background-color: #fff;
+    color: black;
     cursor: pointer;
     transition: background-color 0.3s;
     z-index: 1000;
 }
 
-.settings-toggle:hover {
-    background-color: #0056b3;
+.settings-open:hover {
+    background-color: #cccccc;
+}
+
+.dark-mode .settings-open {
+    background-color: #484848;
+    color: white;
+}
+
+.dark-mode .settings-open:hover {
+    background-color: #606060;
 }
 
 .grid-container {
@@ -57,6 +66,11 @@ body::-webkit-scrollbar {
 
 .image-label {
     font-weight: bold;
+    margin-bottom: -5px;
+}
+
+.image-rarity {
+    font-weight: bold;
     margin-bottom: 10px;
 }
 
@@ -79,12 +93,12 @@ body::-webkit-scrollbar {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin: 0 5px;
+    margin: 0 0px;
     background-color: #f0f0f0;
     color: #333;
 }
 
-.add-button, .remove-button {
+.add-button {
     padding: 5px 10px;
     border: none;
     border-radius: 5px;
@@ -92,11 +106,26 @@ body::-webkit-scrollbar {
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin-left: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
-.add-button:hover, .remove-button:hover {
+.remove-button {
+    background-color: #dc3545;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-button:hover {
     background-color: #218838;
+}
+
+.remove-button:hover {
+    background-color: #c82333;;
 }
 
 .total-container {
@@ -164,12 +193,20 @@ body::-webkit-scrollbar {
     color: #fff;
 }
 
-.dark-mode .add-button, .dark-mode .remove-button {
+.dark-mode .add-button {
     background-color: #28a745;
 }
 
-.dark-mode .add-button:hover, .dark-mode .remove-button:hover {
+.dark-mode .remove-button {
+    background-color: #dc3545;
+}
+
+.dark-mode .add-button:hover {
     background-color: #218838;
+}
+
+.dark-mode .remove-button:hover {
+    background-color: #c82333;
 }
 
 .dark-mode .total-container {
@@ -191,11 +228,14 @@ body::-webkit-scrollbar {
 .dark-mode .settings-content {
     background-color: #333;
     color: #fff;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .dark-mode .settings-close {
-    color: #fff;
+    color: #484848;;
+}
+
+.dark-mode .settings-close:hover {
+    color: #606060;
 }
 
 .dark-mode .footer {
@@ -298,7 +338,6 @@ body::-webkit-scrollbar {
     background-color: #fff;
     padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     text-align: center;
     position: relative;
     width: 50%;
@@ -312,12 +351,12 @@ body::-webkit-scrollbar {
     font-size: 30px;
     border: none;
     background-color: transparent;
-    color: #333;
+    color: #c3c3c3;
     cursor: pointer;
 }
 
 .settings-close:hover {
-    color: #007bff;
+    color: #adadad;
 }
 
 .settings-option {
@@ -386,11 +425,9 @@ body::-webkit-scrollbar {
 }
 
 input[type="checkbox"]:checked + .toggle-slider {
-    background-color: #007bff;
+    background-color: #444;
 }
 
 input[type="checkbox"]:checked + .toggle-slider:before {
     transform: translateX(33px);
 }
-
-

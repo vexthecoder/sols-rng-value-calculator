@@ -1,9 +1,10 @@
 const logFiles = [
     // Newer versions go above older versions.
-    "version-1.0.7.md",
-    'version-1.0.6.md',
-    'version-1.0.5.md',
-    'version-1.0.4.md'
+    'fix-1.0.4-1.md',
+    'version-1.0.4.md',
+    'version-1.0.3.md',
+    'version-1.0.2.md',
+    'version-1.0.1.md'
 ];
 
 async function loadChangelogs() {
@@ -13,7 +14,7 @@ async function loadChangelogs() {
         for (const file of logFiles) {
             const category = categorizeFile(file);
 
-            const versionNumber = file.replace('version-', '').replace('.md', '');
+            const versionNumber = file.replace('version-', '').replace('fix-', '').replace('-', ' #').replace('.md', '');
 
             const changelogItem = document.createElement('div');
             changelogItem.className = 'changelog-item';
@@ -66,8 +67,6 @@ async function loadChangelogs() {
 function categorizeFile(filename) {
     if (filename.toLowerCase().includes('fix')) {
         return "Fix";
-    } else if (filename.toLowerCase().includes('beta')) {
-        return "Beta";
     } else {
         return "Version";
     }

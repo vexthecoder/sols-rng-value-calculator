@@ -1,10 +1,10 @@
 ## Version X.X.X - [Date]
 
-### New Features
-- Description of new features.
+### Additions
+- No new additions.
 
 ### Bug Fixes
-- Description of bug fixes.
+- No bugs to fix.
 
 ### Improvements
-- Description of improvements.
+- No new improvements.

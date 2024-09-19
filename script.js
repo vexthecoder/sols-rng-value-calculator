@@ -4,10 +4,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     const noAlertCookie = getCookie('noAlert');
     const currentUrl = window.location.href;
 
+    async function fetchVersionNumber() {
+        try {
+            const response = await fetch('version');
+            const versionText = await response.text();
+            return versionText.trim();
+            console.error('Error fetching version number:', error);
+        } catch (error) {
+            console.error('Error fetching version number:', error);
+            return 'unknown';
+        }
+    }
+
     if (!currentUrl.includes("/index.html") && noAlertCookie !== versionNumber) {
-        alert("This website is still in the Beta phase.\nNew features are slowly being added until the entire website is finished.\nFeel free to give constructive feedback on discord (@vexthecoder).\nVersion: ${versionNumber}");
+        alert("This website is still in the Beta phase.\nNew features are slowly being added until the entire website is finished.\nFeel free to give constructive feedback on discord (@vexthecoder).\nVersion: " + versionNumber);
         setCookie('noAlert', versionNumber, 365);
-        alert("NOTES:\n1. If Gifs take forever to load, please just toggle them off in the settings. It is not a bug, and is dependent on how good your device is.\n2. Please do report bugs to me on discord (@vexthecoder), it really helps out as I will be able to fix them faster.\n3. The reason Memory, Oblivion, and DEILEMMA are not listed in the calculator is because they have no real calculatable value.")
+    //    alert("NOTES:\n1. If Gifs take forever to load, please just toggle them off in the settings. It is not a bug, and is dependent on how good your device is.\n2. Please report bugs to me on discord (@vexthecoder), it really helps out as I will be able to fix them faster.\n3. The reason Memory and Oblivion are not listed in the calculator is because they have no real rarity.")
     }
 
     const savedGifToggle = getCookie('gifToggle') === 'true';
@@ -17,7 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('gif-toggle').checked = savedGifToggle;
     document.getElementById('theme-select').value = savedTheme;
 
-    document.querySelector('.settings-toggle').addEventListener('click', () => {
+    document.querySelector('.settings-open').addEventListener('click', () => {
         const settingsModal = document.querySelector('.settings-modal');
         settingsModal.style.display = 'flex';
     });
@@ -46,7 +58,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const searchValue = searchInput.value.toLowerCase().trim();
 
         gridItems.forEach(item => {
-            const keywords = item.getAttribute('data-keywords').toLowerCase().split(' ');
+            const keywords = item.getAttribute('search-terms').toLowerCase().split(' ');
             const itemLabel = item.querySelector('.image-label').textContent.toLowerCase();
             const matchesKeyword = keywords.some(keyword => keyword.includes(searchValue));
 
@@ -63,7 +75,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         button.addEventListener('click', () => {
             const input = button.previousElementSibling;
             const value = parseInt(input.value) || 0;
-            const multiplier = button.closest('.grid-item').getAttribute('data-multiplier');
+            const multiplier = button.closest('.grid-item').getAttribute('data-rarity');
             total += value * multiplier;
             if (total < 0) total = 0;
             document.getElementById('total').innerText = total;
@@ -76,7 +88,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         button.addEventListener('click', () => {
             const input = button.previousElementSibling.previousElementSibling;
             const value = parseInt(input.value) || 0;
-            const multiplier = button.closest('.grid-item').getAttribute('data-multiplier');
+            const multiplier = button.closest('.grid-item').getAttribute('data-rarity');
             total -= value * multiplier;
             if (total < 0) total = 0;
             document.getElementById('total').innerText = total;
@@ -90,17 +102,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('total').innerText = total;
     });
 });
-
-async function fetchVersionNumber() {
-    try {
-        const response = await fetch('version.txt');
-        const versionText = await response.text();
-        return versionText.trim();
-    } catch (error) {
-        console.error('Error fetching version number:', error);
-        return 'unknown';
-    }
-}
 
 function setCookie(name, value, days) {
     const date = new Date();
