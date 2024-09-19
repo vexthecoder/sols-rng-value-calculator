@@ -1,10 +1,14 @@
-## Version 1.0.5 - August 20, 2024
+## Version 1.0.8 - September 18th, 2024
 
-### New Features
-- Made going to an index.html file redirect to main page of said file.
+### Additions
+- Added gifs for each aura which previously had no gifs.
+- - Matrix : Overdrive still has no gif because there is no gif for Matrix : Overdrive listed on the wiki.
+- Replaced the normal alert system for new updates with a proper popup system.
 
 ### Bug Fixes
-- No bugs to fix.
+- Fixed gifs not loading.
+- Fixed ${versionNumber} issue when loading into a new update with the new popup system.
+- Settings button now shows proper color scheme according to chosen theme.
 
 ### Improvements
-- No new improvements.
+- Decreased the spacing between the title of the aura and the rarity.
