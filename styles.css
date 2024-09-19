@@ -276,14 +276,6 @@ body::-webkit-scrollbar {
     background-color: #444;
 }
 
-.dark-mode .toggle-slider::before {
-    background-color: #444;
-}
-
-.dark-mode .toggle-slider::after {
-    background-color: #444;
-}
-
 .dark-mode #theme-select {
     background-color: #444;
     color: #fff;
