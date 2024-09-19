@@ -66,7 +66,7 @@ body::-webkit-scrollbar {
 
 .image-label {
     font-weight: bold;
-    margin-bottom: -3px;
+    margin-bottom: -5px;
 }
 
 .image-rarity {
@@ -111,6 +111,13 @@ body::-webkit-scrollbar {
 
 .remove-button {
     background-color: #dc3545;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 5px;
 }
 
 .add-button:hover {
