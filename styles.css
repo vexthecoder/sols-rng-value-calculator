@@ -216,7 +216,6 @@ body::-webkit-scrollbar {
 .dark-mode .settings-content {
     background-color: #333;
     color: #fff;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .dark-mode .settings-close {
@@ -327,7 +326,6 @@ body::-webkit-scrollbar {
     background-color: #fff;
     padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     text-align: center;
     position: relative;
     width: 50%;
@@ -420,82 +418,4 @@ input[type="checkbox"]:checked + .toggle-slider {
 
 input[type="checkbox"]:checked + .toggle-slider:before {
     transform: translateX(33px);
-}
-
-.page-header {
-    margin: 20px;
-    padding: 10px;
-}
-
-.changelog-container {
-    margin: 15px;
-    padding: 13px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: -4px;
-}
-
-.changelog-item {
-    margin-bottom: 10px;
-}
-
-.changelog-title {
-    cursor: pointer;
-    padding: 10px;
-    background-color: #f1f1f1;
-    border-radius: 3px;
-    margin-bottom: 10px;
-}
-
-.changelog-content {
-    display: none;
-    padding: 10px;
-    border-top: 1px solid #ccc;
-    background-color: #fafafa;
-}
-
-.arrow-left::before {
-    content: '\25B6';
-    margin-left: 8px;
-}
-
-.arrow-down::before {
-    content: '\25BC';
-    margin-left: 8px;
-}
-
-body.dark-mode {
-    background-color: #121212;
-    color: #ffffff;
-}
-
-body.dark-mode .changelog-item {
-    background-color: #1e1e1e;
-}
-
-body.dark-mode .changelog-content {
-    background-color: #1e1e1e;
-    color: #ffffff;
-}
-
-body.dark-mode .changelog-container {
-    background-color: #1e1e1e;
-    color: #ffffff;
-}
-
-body.dark-mode .changelog-title {
-    background-color: #1e1e1e;
-    color: #ffffff;
-}
-
-body.dark-mode .arrow-down::before {
-    content: '\25BC';
-    margin-left: 8px;
-    color: #ffffff;
-}
-
-body.dark-mode .arrow-left::before {
-    content: '\25B6';
-    margin-left: 8px;
-    color: #ffffff;
 }
