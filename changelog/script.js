@@ -14,11 +14,7 @@ async function loadChangelogs() {
         for (const file of logFiles) {
             const category = categorizeFile(file);
 
-            if (file.includes('version-')) {
-                const versionNumber = file.replace('version-', '').replace('.md', '');
-            } else if (file.includes('fix-')) {
-                const versionNumber = file.replace('fix-', '').replace('.md', '')
-            }
+            const versionNumber = file.replace('version-', '' || 'fix-', '').replace('.md', '');
 
             const changelogItem = document.createElement('div');
             changelogItem.className = 'changelog-item';
