@@ -114,10 +114,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 console.log('Total value copied to clipboard:', totalValue);
             })
             .catch(error => {
-                console.error('Failed to copy text: ', err);
+                console.error('Failed to copy text: ', error);
             });
     });
-
 });
 
 function setCookie(name, value, days) {

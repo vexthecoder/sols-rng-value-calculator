@@ -6,6 +6,7 @@
 - - Matrix : Overdrive still has no gif because there is no gif for Matrix : Overdrive listed on the wiki.
 - Replaced the normal alert system for new updates with a proper popup system.
 - Added a button to copy the total inventory value.
+- Inventory value now saves.
 
 ### Improvements
 - Decreased the spacing between the title of the aura and the rarity.
