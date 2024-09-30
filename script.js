@@ -19,11 +19,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!currentUrl.includes("/index.html") && noAlertCookie !== versionNumber) {
         alert("This website is still in the Beta phase.\nNew features are slowly being added until the entire website is finished.\nFeel free to give constructive feedback on discord (@vexthecoder).\nVersion: " + versionNumber);
         setCookie('noAlert', versionNumber, 365);
-    //    alert("NOTES:\n1. If Gifs take forever to load, please just toggle them off in the settings. It is not a bug, and is dependent on how good your device is.\n2. Please report bugs to me on discord (@vexthecoder), it really helps out as I will be able to fix them faster.\n3. The reason Memory and Oblivion are not listed in the calculator is because they have no real rarity.")
+        //    alert("NOTES:\n1. If Gifs take forever to load, please just toggle them off in the settings. It is not a bug, and is dependent on how good your device is.\n2. Please report bugs to me on discord (@vexthecoder), it really helps out as I will be able to fix them faster.\n3. The reason Memory and Oblivion are not listed in the calculator is because they have no real rarity.")
     }
 
     const savedGifToggle = getCookie('gifToggle') === 'true';
-    const savedTheme = getCookie('theme') || 'light';
+    const savedTheme = getCookie('theme') || 'dark';
     applyGifToggle(savedGifToggle);
     applyTheme(savedTheme);
     document.getElementById('gif-toggle').checked = savedGifToggle;
@@ -99,8 +99,25 @@ document.addEventListener('DOMContentLoaded', async () => {
     const clearButton = document.querySelector('.clear-button');
     clearButton.addEventListener('click', () => {
         total = 0;
-        document.getElementById('total').innerText = total;
+        document.getElementById('total').innerText = formatValue(total);
     });
+
+    function formatNumber(number) {
+        return number.toLocaleString('en-US');
+    }
+
+    const copyButton = document.querySelector('.copy-button');
+    copyButton.addEventListener('click', () => {
+        const totalValue = document.getElementById('total').innerText;
+        navigator.clipboard.writeText(totalValue)
+            .then(() => {
+                console.log('Total value copied to clipboard:', totalValue);
+            })
+            .catch(error => {
+                console.error('Failed to copy text: ', err);
+            });
+    });
+
 });
 
 function setCookie(name, value, days) {
