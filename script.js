@@ -1,7 +1,11 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    let total = 0;
-    const versionNumber = await fetchVersionNumber();
-    const noAlertCookie = getCookie('noAlert');
+    let total = localStorage.getItem('inventoryTotal') ? parseInt(localStorage.getItem('inventoryTotal')) : 0;
+    document.getElementById('total').innerText = formatValue(total);
+
+    const savedGifToggle = localStorage.getItem('gifToggle') === 'true';
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    const currentVersionNumber = await fetchVersionNumber();
+    const savedVersionNumber = localStorage.getItem('currentVersionNumber');
     const currentUrl = window.location.href;
 
     async function fetchVersionNumber() {
@@ -9,21 +13,25 @@ document.addEventListener('DOMContentLoaded', async () => {
             const response = await fetch('version');
             const versionText = await response.text();
             return versionText.trim();
-            console.error('Error fetching version number:', error);
         } catch (error) {
             console.error('Error fetching version number:', error);
             return 'unknown';
         }
     }
 
-    if (!currentUrl.includes("/index.html") && noAlertCookie !== versionNumber) {
-        alert("This website is still in the Beta phase.\nNew features are slowly being added until the entire website is finished.\nFeel free to give constructive feedback on discord (@vexthecoder).\nVersion: " + versionNumber);
-        setCookie('noAlert', versionNumber, 365);
-    //    alert("NOTES:\n1. If Gifs take forever to load, please just toggle them off in the settings. It is not a bug, and is dependent on how good your device is.\n2. Please report bugs to me on discord (@vexthecoder), it really helps out as I will be able to fix them faster.\n3. The reason Memory and Oblivion are not listed in the calculator is because they have no real rarity.")
+    if (!currentUrl.includes("/index.html") && savedVersionNumber !== currentVersionNumber) {
+        const updateNotice = document.getElementById('updateNotice');
+        const versionDisplay = document.getElementById('versionNumber');
+
+        versionDisplay.innerText = currentVersionNumber;
+        updateNotice.style.display = 'block';
+
+        document.getElementById('closeNotice').addEventListener('click', () => {
+            updateNotice.style.display = 'none';
+            localStorage.setItem('currentVersionNumber', currentVersionNumber);
+        });
     }
 
-    const savedGifToggle = getCookie('gifToggle') === 'true';
-    const savedTheme = getCookie('theme') || 'light';
     applyGifToggle(savedGifToggle);
     applyTheme(savedTheme);
     document.getElementById('gif-toggle').checked = savedGifToggle;
@@ -42,13 +50,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('gif-toggle').addEventListener('change', (event) => {
         const isChecked = event.target.checked;
         applyGifToggle(isChecked);
-        setCookie('gifToggle', isChecked.toString(), 365);
+        localStorage.setItem('gifToggle', isChecked.toString());
     });
 
     document.getElementById('theme-select').addEventListener('change', (event) => {
         const selectedTheme = event.target.value;
         applyTheme(selectedTheme);
-        setCookie('theme', selectedTheme, 365);
+        localStorage.setItem('theme', selectedTheme);
     });
 
     const searchInput = document.getElementById('searchInput');
@@ -56,7 +64,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     searchInput.addEventListener('input', () => {
         const searchValue = searchInput.value.toLowerCase().trim();
-
         gridItems.forEach(item => {
             const keywords = item.getAttribute('search-terms').toLowerCase().split(' ');
             const itemLabel = item.querySelector('.image-label').textContent.toLowerCase();
@@ -78,8 +85,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             const multiplier = button.closest('.grid-item').getAttribute('data-rarity');
             total += value * multiplier;
             if (total < 0) total = 0;
-            document.getElementById('total').innerText = total;
+            document.getElementById('total').innerText = formatValue(total);
             input.value = '1';
+            localStorage.setItem('inventoryTotal', total);
         });
     });
 
@@ -91,8 +99,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             const multiplier = button.closest('.grid-item').getAttribute('data-rarity');
             total -= value * multiplier;
             if (total < 0) total = 0;
-            document.getElementById('total').innerText = total;
+            document.getElementById('total').innerText = formatValue(total);
             input.value = '1';
+            localStorage.setItem('inventoryTotal', total);
         });
     });
 
@@ -100,6 +109,23 @@ document.addEventListener('DOMContentLoaded', async () => {
     clearButton.addEventListener('click', () => {
         total = 0;
         document.getElementById('total').innerText = total;
+        localStorage.setItem('inventoryTotal', total);
+    });
+
+    function formatValue(number) {
+        return number.toLocaleString('en-US');
+    }
+
+    const copyButton = document.querySelector('.copy-button');
+    copyButton.addEventListener('click', () => {
+        const totalValue = document.getElementById('total').innerText;
+        navigator.clipboard.writeText("My Sol's RNG inventory value is " + totalValue + "! What's yours?\nCalculate your inventory value at https://bit.ly/rng-calculator and share it to friends!")
+            .then(() => {
+                console.log('Total value copied to clipboard:', totalValue);
+            })
+            .catch(error => {
+                console.error('Failed to copy text: ', error);
+            });
     });
 });
 
@@ -138,7 +164,6 @@ function applyTheme(theme) {
 
 function applyGifToggle(gifToggle) {
     const gridItems = document.querySelectorAll('.grid-item img');
-
     gridItems.forEach(img => {
         const imgSrc = img.getAttribute('data-img-src');
         const gifSrc = img.getAttribute('data-gif-src');
