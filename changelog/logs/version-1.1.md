@@ -1,4 +1,4 @@
-## Version 1.1.0 - September 18th, 2024
+## Version 1.1 - September 18th, 2024
 ### Big Update!
 
 ### Additions

@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             const response = await fetch('version');
             const versionText = await response.text();
             return versionText.trim();
-            console.error('Error fetching version number:', error);
         } catch (error) {
             console.error('Error fetching version number:', error);
             return 'unknown';
@@ -17,10 +16,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     if (!currentUrl.includes("/index.html") && noAlertCookie !== versionNumber) {
-        alert("This website is still in the Beta phase.\nNew features are slowly being added until the entire website is finished.\nFeel free to give constructive feedback on discord (@vexthecoder).\nVersion: " + versionNumber);
-        setCookie('noAlert', versionNumber, 365);
-        //    alert("NOTES:\n1. If Gifs take forever to load, please just toggle them off in the settings. It is not a bug, and is dependent on how good your device is.\n2. Please report bugs to me on discord (@vexthecoder), it really helps out as I will be able to fix them faster.\n3. The reason Memory and Oblivion are not listed in the calculator is because they have no real rarity.")
+        const updateNotice = document.getElementById('updateNotice');
+        const versionDisplay = document.getElementById('versionNumber');
+
+        versionDisplay.innerText = versionNumber;
+        updateNotice.style.display = 'block';
+
+        document.getElementById('closeNotice').addEventListener('click', () => {
+            updateNotice.style.display = 'none';
+            setCookie('noAlert', versionNumber, 365);
+        });
     }
+
 
     const savedGifToggle = getCookie('gifToggle') === 'true';
     const savedTheme = getCookie('theme') || 'dark';
