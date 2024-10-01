@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    let total = localStorage.getItem('total') ? parseInt(localStorage.getItem('total')) : 0;
-    const auras = JSON.parse(localStorage.getItem('auras')) || [];
+    let total = localStorage.getItem('inventoryTotal') ? parseInt(localStorage.getItem('inventoryTotal')) : 0;
     const versionNumber = await fetchVersionNumber();
+    const currentVersion = localStorage.getItem('currentVersion');
     const currentUrl = window.location.href;
 
     async function fetchVersionNumber() {
@@ -15,16 +15,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    const updateNotice = document.getElementById('updateNotice');
-    const versionDisplay = document.getElementById('versionNumber');
+    if (!currentUrl.includes("/index.html") && currentVersion !== versionNumber) {
+        const updateNotice = document.getElementById('updateNotice');
+        const versionDisplay = document.getElementById('versionNumber');
 
-    versionDisplay.innerText = versionNumber;
-    updateNotice.style.display = 'block';
+        versionDisplay.innerText = versionNumber;
+        updateNotice.style.display = 'block';
 
-    document.getElementById('closeNotice').addEventListener('click', () => {
-        updateNotice.style.display = 'none';
-        localStorage.setItem('currentversionn', versionNumber);
-    });
+        document.getElementById('closeNotice').addEventListener('click', () => {
+            updateNotice.style.display = 'none';
+            localStorage.setItem('currentVersion', versionNumber);
+        });
+    }
 
     const savedGifToggle = localStorage.getItem('gifToggle') === 'true';
     const savedTheme = localStorage.getItem('theme') || 'dark';
@@ -75,6 +77,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     const addButtons = document.querySelectorAll('.add-button');
+    const auraList = document.getElementById('auraList');
     addButtons.forEach(button => {
         button.addEventListener('click', () => {
             const input = button.previousElementSibling;
@@ -83,20 +86,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             total += value * multiplier;
             if (total < 0) total = 0;
             document.getElementById('total').innerText = formatValue(total);
+            localStorage.setItem('inventoryTotal', total);
             input.value = '1';
 
             const auraName = button.closest('.grid-item').querySelector('.image-label').textContent;
-            const auraRarity = multiplier;
-            const existingAura = auras.find(aura => aura.name === auraName);
-
-            if (existingAura) {
-                existingAura.count += value;
-            } else {
-                auras.push({ name: auraName, count: value, rarity: auraRarity });
-            }
-
-            localStorage.setItem('auras', JSON.stringify(auras));
-            updateAuraList();
+            const auraEntry = document.createElement('div');
+            auraEntry.innerHTML = `${auraName} (${value}) <button class="remove-aura">Remove</button>`;
+            auraList.appendChild(auraEntry);
         });
     });
 
@@ -109,20 +105,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             total -= value * multiplier;
             if (total < 0) total = 0;
             document.getElementById('total').innerText = formatValue(total);
+            localStorage.setItem('inventoryTotal', total);
             input.value = '1';
-
-            const auraName = button.closest('.grid-item').querySelector('.image-label').textContent;
-            const existingAura = auras.find(aura => aura.name === auraName);
-
-            if (existingAura) {
-                existingAura.count -= value;
-                if (existingAura.count <= 0) {
-                    auras.splice(auras.indexOf(existingAura), 1);
-                }
-            }
-
-            localStorage.setItem('auras', JSON.stringify(auras));
-            updateAuraList();
         });
     });
 
@@ -130,9 +114,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     clearButton.addEventListener('click', () => {
         total = 0;
         document.getElementById('total').innerText = total;
-        auras.length = 0;
-        localStorage.setItem('auras', JSON.stringify(auras));
-        updateAuraList();
+        localStorage.setItem('inventoryTotal', total);
+        auraList.innerHTML = '';
     });
 
     function formatValue(number) {
@@ -151,45 +134,76 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
     });
 
-    const dropdownButton = document.querySelector('.dropdown-button');
-    dropdownButton.addEventListener('click', () => {
+    document.getElementById('dropdown-button').addEventListener('click', () => {
         const dropdownContent = document.querySelector('.dropdown-content');
         dropdownContent.classList.toggle('show');
-        if (dropdownContent.classList.contains('show')) {
-            dropdownContent.style.display = 'block';
-        } else {
-            dropdownContent.style.display = 'none';
-        }
-        updateAuraList();
     });
 
-    function updateAuraList() {
-        const auraList = document.querySelector('.aura-list');
-        auraList.innerHTML = '';
-        auras.forEach(aura => {
-            const auraItem = document.createElement('div');
-            auraItem.innerText = `${aura.name} - ${aura.count} - Rarity: ${aura.rarity}`;
-            const removeButton = document.createElement('button');
-            removeButton.innerText = 'Remove';
-            removeButton.addEventListener('click', () => {
-                aura.count--;
-                if (aura.count <= 0) {
-                    auras.splice(auras.indexOf(aura), 1);
-                }
-                localStorage.setItem('auras', JSON.stringify(auras));
-                updateAuraList();
-                total = Math.max(0, total - aura.rarity); // Adjust total based on aura rarity
-                document.getElementById('total').innerText = formatValue(total);
-            });
-            auraItem.appendChild(removeButton);
-            auraList.appendChild(auraItem);
-        });
+    document.addEventListener('click', (event) => {
+        const dropdownContent = document.querySelector('.dropdown-content');
+        if (!event.target.matches('#dropdown-button') && !event.target.matches('.remove-aura')) {
+            dropdownContent.classList.remove('show');
+        }
+    });
+
+    auraList.addEventListener('click', (event) => {
+        if (event.target.matches('.remove-aura')) {
+            const auraEntry = event.target.parentElement;
+            auraEntry.remove();
+        }
+    });
+});
+
+function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
+function getCookie(name) {
+    const cname = name + "=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(cname) === 0) {
+            return c.substring(cname.length, c.length);
+        }
     }
+    return "";
+}
 
-    document.addEventListener("DOMContentLoaded", function () {
-        const currentUrl = window.location.href;
-        if (currentUrl.includes("/index.html")) {
-            window.location.replace(currentUrl.replace("/index.html", ""));
+function applyTheme(theme) {
+    if (theme === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.body.classList.remove('light-mode');
+    } else {
+        document.body.classList.add('light-mode');
+        document.body.classList.remove('dark-mode');
+    }
+}
+
+function applyGifToggle(gifToggle) {
+    const gridItems = document.querySelectorAll('.grid-item img');
+
+    gridItems.forEach(img => {
+        const imgSrc = img.getAttribute('data-img-src');
+        const gifSrc = img.getAttribute('data-gif-src');
+        if (gifToggle) {
+            img.src = gifSrc;
+        } else {
+            img.src = imgSrc;
         }
     });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const currentUrl = window.location.href;
+    if (currentUrl.includes("/index.html")) {
+        window.location.replace(currentUrl.replace("/index.html", ""));
+    }
 });
