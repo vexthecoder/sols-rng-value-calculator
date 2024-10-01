@@ -462,7 +462,7 @@ input[type="checkbox"]:checked + .toggle-slider:before {
     background-color: #007BFF;
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
     padding: 5px 10px;
 }
