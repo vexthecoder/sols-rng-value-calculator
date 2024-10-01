@@ -453,9 +453,9 @@ input[type="checkbox"]:checked + .toggle-slider:before {
     color: black;
 }
 
-.update-notice p .subtext {
+.update-notice .subtext {
     color: #7a7a7a;
-    font-size: 8;
+    size: 8;
 }
 
 #closeNotice {
@@ -481,6 +481,6 @@ input[type="checkbox"]:checked + .toggle-slider:before {
     color: white;
 }
 
-.dark-mode .update-notice p .subtext {
+.dark-mode .update-notice .subtext {
     color: #7a7a7a;
 }
