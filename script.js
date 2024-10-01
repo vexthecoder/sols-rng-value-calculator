@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    let total = localStorage.getItem('inventoryTotal') ? parseInt(localStorage.getItem('inventoryTotal')) : 0; 
+    let total = localStorage.getItem('inventoryTotal') ? parseInt(localStorage.getItem('inventoryTotal')) : 0;
+    document.getElementById('total').innerText = formatValue(total);
+
     const savedGifToggle = localStorage.getItem('gifToggle') === 'true';
     const savedTheme = localStorage.getItem('theme') || 'dark';
     const currentVersionNumber = await fetchVersionNumber();
