@@ -14,3 +14,4 @@
 - Removed the glow around the settings menu.
 - Added commas (,) after every 3 digits in the inventory value to make it cleaner.
 - Theme is now set to dark by default.
+- Swapped from using cookies to localstorage to save data.
