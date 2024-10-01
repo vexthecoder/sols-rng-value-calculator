@@ -1,12 +1,43 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    let total = localStorage.getItem('inventoryTotal') ? parseInt(localStorage.getItem('inventoryTotal')) : 0;
-    document.getElementById('total').innerText = formatValue(total);
-
-    const savedGifToggle = localStorage.getItem('gifToggle') === 'true';
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    const currentVersionNumber = await fetchVersionNumber();
-    const savedVersionNumber = localStorage.getItem('currentVersionNumber');
+    let total = parseInt(getCookie('inventoryTotal')) || 0;
+    const versionNumber = await fetchVersionNumber();
+    const noAlertCookie = getCookie('currentversionn');
     const currentUrl = window.location.href;
+    const auras = JSON.parse(getCookie('auras')) || [];
+
+    function updateAurasList() {
+        const aurasList = document.getElementById('aurasList');
+        aurasList.innerHTML = '';
+
+        auras.forEach((aura, index) => {
+            const li = document.createElement('li');
+            li.textContent = aura;
+            li.addEventListener('click', () => removeAura(index));
+            aurasList.appendChild(li);
+        });
+    }
+
+    function removeAura(index) {
+        auras.splice(index, 1);
+        setCookie('auras', JSON.stringify(auras), 365);
+        updateAurasList();
+    }
+
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    dropdownToggle.addEventListener('click', () => {
+        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (!event.target.closest('.dropdown')) {
+            dropdownMenu.style.display = 'none';
+        }
+    });
+
+    document.getElementById('total').innerText = formatValue(total);
+    updateAurasList();
 
     async function fetchVersionNumber() {
         try {
@@ -19,19 +50,21 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    if (!currentUrl.includes("/index.html") && savedVersionNumber !== currentVersionNumber) {
+    if (!currentUrl.includes("/index.html") && noAlertCookie !== versionNumber) {
         const updateNotice = document.getElementById('updateNotice');
         const versionDisplay = document.getElementById('versionNumber');
 
-        versionDisplay.innerText = currentVersionNumber;
+        versionDisplay.innerText = versionNumber;
         updateNotice.style.display = 'block';
 
         document.getElementById('closeNotice').addEventListener('click', () => {
             updateNotice.style.display = 'none';
-            localStorage.setItem('currentVersionNumber', currentVersionNumber);
+            setCookie('currentversionn', versionNumber, 365);
         });
     }
 
+    const savedGifToggle = getCookie('gifToggle') === 'true';
+    const savedTheme = getCookie('theme') || 'dark';
     applyGifToggle(savedGifToggle);
     applyTheme(savedTheme);
     document.getElementById('gif-toggle').checked = savedGifToggle;
@@ -50,13 +83,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('gif-toggle').addEventListener('change', (event) => {
         const isChecked = event.target.checked;
         applyGifToggle(isChecked);
-        localStorage.setItem('gifToggle', isChecked.toString());
+        setCookie('gifToggle', isChecked.toString(), 365);
     });
 
     document.getElementById('theme-select').addEventListener('change', (event) => {
         const selectedTheme = event.target.value;
         applyTheme(selectedTheme);
-        localStorage.setItem('theme', selectedTheme);
+        setCookie('theme', selectedTheme, 365);
     });
 
     const searchInput = document.getElementById('searchInput');
@@ -64,6 +97,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     searchInput.addEventListener('input', () => {
         const searchValue = searchInput.value.toLowerCase().trim();
+
         gridItems.forEach(item => {
             const keywords = item.getAttribute('search-terms').toLowerCase().split(' ');
             const itemLabel = item.querySelector('.image-label').textContent.toLowerCase();
@@ -84,10 +118,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             const value = parseInt(input.value) || 0;
             const multiplier = button.closest('.grid-item').getAttribute('data-rarity');
             total += value * multiplier;
+            auras.push(`${value} × ${button.closest('.grid-item').querySelector('.image-label').textContent}`);
+            setCookie('auras', JSON.stringify(auras), 365);
             if (total < 0) total = 0;
             document.getElementById('total').innerText = formatValue(total);
             input.value = '1';
-            localStorage.setItem('inventoryTotal', total);
+            updateAurasList();
         });
     });
 
@@ -98,10 +134,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             const value = parseInt(input.value) || 0;
             const multiplier = button.closest('.grid-item').getAttribute('data-rarity');
             total -= value * multiplier;
+            auras.push(`-${value} × ${button.closest('.grid-item').querySelector('.image-label').textContent}`);
+            setCookie('auras', JSON.stringify(auras), 365);
             if (total < 0) total = 0;
             document.getElementById('total').innerText = formatValue(total);
             input.value = '1';
-            localStorage.setItem('inventoryTotal', total);
+            updateAurasList();
         });
     });
 
@@ -109,7 +147,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     clearButton.addEventListener('click', () => {
         total = 0;
         document.getElementById('total').innerText = total;
-        localStorage.setItem('inventoryTotal', total);
     });
 
     function formatValue(number) {
@@ -156,28 +193,18 @@ function applyTheme(theme) {
     if (theme === 'dark') {
         document.body.classList.add('dark-mode');
         document.body.classList.remove('light-mode');
+
     } else {
         document.body.classList.add('light-mode');
         document.body.classList.remove('dark-mode');
     }
 }
 
-function applyGifToggle(gifToggle) {
-    const gridItems = document.querySelectorAll('.grid-item img');
-    gridItems.forEach(img => {
-        const imgSrc = img.getAttribute('data-img-src');
-        const gifSrc = img.getAttribute('data-gif-src');
-        if (gifToggle) {
-            img.src = gifSrc;
-        } else {
-            img.src = imgSrc;
-        }
-    });
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    const currentUrl = window.location.href;
-    if (currentUrl.includes("/index.html")) {
-        window.location.replace(currentUrl.replace("/index.html", ""));
+function applyGifToggle(isChecked) {
+    const gifContainer = document.querySelector('.gif-container');
+    if (isChecked) {
+        gifContainer.style.display = 'block';
+    } else {
+        gifContainer.style.display = 'none';
     }
-});
+}
