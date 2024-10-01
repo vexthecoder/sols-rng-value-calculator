@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('total').innerText = total;
     });
 
-    function formatNumber(number) {
+    function formatValue(number) {
         return number.toLocaleString('en-US');
     }
 
