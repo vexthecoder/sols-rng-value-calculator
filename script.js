@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    let total = 0;
-    const versionNumber = await fetchVersionNumber();
-    const noAlertCookie = getCookie('noAlert');
+    let total = localStorage.getItem('inventoryTotal') ? parseInt(localStorage.getItem('inventoryTotal')) : 0; 
+    const savedGifToggle = localStorage.getItem('gifToggle') === 'true';
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    const currentVersionNumber = await fetchVersionNumber();
+    const savedVersionNumber = localStorage.getItem('currentVersionNumber');
     const currentUrl = window.location.href;
 
     async function fetchVersionNumber() {
@@ -15,22 +17,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    if (!currentUrl.includes("/index.html") && noAlertCookie !== versionNumber) {
+    if (!currentUrl.includes("/index.html") && savedVersionNumber !== currentVersionNumber) {
         const updateNotice = document.getElementById('updateNotice');
         const versionDisplay = document.getElementById('versionNumber');
 
-        versionDisplay.innerText = versionNumber;
+        versionDisplay.innerText = currentVersionNumber;
         updateNotice.style.display = 'block';
 
         document.getElementById('closeNotice').addEventListener('click', () => {
             updateNotice.style.display = 'none';
-            setCookie('noAlert', versionNumber, 365);
+            localStorage.setItem('currentVersionNumber', currentVersionNumber);
         });
     }
 
-
-    const savedGifToggle = getCookie('gifToggle') === 'true';
-    const savedTheme = getCookie('theme') || 'dark';
     applyGifToggle(savedGifToggle);
     applyTheme(savedTheme);
     document.getElementById('gif-toggle').checked = savedGifToggle;
@@ -49,13 +48,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('gif-toggle').addEventListener('change', (event) => {
         const isChecked = event.target.checked;
         applyGifToggle(isChecked);
-        setCookie('gifToggle', isChecked.toString(), 365);
+        localStorage.setItem('gifToggle', isChecked.toString());
     });
 
     document.getElementById('theme-select').addEventListener('change', (event) => {
         const selectedTheme = event.target.value;
         applyTheme(selectedTheme);
-        setCookie('theme', selectedTheme, 365);
+        localStorage.setItem('theme', selectedTheme);
     });
 
     const searchInput = document.getElementById('searchInput');
@@ -63,7 +62,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     searchInput.addEventListener('input', () => {
         const searchValue = searchInput.value.toLowerCase().trim();
-
         gridItems.forEach(item => {
             const keywords = item.getAttribute('search-terms').toLowerCase().split(' ');
             const itemLabel = item.querySelector('.image-label').textContent.toLowerCase();
@@ -87,6 +85,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (total < 0) total = 0;
             document.getElementById('total').innerText = formatValue(total);
             input.value = '1';
+            localStorage.setItem('inventoryTotal', total);
         });
     });
 
@@ -100,6 +99,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (total < 0) total = 0;
             document.getElementById('total').innerText = formatValue(total);
             input.value = '1';
+            localStorage.setItem('inventoryTotal', total);
         });
     });
 
@@ -107,6 +107,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     clearButton.addEventListener('click', () => {
         total = 0;
         document.getElementById('total').innerText = total;
+        localStorage.setItem('inventoryTotal', total);
     });
 
     function formatValue(number) {
@@ -161,7 +162,6 @@ function applyTheme(theme) {
 
 function applyGifToggle(gifToggle) {
     const gridItems = document.querySelectorAll('.grid-item img');
-
     gridItems.forEach(img => {
         const imgSrc = img.getAttribute('data-img-src');
         const gifSrc = img.getAttribute('data-gif-src');
