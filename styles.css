@@ -337,100 +337,100 @@ body::-webkit-scrollbar {
 }
 
 .settings-modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Fixed position */
-    top: 0; /* Align to top */
-    left: 0; /* Align to left */
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    z-index: 2000; /* High z-index to overlay other elements */
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
 }
 
 .settings-content {
-    background-color: #fff; /* White background */
-    padding: 20px; /* Reduced padding */
-    border-radius: 10px; /* Rounded corners */
-    text-align: center; /* Center text */
-    position: relative; /* Relative positioning for close button */
-    width: 90%; /* Responsive width */
-    max-width: 400px; /* Reduced max-width */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    background-color: #fff;
+    padding: 20px; 
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .settings-close {
-    position: absolute; /* Absolute positioning */
-    top: 10px; /* Top position */
-    right: 10px; /* Right position */
-    font-size: 24px; /* Reduced font size */
-    border: none; /* No border */
-    background-color: transparent; /* Transparent background */
-    color: #999; /* Softened close button color */
-    cursor: pointer; /* Pointer cursor on hover */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    border: none;
+    background-color: transparent;
+    color: #999;
+    cursor: pointer;
 }
 
 .settings-close:hover {
-    color: #666; /* Darker color on hover */
+    color: #666;
 }
 
 .settings-item {
-    margin: 15px 0; /* Reduced margin */
+    margin: 15px 0;
 }
 
 .settings-item label {
-    display: block; /* Block display for labels */
-    margin-bottom: 5px; /* Spacing below labels */
-    color: #555; /* Softer label color */
-    font-size: 14px; /* Smaller font size */
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-size: 14px;
 }
 
 .settings-item select {
-    width: 100%; /* Full width for select */
-    padding: 6px; /* Reduced padding */
-    border: 1px solid #ccc; /* Light border */
-    border-radius: 5px; /* Rounded corners */
-    background-color: #f9f9f9; /* Light background for select */
-    color: #333; /* Text color */
-    font-size: 14px; /* Font size */
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px; 
+    background-color: #f9f9f9;
+    color: #333;
+    font-size: 14px;
 }
 
 .toggle {
-    position: relative; /* Relative positioning */
-    display: inline-block; /* Inline block for toggle */
-    width: 40px; /* Reduced toggle width */
-    height: 24px; /* Reduced toggle height */
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
 }
 
 .toggle-slider {
-    position: absolute; /* Absolute positioning */
-    cursor: pointer; /* Pointer cursor */
-    top: 0; /* Align to top */
-    left: 0; /* Align to left */
-    right: 0; /* Align to right */
-    bottom: 0; /* Align to bottom */
-    background-color: #ccc; /* Background color */
-    transition: background-color 0.3s; /* Smooth transition */
-    border-radius: 12px; /* Rounded corners */
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: background-color 0.3s;
+    border-radius: 20px;
 }
 
 .toggle-slider:before {
-    position: absolute; /* Absolute positioning */
-    content: ""; /* Empty content */
-    height: 20px; /* Height of the toggle knob */
-    width: 20px; /* Width of the toggle knob */
-    left: 2px; /* Left position */
-    bottom: 2px; /* Bottom position */
-    background-color: white; /* White knob */
-    transition: transform 0.3s; /* Smooth transition for movement */
-    border-radius: 50%; /* Circular knob */
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 5px;
+    bottom: 5px;
+    background-color: white;
+    transition: transform 0.3s;
+    border-radius: 50%;
 }
 
 input[type="checkbox"]:checked + .toggle-slider {
-    background-color: #444; /* Dark background when checked */
+    background-color: #444;
 }
 
 input[type="checkbox"]:checked + .toggle-slider:before {
-    transform: translateX(16px); /* Move knob to the right when checked */
+    transform: translateX(33px)
 }
