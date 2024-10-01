@@ -472,7 +472,7 @@ input[type="checkbox"]:checked + .toggle-slider:before {
 }
 
 .dark-mode .update-notice {
-    background-color: #00000080;
+    background-color: #000000;
     color: white;
 }
 
