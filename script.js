@@ -174,26 +174,20 @@ function setCookie(name, value, days) {
 }
 
 function getCookie(name) {
-    const cname = name + "=";
-    const decodedCookie = decodeURIComponent(document.cookie);
-    const ca = decodedCookie.split(';');
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
     for (let i = 0; i < ca.length; i++) {
         let c = ca[i];
-        while (c.charAt(0) === ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(cname) === 0) {
-            return c.substring(cname.length, c.length);
-        }
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
     }
-    return "";
+    return null;
 }
 
 function applyTheme(theme) {
     if (theme === 'dark') {
         document.body.classList.add('dark-mode');
         document.body.classList.remove('light-mode');
-
     } else {
         document.body.classList.add('light-mode');
         document.body.classList.remove('dark-mode');
@@ -208,3 +202,10 @@ function applyGifToggle(isChecked) {
         gifContainer.style.display = 'none';
     }
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const currentUrl = window.location.href;
+    if (currentUrl.includes("/index.html")) {
+        window.location.replace(currentUrl.replace("/index.html", ""));
+    }
+});
