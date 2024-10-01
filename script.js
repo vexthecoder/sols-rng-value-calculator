@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const multiplier = button.closest('.grid-item').getAttribute('data-rarity');
             total += value * multiplier;
             if (total < 0) total = 0;
-            document.getElementById('total').innerText = total;
+            document.getElementById('total').innerText = formatValue(total);
             input.value = '1';
         });
     });
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const multiplier = button.closest('.grid-item').getAttribute('data-rarity');
             total -= value * multiplier;
             if (total < 0) total = 0;
-            document.getElementById('total').innerText = total;
+            document.getElementById('total').innerText = formatValue(total);
             input.value = '1';
         });
     });
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const clearButton = document.querySelector('.clear-button');
     clearButton.addEventListener('click', () => {
         total = 0;
-        document.getElementById('total').innerText = formatValue(total);
+        document.getElementById('total').innerText = total;
     });
 
     function formatNumber(number) {
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const copyButton = document.querySelector('.copy-button');
     copyButton.addEventListener('click', () => {
         const totalValue = document.getElementById('total').innerText;
-        navigator.clipboard.writeText(totalValue)
+        navigator.clipboard.writeText("My Sol's RNG inventory value is " + totalValue + "! What's yours?\nCalculate your inventory value at https://bit.ly/rng-calculator and share it to friends!")
             .then(() => {
                 console.log('Total value copied to clipboard:', totalValue);
             })
