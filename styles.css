@@ -432,5 +432,5 @@ input[type="checkbox"]:checked + .toggle-slider {
 }
 
 input[type="checkbox"]:checked + .toggle-slider:before {
-    transform: translateX(35px)
+    transform: translateX(34px)
 }
