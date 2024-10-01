@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
     let total = localStorage.getItem('inventoryTotal') ? parseInt(localStorage.getItem('inventoryTotal')) : 0;
+    document.getElementById('total').innerText = formatValue(total);
+
     const versionNumber = await fetchVersionNumber();
     const currentVersion = localStorage.getItem('currentVersion');
     const currentUrl = window.location.href;
@@ -18,7 +20,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!currentUrl.includes("/index.html") && currentVersion !== versionNumber) {
         const updateNotice = document.getElementById('updateNotice');
         const versionDisplay = document.getElementById('versionNumber');
-
         versionDisplay.innerText = versionNumber;
         updateNotice.style.display = 'block';
 
@@ -134,15 +135,22 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
     });
 
-    document.getElementById('dropdown-button').addEventListener('click', () => {
-        const dropdownContent = document.querySelector('.dropdown-content');
-        dropdownContent.classList.toggle('show');
-    });
+    const dropdownButton = document.getElementById('dropdown-button');
+    if (dropdownButton) {
+        dropdownButton.addEventListener('click', () => {
+            const dropdownContent = document.querySelector('.dropdown-content');
+            if (dropdownContent) {
+                dropdownContent.classList.toggle('show');
+            }
+        });
+    }
 
     document.addEventListener('click', (event) => {
-        const dropdownContent = document.querySelector('.dropdown-content');
         if (!event.target.matches('#dropdown-button') && !event.target.matches('.remove-aura')) {
-            dropdownContent.classList.remove('show');
+            const dropdownContent = document.querySelector('.dropdown-content');
+            if (dropdownContent) {
+                dropdownContent.classList.remove('show');
+            }
         }
     });
 
@@ -153,29 +161,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 });
-
-function setCookie(name, value, days) {
-    const date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    const expires = "expires=" + date.toUTCString();
-    document.cookie = name + "=" + value + ";" + expires + ";path=/";
-}
-
-function getCookie(name) {
-    const cname = name + "=";
-    const decodedCookie = decodeURIComponent(document.cookie);
-    const ca = decodedCookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) === ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(cname) === 0) {
-            return c.substring(cname.length, c.length);
-        }
-    }
-    return "";
-}
 
 function applyTheme(theme) {
     if (theme === 'dark') {
@@ -189,7 +174,6 @@ function applyTheme(theme) {
 
 function applyGifToggle(gifToggle) {
     const gridItems = document.querySelectorAll('.grid-item img');
-
     gridItems.forEach(img => {
         const imgSrc = img.getAttribute('data-img-src');
         const gifSrc = img.getAttribute('data-gif-src');
@@ -207,3 +191,37 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.replace(currentUrl.replace("/index.html", ""));
     }
 });
+
+function applyGifToggle(gifToggle) {
+    const gridItems = document.querySelectorAll('.grid-item img');
+    gridItems.forEach(img => {
+        const imgSrc = img.getAttribute('data-img-src');
+        const gifSrc = img.getAttribute('data-gif-src');
+        if (gifToggle) {
+            img.src = gifSrc;
+        } else {
+            img.src = imgSrc;
+        }
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const currentUrl = window.location.href;
+    if (currentUrl.includes("/index.html")) {
+        window.location.replace(currentUrl.replace("/index.html", ""));
+    }
+});
+
+function formatValue(number) {
+    return number.toLocaleString('en-US');
+}
+
+function applyTheme(theme) {
+    if (theme === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.body.classList.remove('light-mode');
+    } else {
+        document.body.classList.add('light-mode');
+        document.body.classList.remove('dark-mode');
+    }
+}
