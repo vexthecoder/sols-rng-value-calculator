@@ -1,31 +1,26 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    let total = localStorage.getItem('inventoryTotal') ? parseInt(localStorage.getItem('inventoryTotal')) : 0;
-    document.getElementById('total').innerText = formatValue(total);
+    let total = 0;
+    let auraList = JSON.parse(localStorage.getItem('auraList')) || [];
 
     const versionNumber = await fetchVersionNumber();
-    const currentVersion = localStorage.getItem('currentVersion');
+    const savedVersion = localStorage.getItem('currentversionn') || '';
     const currentUrl = window.location.href;
+    const dropdownIcon = document.getElementById('dropdown-icon');
+    const auraDropdown = document.getElementById('auraDropdown');
+    const auraListContainer = document.getElementById('auraListContainer');
+    const totalContainer = document.querySelector('.total-container');
+    const totalSpan = document.getElementById('total');
+    const copyButton = document.querySelector('.copy-button');
+    const clearButton = document.querySelector('.clear-button');
 
-    async function fetchVersionNumber() {
-        try {
-            const response = await fetch('version');
-            const versionText = await response.text();
-            return versionText.trim();
-        } catch (error) {
-            console.error('Error fetching version number:', error);
-            return 'unknown';
-        }
-    }
-
-    if (!currentUrl.includes("/index.html") && currentVersion !== versionNumber) {
+    if (!currentUrl.includes("/index.html") && savedVersion !== versionNumber) {
         const updateNotice = document.getElementById('updateNotice');
         const versionDisplay = document.getElementById('versionNumber');
         versionDisplay.innerText = versionNumber;
         updateNotice.style.display = 'block';
-
         document.getElementById('closeNotice').addEventListener('click', () => {
             updateNotice.style.display = 'none';
-            localStorage.setItem('currentVersion', versionNumber);
+            localStorage.setItem('currentversionn', versionNumber);
         });
     }
 
@@ -58,42 +53,65 @@ document.addEventListener('DOMContentLoaded', async () => {
         localStorage.setItem('theme', selectedTheme);
     });
 
-    const searchInput = document.getElementById('searchInput');
-    const gridItems = document.querySelectorAll('.grid-item');
-
-    searchInput.addEventListener('input', () => {
-        const searchValue = searchInput.value.toLowerCase().trim();
-
-        gridItems.forEach(item => {
-            const keywords = item.getAttribute('search-terms').toLowerCase().split(' ');
-            const itemLabel = item.querySelector('.image-label').textContent.toLowerCase();
-            const matchesKeyword = keywords.some(keyword => keyword.includes(searchValue));
-
-            if (itemLabel.includes(searchValue) || matchesKeyword) {
-                item.style.display = 'block';
-            } else {
-                item.style.display = 'none';
-            }
-        });
+    dropdownIcon.addEventListener('click', () => {
+        auraDropdown.classList.toggle('open');
+        totalContainer.classList.toggle('shifted-up');
+        renderAuraList();
     });
 
+    function renderAuraList() {
+        auraListContainer.innerHTML = '';
+        auraList.forEach(aura => {
+            const auraItem = document.createElement('div');
+            auraItem.classList.add('aura-item');
+            auraItem.innerHTML = `
+                <span class="aura-name">${aura.name}</span>
+                <span class="aura-quantity">x${aura.quantity}</span>
+                <span class="aura-rarity">Rarity: ${aura.rarity}</span>
+                <button class="remove-aura">Remove 1</button>
+            `;
+            auraItem.querySelector('.remove-aura').addEventListener('click', () => {
+                removeAura(aura.name);
+            });
+            auraListContainer.appendChild(auraItem);
+        });
+    }
+
+    function removeAura(auraName) {
+        const auraIndex = auraList.findIndex(aura => aura.name === auraName);
+        if (auraIndex !== -1) {
+            if (auraList[auraIndex].quantity > 1) {
+                auraList[auraIndex].quantity--;
+            } else {
+                auraList.splice(auraIndex, 1);
+            }
+            localStorage.setItem('auraList', JSON.stringify(auraList));
+            renderAuraList();
+            updateTotal();
+        }
+    }
+
     const addButtons = document.querySelectorAll('.add-button');
-    const auraList = document.getElementById('auraList');
     addButtons.forEach(button => {
         button.addEventListener('click', () => {
             const input = button.previousElementSibling;
             const value = parseInt(input.value) || 0;
             const multiplier = button.closest('.grid-item').getAttribute('data-rarity');
-            total += value * multiplier;
-            if (total < 0) total = 0;
-            document.getElementById('total').innerText = formatValue(total);
-            localStorage.setItem('inventoryTotal', total);
-            input.value = '1';
+            const auraName = button.closest('.grid-item').querySelector('.aura-name').innerText;
 
-            const auraName = button.closest('.grid-item').querySelector('.image-label').textContent;
-            const auraEntry = document.createElement('div');
-            auraEntry.innerHTML = `${auraName} (${value}) <button class="remove-aura">Remove</button>`;
-            auraList.appendChild(auraEntry);
+            const aura = auraList.find(aura => aura.name === auraName);
+            if (aura) {
+                aura.quantity += value;
+            } else {
+                auraList.push({ name: auraName, quantity: value, rarity: multiplier });
+            }
+
+            total += value * multiplier;
+            total = Math.max(total, 0);
+            localStorage.setItem('auraList', JSON.stringify(auraList));
+            localStorage.setItem('totalValue', total);
+            totalSpan.innerText = formatValue(total);
+            input.value = '1';
         });
     });
 
@@ -103,125 +121,65 @@ document.addEventListener('DOMContentLoaded', async () => {
             const input = button.previousElementSibling.previousElementSibling;
             const value = parseInt(input.value) || 0;
             const multiplier = button.closest('.grid-item').getAttribute('data-rarity');
+            const auraName = button.closest('.grid-item').querySelector('.aura-name').innerText;
+
+            const aura = auraList.find(aura => aura.name === auraName);
+            if (aura) {
+                aura.quantity = Math.max(0, aura.quantity - value);
+                if (aura.quantity === 0) {
+                    auraList = auraList.filter(a => a.name !== auraName);
+                }
+            }
+
             total -= value * multiplier;
-            if (total < 0) total = 0;
-            document.getElementById('total').innerText = formatValue(total);
-            localStorage.setItem('inventoryTotal', total);
+            total = Math.max(total, 0);
+            localStorage.setItem('auraList', JSON.stringify(auraList));
+            localStorage.setItem('totalValue', total);
+            totalSpan.innerText = formatValue(total);
             input.value = '1';
         });
     });
 
-    const clearButton = document.querySelector('.clear-button');
     clearButton.addEventListener('click', () => {
         total = 0;
-        document.getElementById('total').innerText = total;
-        localStorage.setItem('inventoryTotal', total);
-        auraList.innerHTML = '';
+        auraList = [];
+        localStorage.setItem('auraList', JSON.stringify(auraList));
+        localStorage.setItem('totalValue', total);
+        totalSpan.innerText = formatValue(total);
+        renderAuraList();
     });
+
+    function updateTotal() {
+        total = auraList.reduce((acc, aura) => acc + aura.quantity * aura.rarity, 0);
+        localStorage.setItem('totalValue', total);
+        totalSpan.innerText = formatValue(total);
+    }
 
     function formatValue(number) {
         return number.toLocaleString('en-US');
     }
 
-    const copyButton = document.querySelector('.copy-button');
     copyButton.addEventListener('click', () => {
-        const totalValue = document.getElementById('total').innerText;
-        navigator.clipboard.writeText("My Sol's RNG inventory value is " + totalValue + "! What's yours?\nCalculate your inventory value at https://bit.ly/rng-calculator and share it to friends!")
-            .then(() => {
-                console.log('Total value copied to clipboard:', totalValue);
-            })
-            .catch(error => {
-                console.error('Failed to copy text: ', error);
-            });
+        const totalValue = totalSpan.innerText;
+        navigator.clipboard.writeText(`My Sol's RNG inventory value is ${totalValue}! What's yours?\nCalculate your inventory value at https://bit.ly/rng-calculator and share it with friends!`);
     });
 
-    const dropdownButton = document.getElementById('dropdown-button');
-    if (dropdownButton) {
-        dropdownButton.addEventListener('click', () => {
-            const dropdownContent = document.querySelector('.dropdown-content');
-            if (dropdownContent) {
-                dropdownContent.classList.toggle('show');
-            }
-        });
+    total = parseInt(localStorage.getItem('totalValue')) || 0;
+    totalSpan.innerText = formatValue(total);
+    renderAuraList();
+
+    function setLocalStorage(key, value) {
+        localStorage.setItem(key, value);
     }
 
-    document.addEventListener('click', (event) => {
-        if (!event.target.matches('#dropdown-button') && !event.target.matches('.remove-aura')) {
-            const dropdownContent = document.querySelector('.dropdown-content');
-            if (dropdownContent) {
-                dropdownContent.classList.remove('show');
-            }
+    async function fetchVersionNumber() {
+        try {
+            const response = await fetch('version');
+            const versionText = await response.text();
+            return versionText.trim();
+        } catch (error) {
+            console.error('Error fetching version number:', error);
+            return 'unknown';
         }
-    });
-
-    auraList.addEventListener('click', (event) => {
-        if (event.target.matches('.remove-aura')) {
-            const auraEntry = event.target.parentElement;
-            auraEntry.remove();
-        }
-    });
-});
-
-function applyTheme(theme) {
-    if (theme === 'dark') {
-        document.body.classList.add('dark-mode');
-        document.body.classList.remove('light-mode');
-    } else {
-        document.body.classList.add('light-mode');
-        document.body.classList.remove('dark-mode');
-    }
-}
-
-function applyGifToggle(gifToggle) {
-    const gridItems = document.querySelectorAll('.grid-item img');
-    gridItems.forEach(img => {
-        const imgSrc = img.getAttribute('data-img-src');
-        const gifSrc = img.getAttribute('data-gif-src');
-        if (gifToggle) {
-            img.src = gifSrc;
-        } else {
-            img.src = imgSrc;
-        }
-    });
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    const currentUrl = window.location.href;
-    if (currentUrl.includes("/index.html")) {
-        window.location.replace(currentUrl.replace("/index.html", ""));
     }
 });
-
-function applyGifToggle(gifToggle) {
-    const gridItems = document.querySelectorAll('.grid-item img');
-    gridItems.forEach(img => {
-        const imgSrc = img.getAttribute('data-img-src');
-        const gifSrc = img.getAttribute('data-gif-src');
-        if (gifToggle) {
-            img.src = gifSrc;
-        } else {
-            img.src = imgSrc;
-        }
-    });
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    const currentUrl = window.location.href;
-    if (currentUrl.includes("/index.html")) {
-        window.location.replace(currentUrl.replace("/index.html", ""));
-    }
-});
-
-function formatValue(number) {
-    return number.toLocaleString('en-US');
-}
-
-function applyTheme(theme) {
-    if (theme === 'dark') {
-        document.body.classList.add('dark-mode');
-        document.body.classList.remove('light-mode');
-    } else {
-        document.body.classList.add('light-mode');
-        document.body.classList.remove('dark-mode');
-    }
-}
