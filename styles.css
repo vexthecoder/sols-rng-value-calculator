@@ -440,7 +440,7 @@ input[type="checkbox"]:checked + .toggle-slider:before {
     top: 20px;
     right: 20px;
     background-color: #fff;
-    border: none;
+    border: #f0f0f0;
     border-radius: 5px;
     padding: 15px;
     z-index: 1000;
@@ -472,8 +472,9 @@ input[type="checkbox"]:checked + .toggle-slider:before {
 }
 
 .dark-mode .update-notice {
-    background-color: #000000;
+    background-color: #333;
     color: white;
+    border: #444;
 }
 
 .dark-mode .update-notice p {
