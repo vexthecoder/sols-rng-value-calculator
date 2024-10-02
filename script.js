@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const element_invValue = document.getElementById('total');
     const element_gif = document.getElementById('gif-toggle');
     const element_themeSelect = document.getElementById('theme-select');
-    const element_searchQuery = document.getElementById('element_searchQuery');
+    const element_searchQuery = document.getElementById('searchInput');
     const element_gridItems = document.querySelectorAll('.grid-item');
     const element_add = document.querySelectorAll('.add-button');
     const element_remove = document.querySelectorAll('.remove-button');
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     element_invValue.innerText = languageFormat(total);
 
-    const settings_gifs = localStorage.getItem('element_gif') === 'true';
+    const settings_gifs = localStorage.getItem('gifToggle') === 'true';
     const settings_theme = localStorage.getItem('theme') || 'dark';
     const storage_version = await getVersion();
     const storage_savedVersion = localStorage.getItem('storage_version');
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     element_gif.addEventListener('change', (event) => {
         const isChecked = event.target.checked;
         applySettings_gifs(isChecked);
-        localStorage.setItem('element_gif', isChecked.toString());
+        localStorage.setItem('gifToggle', isChecked.toString());
     });
 
     element_themeSelect.addEventListener('change', (event) => {
@@ -126,12 +126,12 @@ function applySettings_theme(theme) {
     document.body.classList.toggle('light-mode', theme !== 'dark');
 }
 
-function applySettings_gifs(element_gif) {
+function applySettings_gifs(gifToggle) {
     const element_gridItems = document.querySelectorAll('.grid-item img');
     element_gridItems.forEach(img => {
         const imgSrc = img.getAttribute('data-img-src');
         const gifSrc = img.getAttribute('data-gif-src');
-        img.src = element_gif ? gifSrc : imgSrc;
+        img.src = gifToggle ? gifSrc : imgSrc;
     });
 }
 
