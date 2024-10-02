@@ -20,14 +20,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const storage_savedVersion = localStorage.getItem('storage_version');
     const currentUrl = window.location.href;
 
-    fetch('auras.json')
-        .then(response => response.json())
-        .then(data => {
-            const auras = data.auras;
-            loadData(auras);
-        })
-        .catch(error => console.error('Error loading auras:', error));
-
     async function getVersion() {
         if (localStorage.getItem('version_cached')) {
             return localStorage.getItem('version_cached');
@@ -152,77 +144,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function languageFormat(number) {
     return number.toLocaleString('en-US');
-}
-
-function loadData(auras) {
-    const grid = document.getElementById('grid');
-
-    auras.forEach(aura => {
-        const gridItem = document.createElement('div');
-        gridItem.className = 'grid-item';
-        gridItem.setAttribute('data-rarity', aura.rarity);
-        gridItem.setAttribute('search-terms', aura.searchTerms);
-
-        const labelDiv = document.createElement('div');
-        labelDiv.className = 'image-label';
-        labelDiv.textContent = aura.label;
-        gridItem.appendChild(labelDiv);
-
-        gridItem.appendChild(document.createElement('br'));
-
-        const rarityDiv = document.createElement('div');
-        rarityDiv.className = 'image-rarity';
-        rarityDiv.textContent = aura.rarityText;
-        gridItem.appendChild(rarityDiv);
-
-        const img = document.createElement('img');
-        img.src = aura.imageSrc;
-        img.setAttribute('data-img-src', aura.imageSrc);
-        img.setAttribute('data-gif-src', aura.gifSrc);
-        img.alt = aura.label;
-        gridItem.appendChild(img);
-
-        const inputContainer = document.createElement('div');
-        inputContainer.className = 'input-container';
-
-        const input = document.createElement('input');
-        input.type = 'number';
-        input.className = 'quantity';
-        input.value = aura.quantity;
-        input.min = 1;
-        inputContainer.appendChild(input);
-
-        const addButton = document.createElement('button');
-        addButton.className = 'add-button';
-        addButton.textContent = 'Add';
-        addButton.addEventListener('click', () => addAura(aura));
-        inputContainer.appendChild(addButton);
-
-        const removeButton = document.createElement('button');
-        removeButton.className = 'remove-button';
-        removeButton.textContent = 'Remove';
-        removeButton.addEventListener('click', () => removeAura(aura));
-        inputContainer.appendChild(removeButton);
-
-        gridItem.appendChild(inputContainer);
-
-        grid.appendChild(gridItem);
-    });
-}
-
-function addAura(aura) {
-    const quantityInput = document.querySelector(`div[data-rarity="${aura.rarity}"] .quantity`);
-    if (quantityInput) {
-        quantityInput.value = parseInt(quantityInput.value) + 1;
-    }
-}
-
-function removeAura(aura) {
-    const quantityInput = document.querySelector(`div[data-rarity="${aura.rarity}"] .quantity`);
-    if (quantityInput) {
-        const currentValue = parseInt(quantityInput.value);
-        if (currentValue > 1) {
-            quantityInput.value = currentValue - 1;
-        }
-    }
 }
