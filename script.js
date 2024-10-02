@@ -1,18 +1,34 @@
 document.addEventListener('DOMContentLoaded', async () => {
     let total = localStorage.getItem('invValue') ? parseInt(localStorage.getItem('invValue')) : 0;
-    document.getElementById('total').innerText = languageFormat(total);
+    const element_invValue = document.getElementById('total');
+    const element_gif = document.getElementById('gif-toggle');
+    const element_themeSelect = document.getElementById('theme-select');
+    const element_searchQuery = document.getElementById('element_searchQuery');
+    const element_gridItems = document.querySelectorAll('.grid-item');
+    const element_add = document.querySelectorAll('.add-button');
+    const element_remove = document.querySelectorAll('.remove-button');
+    const element_update = document.getElementById('updateNotice');
+    const element_displayVersion = document.getElementById('versionNumber');
+    const element_copy = document.querySelector('.copy-button');
+    const element_clear = document.querySelector('.clear-button');
 
-    const settings_gifs = localStorage.getItem('gifToggle') === 'true';
+    element_invValue.innerText = languageFormat(total);
+
+    const settings_gifs = localStorage.getItem('element_gif') === 'true';
     const settings_theme = localStorage.getItem('theme') || 'dark';
     const storage_version = await getVersion();
     const storage_savedVersion = localStorage.getItem('storage_version');
     const currentUrl = window.location.href;
 
     async function getVersion() {
+        if (localStorage.getItem('version_cached')) {
+            return localStorage.getItem('version_cached');
+        }
         try {
             const response = await fetch('version');
-            const versionText = await response.text();
-            return versionText.trim();
+            const versionText = (await response.text()).trim();
+            localStorage.setItem('version_cached', versionText);
+            return versionText;
         } catch (error) {
             console.error('Error fetching version number:', error);
             return 'unknown';
@@ -20,106 +36,82 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     if (!currentUrl.includes("/index.html") && storage_savedVersion !== storage_version) {
-        const updateNotice = document.getElementById('updateNotice');
-        const versionDisplay = document.getElementById('versionNumber');
-
-        versionDisplay.innerText = storage_version;
-        updateNotice.style.display = 'block';
+        element_displayVersion.innerText = storage_version;
+        element_update.style.display = 'block';
 
         document.getElementById('closeNotice').addEventListener('click', () => {
-            updateNotice.style.display = 'none';
+            element_update.style.display = 'none';
             localStorage.setItem('storage_version', storage_version);
         });
     }
 
     applySettings_gifs(settings_gifs);
     applySettings_theme(settings_theme);
-    document.getElementById('gif-toggle').checked = settings_gifs;
-    document.getElementById('theme-select').value = settings_theme;
+    element_gif.checked = settings_gifs;
+    element_themeSelect.value = settings_theme;
 
     document.querySelector('.settings-open').addEventListener('click', () => {
-        const settingsModal = document.querySelector('.settings-modal');
-        settingsModal.style.display = 'flex';
+        document.querySelector('.settings-modal').style.display = 'flex';
     });
 
     document.getElementById('settings-close').addEventListener('click', () => {
-        const settingsModal = document.querySelector('.settings-modal');
-        settingsModal.style.display = 'none';
+        document.querySelector('.settings-modal').style.display = 'none';
     });
 
-    document.getElementById('gif-toggle').addEventListener('change', (event) => {
+    element_gif.addEventListener('change', (event) => {
         const isChecked = event.target.checked;
         applySettings_gifs(isChecked);
-        localStorage.setItem('gifToggle', isChecked.toString());
+        localStorage.setItem('element_gif', isChecked.toString());
     });
 
-    document.getElementById('theme-select').addEventListener('change', (event) => {
+    element_themeSelect.addEventListener('change', (event) => {
         const chosenTheme = event.target.value;
         applySettings_theme(chosenTheme);
         localStorage.setItem('theme', chosenTheme);
     });
 
-    const searchInput = document.getElementById('searchInput');
-    const gridItems = document.querySelectorAll('.grid-item');
-
-    searchInput.addEventListener('input', () => {
-        const searchValue = searchInput.value.toLowerCase().trim();
-        gridItems.forEach(item => {
-            const keywords = item.getAttribute('search-terms').toLowerCase().split(' ');
-            const itemLabel = item.querySelector('.image-label').textContent.toLowerCase();
-            const matchesKeyword = keywords.some(keyword => keyword.includes(searchValue));
-
-            if (itemLabel.includes(searchValue) || matchesKeyword) {
-                item.style.display = 'block';
-            } else {
-                item.style.display = 'none';
-            }
-        });
+    let searchTimeout;
+    element_searchQuery.addEventListener('input', () => {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            const searchValue = element_searchQuery.value.toLowerCase().trim();
+            element_gridItems.forEach(item => {
+                const keywords = item.getAttribute('search-terms').toLowerCase().split(' ');
+                const itemLabel = item.querySelector('.image-label').textContent.toLowerCase();
+                const matchesKeyword = keywords.some(keyword => keyword.includes(searchValue));
+                item.style.display = (itemLabel.includes(searchValue) || matchesKeyword) ? 'block' : 'none';
+            });
+        }, 300);
     });
 
-    const addButtons = document.querySelectorAll('.add-button');
-    addButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const input = button.previousElementSibling;
-            const value = parseInt(input.value) || 0;
-            const multiplier = button.closest('.grid-item').getAttribute('data-rarity');
+    document.body.addEventListener('click', (event) => {
+        const button = event.target.closest('.add-button, .remove-button');
+        if (!button) return;
+
+        const input = button.closest('.grid-item').querySelector('input');
+        const value = parseInt(input.value) || 0;
+        const multiplier = button.closest('.grid-item').getAttribute('data-rarity');
+        if (button.classList.contains('add-button')) {
             total += value * multiplier;
-            if (total < 0) total = 0;
-            document.getElementById('total').innerText = languageFormat(total);
-            input.value = '1';
-            localStorage.setItem('invValue', total);
-        });
-    });
-
-    const removeButtons = document.querySelectorAll('.remove-button');
-    removeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const input = button.previousElementSibling.previousElementSibling;
-            const value = parseInt(input.value) || 0;
-            const multiplier = button.closest('.grid-item').getAttribute('data-rarity');
+        } else if (button.classList.contains('remove-button')) {
             total -= value * multiplier;
-            if (total < 0) total = 0;
-            document.getElementById('total').innerText = languageFormat(total);
-            input.value = '1';
-            localStorage.setItem('invValue', total);
-        });
-    });
+        }
 
-    const clearButton = document.querySelector('.clear-button');
-    clearButton.addEventListener('click', () => {
-        total = 0;
-        document.getElementById('total').innerText = total;
+        if (total < 0) total = 0;
+        element_invValue.innerText = languageFormat(total);
+        input.value = '1';
         localStorage.setItem('invValue', total);
     });
 
-    function languageFormat(number) {
-        return number.toLocaleString('en-US');
-    }
+    element_clear.addEventListener('click', () => {
+        total = 0;
+        element_invValue.innerText = total;
+        localStorage.setItem('invValue', total);
+    });
 
-    const copyButton = document.querySelector('.copy-button');
-    copyButton.addEventListener('click', () => {
-        const totalValue = document.getElementById('total').innerText;
-        navigator.clipboard.writeText("My Sol's RNG inventory value is " + totalValue + "! What's yours?\nCalculate your inventory value at https://bit.ly/rng-calculator and share it to friends!")
+    element_copy.addEventListener('click', () => {
+        const totalValue = element_invValue.innerText;
+        navigator.clipboard.writeText(`My Sol's RNG inventory value is ${totalValue}! What's yours?\nCalculate your inventory value at https://bit.ly/rng-calculator and share it to friends!`)
             .then(() => {
                 console.log('Total value copied to clipboard:', totalValue);
             })
@@ -130,31 +122,26 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 function applySettings_theme(theme) {
-    if (theme === 'dark') {
-        document.body.classList.add('dark-mode');
-        document.body.classList.remove('light-mode');
-    } else {
-        document.body.classList.add('light-mode');
-        document.body.classList.remove('dark-mode');
-    }
+    document.body.classList.toggle('dark-mode', theme === 'dark');
+    document.body.classList.toggle('light-mode', theme !== 'dark');
 }
 
-function applySettings_gifs(gifToggle) {
-    const gridItems = document.querySelectorAll('.grid-item img');
-    gridItems.forEach(img => {
+function applySettings_gifs(element_gif) {
+    const element_gridItems = document.querySelectorAll('.grid-item img');
+    element_gridItems.forEach(img => {
         const imgSrc = img.getAttribute('data-img-src');
         const gifSrc = img.getAttribute('data-gif-src');
-        if (gifToggle) {
-            img.src = gifSrc;
-        } else {
-            img.src = imgSrc;
-        }
+        img.src = element_gif ? gifSrc : imgSrc;
     });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     const currentUrl = window.location.href;
     if (currentUrl.includes("/index.html")) {
         window.location.replace(currentUrl.replace("/index.html", ""));
     }
 });
+
+function languageFormat(number) {
+    return number.toLocaleString('en-US');
+}
