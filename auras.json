@@ -1,0 +1,25 @@
+{
+    "auras": [
+      {
+        "id": "Common",
+        "rarity": "2",
+        "searchTerms": "test",
+        "label": "Common",
+        "rarityText": "1 in 2",
+        "imageSrc": "data/images/Common.png",
+        "gifSrc": "data/gifs/Common.gif",
+        "quantity": 1
+      },
+      {
+        "id": "Uncommon",
+        "rarity": "4",
+        "searchTerms": "skibidi",
+        "label": "Uncommon",
+        "rarityText": "1 in 4",
+        "imageSrc": "data/images/Uncommon.png",
+        "gifSrc": "data/gifs/Uncommon.gif",
+        "quantity": 1
+      }
+    ]
+  }
+  
