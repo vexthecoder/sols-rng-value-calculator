@@ -1,4 +1,4 @@
-## Fix 1.0.4 - September 18th, 2024
+## Fix 1.0.4-1 - September 18th, 2024
 
 ### Bug Fixes
 - Fixed gifs not loading.

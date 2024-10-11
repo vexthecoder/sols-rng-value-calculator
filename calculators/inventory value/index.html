@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sol's RNG Value Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search for auras/rarities..." />
+    </div>
+    <button id="settings-open" class="settings-open">
+        <i class="bi bi-gear"></i>
+    </button>
+    <div class="grid-container">
+        <div class="grid-item" data-rarity="2" search-terms="2">
+            <div class="image-label">Common</div><br>
+            <div class="image-rarity">1 in 2</div>
+            <img src="data/images/Common.png" data-img-src="data/images/Common.png" data-gif-src="data/gifs/Common.gif"
+                alt="Common">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1" max="99999">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="4" search-terms="4">
+            <div class="image-label">Uncommon</div><br>
+            <div class="image-rarity">1 in 4</div>
+            <img src="data/images/Uncommon.png" data-img-src="data/images/Uncommon.png"
+                data-gif-src="data/gifs/Uncommon.gif" alt="Uncommon">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="5" search-terms="5">
+            <div class="image-label">Good</div><br>
+            <div class="image-rarity">1 in 5</div>
+            <img src="data/images/Good.png" data-img-src="data/images/Good.png" data-gif-src="data/gifs/Good.gif"
+                alt="Good">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="8" search-terms="8">
+            <div class="image-label">Natural</div><br>
+            <div class="image-rarity">1 in 8</div>
+            <img src="data/images/Natural.png" data-img-src="data/images/Natural.png"
+                data-gif-src="data/gifs/Natural.gif" alt="Natural">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="16" search-terms="16">
+            <div class="image-label">Rare</div><br>
+            <div class="image-rarity">1 in 16</div>
+            <img src="data/images/Rare.png" data-img-src="data/images/Rare.png" data-gif-src="data/gifs/Rare.gif"
+                alt="Rare">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="32" search-terms="32">
+            <div class="image-label">Divinus</div><br>
+            <div class="image-rarity">1 in 32</div>
+            <img src="data/images/Divinus.png" data-img-src="data/images/Divinus.png"
+                data-gif-src="data/gifs/Divinus.gif" alt="Divinus">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="64" search-terms="64">
+            <div class="image-label">Crystallized</div><br>
+            <div class="image-rarity">1 in 64</div>
+            <img src="data/images/Crystallized.png" data-img-src="data/images/Crystallized.png"
+                data-gif-src="data/gifs/Crystallized.gif" alt="Crystallized">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="128" search-terms="128">
+            <div class="image-label">Rage</div><br>
+            <div class="image-rarity">1 in 128</div>
+            <img src="data/images/Rage.png" data-img-src="data/images/Rage.png" data-gif-src="data/gifs/Rage.gif"
+                alt="Rage">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="150" search-terms="150">
+            <div class="image-label">Topaz</div><br>
+            <div class="image-rarity">1 in 150</div>
+            <img src="data/images/Topaz.png" data-img-src="data/images/Topaz.png" data-gif-src="data/gifs/Topaz.gif"
+                alt="Topaz">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="350" search-terms="350">
+            <div class="image-label">Ruby</div><br>
+            <div class="image-rarity">1 in 350</div>
+            <img src="data/images/Ruby.png" data-img-src="data/images/Ruby.png" data-gif-src="data/gifs/Ruby.gif"
+                alt="Ruby">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="404" search-terms="404">
+            <div class="image-label">Forbidden</div><br>
+            <div class="image-rarity">1 in 404</div>
+            <img src="data/images/Forbidden.png" data-img-src="data/images/Forbidden.png"
+                data-gif-src="data/gifs/Forbidden.gif" alt="Forbidden">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="500" search-terms="500">
+            <div class="image-label">Emerald</div><br>
+            <div class="image-rarity">1 in 500</div>
+            <img src="data/images/Emerald.png" data-img-src="data/images/Emerald.png"
+                data-gif-src="data/gifs/Emerald.gif" alt="Emerald">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="512" search-terms="512">
+            <div class="image-label">Gilded</div><br>
+            <div class="image-rarity">1 in 512</div>
+            <img src="data/images/Gilded.png" data-img-src="data/images/Gilded.png" data-gif-src="data/gifs/Gilded.gif"
+                alt="Gilded">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="700" search-terms="700">
+            <div class="image-label">Ink</div><br>
+            <div class="image-rarity">1 in 700</div>
+            <img src="data/images/Ink.png" data-img-src="data/images/Ink.png" data-gif-src="data/gifs/Ink.gif"
+                alt="Ink">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="777" search-terms="777">
+            <div class="image-label">Jackpot</div><br>
+            <div class="image-rarity">1 in 777</div>
+            <img src="data/images/Jackpot.png" data-img-src="data/images/Jackpot.png"
+                data-gif-src="data/gifs/Jackpot.gif" alt="Jackpot">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="800" search-terms="800">
+            <div class="image-label">Sapphire</div><br>
+            <div class="image-rarity">1 in 800</div>
+            <img src="data/images/Sapphire.png" data-img-src="data/images/Sapphire.png"
+                data-gif-src="data/gifs/Sapphire.gif" alt="Sapphire">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="900" search-terms="900">
+            <div class="image-label">Aquamarine</div><br>
+            <div class="image-rarity">1 in 900</div>
+            <img src="data/images/Aquamarine.png" data-img-src="data/images/Aquamarine.png"
+                data-gif-src="data/gifs/Aquamarine.gif" alt="Aquamarine">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="900" search-terms="900 300 windy">
+            <div class="image-label">Wind</div><br>
+            <div class="image-rarity">1 in 900</div>
+            <img src="data/images/Wind.png" data-img-src="data/images/Wind.png" data-gif-src="data/gifs/Wind.gif"
+                alt="Wind">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="1004" search-terms="1,004 1k 1004">
+            <div class="image-label">Diaboli</div><br>
+            <div class="image-rarity">1 in 1,004</div>
+            <img src="data/images/Diaboli.png" data-img-src="data/images/Diaboli.png"
+                data-gif-src="data/gifs/Diaboli.gif" alt="Diaboli">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="1024" search-terms="1024 1k 1,024">
+            <div class="image-label">Precious</div><br>
+            <div class="image-rarity">1 in 1,024</div>
+            <img src="data/images/Precious.png" data-img-src="data/images/Precious.png"
+                data-gif-src="data/gifs/Precious.gif" alt="Precious">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="1700" search-terms="1.7k 1k 1,700 1700">
+            <div class="image-label">Glock</div><br>
+            <div class="image-rarity">1 in 1,700</div>
+            <img src="data/images/Glock.png" data-img-src="data/images/Glock.png" data-gif-src="data/gifs/Glock.gif"
+                alt="Glock">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="2048" search-terms="2048 2k 2,048">
+            <div class="image-label">Magnetic</div><br>
+            <div class="image-rarity">1 in 2,048</div>
+            <img src="data/images/Magnetic.png" data-img-src="data/images/Magnetic.png"
+                data-gif-src="data/gifs/Magnetic.gif" alt="Magnetic">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="2300" search-terms="2.3k 2k 2300 2,300">
+            <div class="image-label">Ash</div><br>
+            <div class="image-rarity">1 in 2,300</div>
+            <img src="data/images/Ash.png" data-img-src="data/images/Ash.png" data-gif-src="data/gifs/Ash.gif"
+                alt="Ash">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="2304" search-terms="2.3k 2k 2304 2,304 256 snowy">
+            <div class="image-label">Glacier</div><br>
+            <div class="image-rarity">1 in 2,304</div>
+            <img src="data/images/Glacier.png" data-img-src="data/images/Glacier.png"
+                data-gif-src="data/gifs/Glacier.gif" alt="Glacier">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="3000" search-terms="3k 3000 3,000">
+            <div class="image-label">Player</div><br>
+            <div class="image-rarity">1 in 3,000</div>
+            <img src="data/images/Player.png" data-img-src="data/images/Player.png" data-gif-src="data/gifs/Player.gif"
+                alt="Player">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="4096" search-terms="4096 4k 4,096">
+            <div class="image-label">Sidereum</div><br>
+            <div class="image-rarity">1 in 4,096</div>
+            <img src="data/images/Sidereum.png" data-img-src="data/images/Sidereum.png"
+                data-gif-src="data/gifs/Sidereum.gif" alt="Sidereum">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="4444" search-terms="4k 4.4k 4,444 4444">
+            <div class="image-label">Bleeding</div><br>
+            <div class="image-rarity">1 in 4,444</div>
+            <img src="data/images/Bleeding.png" data-img-src="data/images/Bleeding.png"
+                data-gif-src="data/gifs/Bleeding.gif" alt="Bleeding">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="6900" search-terms="6.9k 6,900 6900">
+            <div class="image-label">:Flushed:</div><br>
+            <div class="image-rarity">1 in 6,900</div>
+            <img src="data/images/Flushed.png" data-img-src="data/images/Flushed.png"
+                data-gif-src="data/gifs/Flushed.gif" alt=":Flushed:">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="7000" search-terms="7k 7000 7,000 1.4k 1400 1,400 corruption">
+            <div class="image-label">Hazard</div><br>
+            <div class="image-rarity">1 in 7,000</div>
+            <img src="data/images/Hazard.png" data-img-src="data/images/Hazard.png" data-gif-src="data/gifs/Hazard.gif"
+                alt="Hazard">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="8192" search-terms="8.1k 8k 8192 8,192">
+            <div class="image-label">Quartz</div><br>
+            <div class="image-rarity">1 in 8,192</div>
+            <img src="data/images/Quartz.png" data-img-src="data/images/Quartz.png" data-gif-src="data/gifs/Quartz.gif"
+                alt="Quartz">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="9200" search-terms="9200 9,200 9.2k">
+            <div class="image-label">Lost Soul</div><br>
+            <div class="image-rarity">1 in 9,200</div>
+            <img src="data/images/LostSoul.png" data-img-src="data/images/LostSoul.png"
+                data-gif-src="data/gifs/LostSoul.gif" alt="Lost Soul">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="12000" search-terms="12k 12,000 12000 2k 2000 2,000 hell">
+            <div class="image-label">Undead</div><br>
+            <div class="image-rarity">1 in 12,000</div>
+            <img src="data/images/Undead.png" data-img-src="data/images/Undead.png" data-gif-src="data/gifs/Undead.gif"
+                alt="Undead">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="12000" search-terms="12k 12,000 12000 2.4k 2,400 2400 corruption">
+            <div class="image-label">Corrosive</div><br>
+            <div class="image-rarity">1 in 12,000</div>
+            <img src="data/images/Corrosive.png" data-img-src="data/images/Corrosive.png"
+                data-gif-src="data/gifs/Corrosive.gif" alt="Corrosive">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="12800" search-terms="12.8k 12k 12800 12,800 mutation mutated mutate">
+            <div class="image-label">Rage : Heated</div><br>
+            <div class="image-rarity">1 in 12,800</div>
+            <img src="data/images/RageHeated.png" data-img-src="data/images/RageHeated.png"
+                data-gif-src="data/gifs/RageHeated.gif" alt="Rage : Heated">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="14000" search-terms="14k 14000 14,000 mutation mutated mutate">
+            <div class="image-label">Ink : Leak</div><br>
+            <div class="image-rarity">1 in 14,000</div>
+            <img src="data/images/InkLeak.png" data-img-src="data/images/InkLeak.png"
+                data-gif-src="data/gifs/InkLeak.gif" alt="Ink : Leak">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="16384" search-terms="16k 16.3k 16384 16,384">
+            <div class="image-label">Powered</div><br>
+            <div class="image-rarity">1 in 16,384</div>
+            <img src="data/images/Powered.png" data-img-src="data/images/Powered.png"
+                data-gif-src="data/gifs/Powered.gif" alt="Powered">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="40000" search-terms="40k 40,000 40000">
+            <div class="image-label">Aquatic</div><br>
+            <div class="image-rarity">1 in 40,000</div>
+            <img src="data/images/Aquatic.png" data-img-src="data/images/Aquatic.png"
+                data-gif-src="data/gifs/Aquatic.gif" alt="Aquatic">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="40000" search-terms="40k 40,000 40000 unobtainable">
+            <div class="image-label">Lightning</div><br>
+            <div class="image-rarity">1 in 40,000</div>
+            <img src="data/images/Lightning.png" data-img-src="data/images/Lightning.png"
+                data-gif-src="data/gifs/Lightning.gif" alt="Lightning">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="50000" search-terms="50k 50,000 50000 5k 5000 5,000 day daytime">
+            <div class="image-label">Solar</div><br>
+            <div class="image-rarity">1 in 50,000</div>
+            <img src="data/images/Solar.png" data-img-src="data/images/Solar.png" data-gif-src="data/gifs/Solar.gif"
+                alt="Solar">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="50000" search-terms="50k 50,000 50000 5k 5000 5,000 night nighttime">
+            <div class="image-label">Lunar</div><br>
+            <div class="image-rarity">1 in 50,000</div>
+            <img src="data/images/Lunar.png" data-img-src="data/images/Lunar.png" data-gif-src="data/gifs/Lunar.gif"
+                alt="Lunar">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="50000" search-terms="50k 50000 50,000 5k 5000 5,000 starfall">
+            <div class="image-label">Starlight</div><br>
+            <div class="image-rarity">1 in 50,000</div>
+            <img src="data/images/Starlight.png" data-img-src="data/images/Starlight.png"
+                data-gif-src="data/gifs/Starlight.gif" alt="Starlight">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="50000" search-terms="50k 50,000 50000 5k 5000 5,000 starfall">
+            <div class="image-label">Star Rider</div><br>
+            <div class="image-rarity">1 in 50,000</div>
+            <img src="data/images/StarRider.png" data-img-src="data/images/StarRider.png"
+                data-gif-src="data/gifs/StarRider.gif" alt="Star Rider">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="69000" search-terms="69k 69000 69,000 mutation mutated mutate">
+            <div class="image-label">Flushed : Lobotomy</div><br>
+            <div class="image-rarity">1 in 69,000</div>
+            <img src="data/images/FlushedLobotomy.png" data-img-src="data/images/FlushedLobotomy.png"
+                data-gif-src="data/gifs/FlushedLobotomy.gif" alt="Flushed : Lobotomy">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="70000"
+            search-terms="70k 70000 70,000 14k 14000 14,000 mutation mutated mutate">
+            <div class="image-label">Hazard : Rays</div><br>
+            <div class="image-rarity">1 in 70,000</div>
+            <img src="data/images/HazardRays.png" data-img-src="data/images/HazardRays.png"
+                data-gif-src="data/gifs/HazardRays.gif" alt="Hazard : Rays">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="70000" search-terms="70k 70000 70,000">
+            <div class="image-label">Nautilus</div><br>
+            <div class="image-rarity">1 in 70,000</div>
+            <img src="data/images/Nautilus.png" data-img-src="data/images/Nautilus.png"
+                data-gif-src="data/gifs/Nautilus.gif" alt="Nautilus">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="73500" search-terms="73.5k 73k 73500 73,500 24k 24.5k 24,500 24500 snowy">
+            <div class="image-label">Permafrost</div><br>
+            <div class="image-rarity">1 in 73,500</div>
+            <img src="data/images/Permafrost.png" data-img-src="data/images/Permafrost.png"
+                data-gif-src="data/gifs/Permafrost.gif" alt="Permafrost">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="90000" search-terms="90k 90000 90,000 30k 30000 30,000 windy">
+            <div class="image-label">Stormal</div><br>
+            <div class="image-rarity">1 in 90,000</div>
+            <img src="data/images/Stormal.png" data-img-src="data/images/Stormal.png"
+                data-gif-src="data/gifs/Stormal.gif" alt="Stormal">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="99999" search-terms="99k 100k 99,999 99999">
+            <div class="image-label">Exotic</div><br>
+            <div class="image-rarity">1 in 99,999</div>
+            <img src="data/images/Exotic.png" data-img-src="data/images/Exotic.png" data-gif-src="data/gifs/Exotic.gif"
+                alt="Exotic">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="100400" search-terms="100k 100400 100,400 mutation mutated mutate">
+            <div class="image-label">Diaboli : Void</div><br>
+            <div class="image-rarity">1 in 100,400</div>
+            <img src="data/images/DiaboliVoid.png" data-img-src="data/images/DiaboliVoid.png"
+                data-gif-src="data/gifs/DiaboliVoid.gif" alt="Diaboli : Void">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="120000"
+            search-terms="120k 120000 120,000 20k 20000 20,000 mutation mutated mutate hell">
+            <div class="image-label">Undead : Devil</div><br>
+            <div class="image-rarity">1 in 120,000</div>
+            <img src="data/images/UndeadDevil.png" data-img-src="data/images/UndeadDevil.png"
+                data-gif-src="data/gifs/UndeadDevil.gif" alt="Undead : Devil">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="120000" search-terms="120k 120000 120,000 12k 12,000 12000 starfall">
+            <div class="image-label">Comet</div><br>
+            <div class="image-rarity">1 in 120,000</div>
+            <img src="data/images/Comet.png" data-img-src="data/images/Comet.png" data-gif-src="data/gifs/Comet.gif"
+                alt="Comet">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="125000" search-terms="125k 125000 125,000">
+            <div class="image-label">Jade</div><br>
+            <div class="image-rarity">1 in 125,000</div>
+            <img src="data/images/Jade.png" data-img-src="data/images/Jade.png" data-gif-src="data/gifs/Jade.gif"
+                alt="Jade">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="200000" search-terms="200k 200000 200,000">
+            <div class="image-label">Bounded</div><br>
+            <div class="image-rarity">1 in 200,000</div>
+            <img src="data/images/Bounded.png" data-img-src="data/images/Bounded.png"
+                data-gif-src="data/gifs/Bounded.gif" alt="Bounded">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="250000" search-terms="250k 250000 250,000 50k 50,000 50000 starfall">
+            <div class="image-label">Starfish Rider</div><br>
+            <div class="image-rarity">1 in 250,000</div>
+            <img src="data/images/StarfishRider.png" data-img-src="data/images/StarfishRider.png"
+                data-gif-src="data/gifs/StarfishRider.gif" alt="Starfish Rider">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="320000" search-terms="320k 320000 320,000">
+            <div class="image-label">Watermelon</div><br>
+            <div class="image-rarity">1 in 320,000</div>
+            <img src="data/images/Watermelon.png" data-img-src="data/images/Watermelon.png"
+                data-gif-src="data/images/Watermelon.png" alt="Watermelon">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="350000" search-terms="350k 350000 350,000">
+            <div class="image-label">Celestial</div><br>
+            <div class="image-rarity">1 in 350,000</div>
+            <img src="data/images/Celestial.png" data-img-src="data/images/Celestial.png"
+                data-gif-src="data/gifs/Celestial.gif" alt="Celestial">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="850000" search-terms="850k 850000 850,000">
+            <div class="image-label">Kyawthuite</div><br>
+            <div class="image-rarity">1 in 850,000</div>
+            <img src="data/images/Kyawthuite.png" data-img-src="data/images/Kyawthuite.png"
+                data-gif-src="data/gifs/Kyawthuite.gif" alt="Kyawthuite">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="1000000" search-terms="1,000,000 1000000 1m 1mil">
+            <div class="image-label">Arcane</div><br>
+            <div class="image-rarity">1 in 1,000,000</div>
+            <img src="data/images/Arcane.png" data-img-src="data/images/Arcane.png" data-gif-src="data/gifs/Arcane.gif"
+                alt="Arcane">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="1024000" search-terms="1m 1mil 1,024,000 1024000 mutation mutated mutate">
+            <div class="image-label">Magnetic : Reverse Polarity</div><br>
+            <div class="image-rarity">1 in 1,024,000</div>
+            <img src="data/images/MagneticReversePolarity.png" data-img-src="data/images/MagneticReversePolarity.png"
+                data-gif-src="data/gifs/MagneticReversePolarity.gif" alt="Magnetic : Reverse Polarity">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="1111000"
+            search-terms="1.1m 1.1mil 1111000 1,111,000 1m 1mil 1,111 1111 1k 1.1k null">
+            <div class="image-label">Undefined</div><br>
+            <div class="image-rarity">1 in 1,111,000</div>
+            <img src="data/images/Undefined.png" data-img-src="data/images/Undefined.png"
+                data-gif-src="data/gifs/Undefined.gif" alt="Undefined">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="1336000"
+            search-terms="1.3m 1.3mil 1m 1mil 1336000 1,336,000 267k 267000 267,000 corruption">
+            <div class="image-label">Astral</div><br>
+            <div class="image-rarity">1 in 1,336,000</div>
+            <img src="data/images/Astral.png" data-img-src="data/images/Astral.png" data-gif-src="data/gifs/Astral.gif"
+                alt="Astral">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="2000000" search-terms="2m 2mil 2,000,000 2000000">
+            <div class="image-label">Gravitational</div><br>
+            <div class="image-rarity">1 in 2,000,000</div>
+            <img src="data/images/Gravitational.png" data-img-src="data/images/Gravitational.png"
+                data-gif-src="data/gifs/Gravitational.gif" alt="Gravitational">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="2000000" search-terms="2m 2mil 2000000 2,000,000 mutation mutated mutate">
+            <div class="image-label">Bounded : Unbound</div><br>
+            <div class="image-rarity">1 in 2,000,000</div>
+            <img src="data/images/BoundedUnbound.png" data-img-src="data/images/BoundedUnbound.png"
+                data-gif-src="data/gifs/BoundedUnbound.gif" alt="Bounded : Unbound">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="2222000"
+            search-terms="unobtainable 2,222,000 2.2m 2.2mil 2m 2mil 2222000 2,222 2222 2k 2.2k april fools null">
+            <div class="image-label">Undefined : Defined</div><br>
+            <div class="image-rarity">1 in 2,222,000</div>
+            <img src="data/images/UndefinedDefined.png" data-img-src="data/images/UndefinedDefined.png"
+                data-gif-src="data/gifs/UndefinedDefined.gif" alt="Undefined : Defined">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="2500000" search-terms="2.5m 2.5mil 2m 2mil 2500000 2,500,000">
+            <div class="image-label">Virtual</div><br>
+            <div class="image-rarity">1 in 2,500,000</div>
+            <img src="data/images/Virtual.png" data-img-src="data/images/Virtual.png"
+                data-gif-src="data/gifs/Virtual.gif" alt="Virtual">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="3200000" search-terms="3200000">
+            <div class="image-label">Savior</div><br>
+            <div class="image-rarity">1 in 3,200,000</div>
+            <img src="data/images/Savior.png" data-img-src="data/images/Savior.png" data-gif-src="data/gifs/Savior.gif"
+                alt="Savior">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="4000000" search-terms="4,000,000 4000000 4m 4mil mutation mutated mutate">
+            <div class="image-label">Aquatic : Flame</div><br>
+            <div class="image-rarity">1 in 4,000,000</div>
+            <img src="data/images/AquaticFlame.png" data-img-src="data/images/AquaticFlame.png"
+                data-gif-src="data/gifs/AquaticFlame.gif" alt="Aquatic : Flame">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="4000000"
+            search-terms="4m 4mil 4000000 4,000,000 1m 1mil 1000000 1,000,000 rainy">
+            <div class="image-label">Poseidon</div><br>
+            <div class="image-rarity">1 in 4,000,000</div>
+            <img src="data/images/Poseidon.png" data-img-src="data/images/Poseidon.png"
+                data-gif-src="data/gifs/Poseidon.gif" alt="Poseidon">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="4500000" search-terms="4.5m 4.5mil 4m 4mil 4500000 4,500,000">
+            <div class="image-label">Zeus</div><br>
+            <div class="image-rarity">1 in 4,500,000</div>
+            <img src="data/images/Zeus.png" data-img-src="data/images/Zeus.png" data-gif-src="data/gifs/Zeus.gif"
+                alt="Zeus">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="5000000"
+            search-terms="5,000,000 5000000 5m 5mil 500k 500000 500,000 mutation mutated mutate day daytime">
+            <div class="image-label">Solar : Solstice</div><br>
+            <div class="image-rarity">1 in 5,000,000</div>
+            <img src="data/images/SolarSolstice.png" data-img-src="data/images/SolarSolstice.png"
+                data-gif-src="data/gifs/SolarSolstice.gif" alt="Solar : Solstice">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="5000000"
+            search-terms="5,000,000 5000000 5m 5mil 500k 500000 500,000 mutation mutated mutate night nighttime">
+            <div class="image-label">Lunar : Full Moon</div><br>
+            <div class="image-rarity">1 in 5,000,000</div>
+            <img src="data/images/LunarFullMoon.png" data-img-src="data/images/LunarFullMoon.png"
+                data-gif-src="data/gifs/LunarFullMoon.gif" alt="Lunar : Full Moon">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="5000000" search-terms="5,000,000 5000000 5m 5mil 500k 500000 500,000">
+            <div class="image-label">Galaxy</div><br>
+            <div class="image-rarity">1 in 5,000,000</div>
+            <img src="data/images/Galaxy.png" data-img-src="data/images/Galaxy.png" data-gif-src="data/gifs/Galaxy.gif"
+                alt="Galaxy">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="6000000"
+            search-terms="6mil 6m 6000000 6,000,000 600k 600,000 600000 purple night nighttime">
+            <div class="image-label">Twilight</div><br>
+            <div class="image-rarity">1 in 6,000,000</div>
+            <img src="data/images/Twilight.png" data-img-src="data/images/Twilight.png"
+                data-gif-src="data/gifs/Twilight.gif" alt="Twilight">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="6500000" search-terms="6,500,000 6500000 6.5m 6.5mil 6m 6mil">
+            <div class="image-label">Origin</div><br>
+            <div class="image-rarity">1 in 6,500,000</div>
+            <img src="data/images/Origin.png" data-img-src="data/images/Origin.png" data-gif-src="data/gifs/Origin.gif"
+                alt="Origin">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="6666666"
+            search-terms="red hell 6mil 6m 6.6m 6.6mil 6666666 6,666,666 1m 1mil 1.1m 1.1mil 1111111 1,111,111">
+            <div class="image-label">Hades</div><br>
+            <div class="image-rarity">1 in 6,666,666</div>
+            <img src="data/images/Hades.png" data-img-src="data/images/Hades.png" data-gif-src="data/gifs/Hades.gif"
+                alt="Hades">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="7000000" search-terms="7m 7mil 7000000 7,000,000">
+            <div class="image-label">Celestial : Divine</div><br>
+            <div class="image-rarity">1 in 7,000,000</div>
+            <img src="data/images/CelestialDivine.png" data-img-src="data/images/CelestialDivine.png"
+                data-gif-src="data/gifs/CelestialDivine.gif" alt="Celestial : Divine">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="7500000" search-terms="7500000 7,500,000 7.5m 7.5mil 7m 7mil purple">
+            <div class="image-label">Hyper-volt</div><br>
+            <div class="image-rarity">1 in 7,500,000</div>
+            <img src="data/images/Hypervolt.png" data-img-src="data/images/Hypervolt.png"
+                data-gif-src="data/gifs/Hypervolt.gif" alt="Hyper-volt">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="9000000" search-terms="9000000 9,000,000 9m 9mil 9000 9,000 9k">
+            <div class="image-label">Nihility</div><br>
+            <div class="image-rarity">1 in 9,000,000</div>
+            <img src="data/images/Nihility.png" data-img-src="data/images/Nihility.png"
+                data-gif-src="data/gifs/Nihility.gif" alt="Nihility">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="10000000"
+            search-terms="mid trash garbage red 10,000,000 10000000 10m 10mil 1m 1mil 1000000 1,000,000 starfall">
+            <div class="image-label">Starscourge</div><br>
+            <div class="image-rarity">1 in 10,000,000</div>
+            <img src="data/images/Starscourge.png" data-img-src="data/images/Starscourge.png"
+                data-gif-src="data/gifs/Starscourge.gif" alt="Starscourge">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="12000000"
+            search-terms="12m 12mil 12000000 12,000,000 4m 4mil 4000000 4,000,000 ship blue">
+            <div class="image-label">Sailor</div><br>
+            <div class="image-rarity">1 in 12,000,000</div>
+            <img src="data/images/Sailor.png" data-img-src="data/images/Sailor.png" data-gif-src="data/gifs/Sailor.gif"
+                alt="Sailor">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="12210110"
+            search-terms="rainbow glitch glitched 12210110 12,210,110 12m 12mil">
+            <div class="image-label">Glitch</div><br>
+            <div class="image-rarity">1 in 12,210,110</div>
+            <img src="data/images/Glitch.png" data-img-src="data/images/Glitch.png" data-gif-src="data/gifs/Glitch.gif"
+                alt="Glitch">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="13500000"
+            search-terms="grey windy 13500000 13,500,000 13.5m 13.5mil 13m 13mil 4500000 4,500,000 4.5m 4.5mil 4m 4mil">
+            <div class="image-label">Stormal : Hurricane</div><br>
+            <div class="image-rarity">1 in 13,500,000</div>
+            <img src="data/images/StormalHurricane.png" data-img-src="data/images/StormalHurricane.png"
+                data-gif-src="data/gifs/StormalHurricane.gif" alt="Stormal : Hurricane">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="15000000"
+            search-terms="15m 15mil 15,000,000 15000000 mutation mutated mutate blue ability">
+            <div class="image-label">Arcane : Legacy</div><br>
+            <div class="image-rarity">1 in 15,000,000</div>
+            <img src="data/images/ArcaneLegacy.png" data-img-src="data/images/ArcaneLegacy.png"
+                data-gif-src="data/gifs/ArcaneLegacy.gif" alt="Arcane : Legacy">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="20000000" search-terms="20m 20mil 20000000 20,000,000 rainbow">
+            <div class="image-label">Chromatic</div><br>
+            <div class="image-rarity">1 in 20,000,000</div>
+            <img src="data/images/Chromatic.png" data-img-src="data/images/Chromatic.png"
+                data-gif-src="data/gifs/Chromatic.gif" alt="Chromatic">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="30000000"
+            search-terms="purple 30m 30mil 30000000 30,000,000 mutation mutated mutate ability">
+            <div class="image-label">Arcane : Dark</div><br>
+            <div class="image-rarity">1 in 30,000,000</div>
+            <img src="data/images/ArcaneDark.png" data-img-src="data/images/ArcaneDark.png"
+                data-gif-src="data/gifs/ArcaneDark.gif" alt="Arcane : Dark">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="35000000" search-terms="35m 35mil 35000000 35,000,000 white">
+            <div class="image-label">Ethereal</div><br>
+            <div class="image-rarity">1 in 35,000,000</div>
+            <img src="data/images/Ethereal.png" data-img-src="data/images/Ethereal.png"
+                data-gif-src="data/gifs/Ethereal.gif" alt="Ethereal">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="40000000"
+            search-terms="unobtainable 40m 40mil 40000000 40,000,000 april fools">
+            <div class="image-label">Kromat1k</div><br>
+            <div class="image-rarity">1 in 40,000,000</div>
+            <img src="data/images/Kromat1k.png" data-img-src="data/images/Kromat1k.png"
+                data-gif-src="data/gifs/Kromat1k.gif" alt="Kromat1k">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="45000000" search-terms="45000000 45,000,000 45m 45mil">
+            <div class="image-label">Overseer</div><br>
+            <div class="image-rarity">1 in 45,000,000</div>
+            <img src="data/images/Overseer.png" data-img-src="data/images/Overseer.png"
+                data-gif-src="data/gifs/Overseer.gif" alt="Overseer">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="49999500"
+            search-terms="49m 49mil 49999500 49,999,500 green mutation mutated mutate">
+            <div class="image-label">Exotic : Apex</div><br>
+            <div class="image-rarity">1 in 49,999,500</div>
+            <img src="data/images/ExoticApex.png" data-img-src="data/images/ExoticApex.png"
+                data-gif-src="data/gifs/ExoticApex.gif" alt="Exotic : Apex">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="50000000" search-terms="50m 50mil 50,000,000 50000000 green">
+            <div class="image-label">Matrix</div><br>
+            <div class="image-rarity">1 in 50,000,000</div>
+            <img src="data/images/Matrix.png" data-img-src="data/images/Matrix.png" data-gif-src="data/gifs/Matrix.gif"
+                alt="Matrix">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="60000000"
+            search-terms="60m 60mil 60,000,000 60000000 pink white 6m 6mil 6,000,000 6000000">
+            <div class="image-label">Twilight : Iridescent Memory</div><br>
+            <div class="image-rarity">1 in 60,000,000</div>
+            <img src="data/images/TwilightIridescentMemory.png" data-img-src="data/images/TwilightIridescentMemory.png"
+                data-gif-src="data/gifs/TwilightIridescentMemory.gif" alt="Twilight : Iridescent Memory">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="80000000"
+            search-terms="80m 80mil 80000000 80,000,000 20m 20mil 20000000 20,000,000 ship ghost green mutation mutated mutate rainy">
+            <div class="image-label">Sailor : Flying Dutchman</div><br>
+            <div class="image-rarity">1 in 80,000,000</div>
+            <img src="data/images/SailorFlyingDutchman.png" data-img-src="data/images/SailorFlyingDutchman.png"
+                data-gif-src="data/gifs/SailorFlyingDutchman.gif" alt="Sailor : Flying Dutchman">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="99999999" search-terms="exotic 99m 99,999,999 99999999 99mil 100mil 100m">
+            <div class="image-label">Chromatic : Genesis</div><br>
+            <div class="image-rarity">1 in 99,999,999</div>
+            <img src="data/images/ChromaticGenesis.png" data-img-src="data/images/ChromaticGenesis.png"
+                data-gif-src="data/gifs/ChromaticGenesis.gif" alt="Chromatic : Genesis">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="100000000"
+            search-terms="100m 100mil 100,000,000 100000000 10mil 10m 10000000 10,000,000 mid trash garbage starfall">
+            <div class="image-label">Starscourge : Radiant</div><br>
+            <div class="image-rarity">1 in 100,000,000</div>
+            <img src="data/images/StarscourgeRadiant.png" data-img-src="data/images/StarscourgeRadiant.png"
+                data-gif-src="data/gifs/StarscourgeRadiant.gif" alt="Starscourge : Radiant">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="150000000"
+            search-terms="blue clock time 150m 150mil 150,000,000 150000000 ability">
+            <div class="image-label">Overture</div><br>
+            <div class="image-rarity">1 in 150,000,000</div>
+            <img src="data/images/Overture.png" data-img-src="data/images/Overture.png"
+                data-gif-src="data/gifs/Overture.gif" alt="Overture">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="175000000" search-terms="angel white 175m 175mil 175,000,000 175000000">
+            <div class="image-label">Symphony</div><br>
+            <div class="image-rarity">1 in 175,000,000</div>
+            <img src="data/images/Symphony.png" data-img-src="data/images/Symphony.png"
+                data-gif-src="data/gifs/Symphony.gif" alt="Symphony">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="200000000"
+            search-terms="purple 200m 200mil 200000000 200,000,000 ability 40m 40mil 40,000,000 40000000">
+            <div class="image-label">Impeached</div><br>
+            <div class="image-rarity">1 in 200,000,000</div>
+            <img src="data/images/Impeached.png" data-img-src="data/images/Impeached.png"
+                data-gif-src="data/gifs/Impeached.gif" alt="Impeached">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="220000000"
+            search-terms="black white glitch glitched 220m 220mil 220,000,000 220000000 6.6 6.6t">
+            <div class="image-label">Oppression</div><br>
+            <div class="image-rarity">1 in 220,000,000</div>
+            <img src="data/images/Oppression.png" data-img-src="data/images/Oppression.png"
+                data-gif-src="data/gifs/Oppression.gif" alt="Oppression">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="225000000"
+            search-terms="225m 225000000 225,000,000 75m 75000000 75,000,000">
+            <div class="image-label">Shard Surfer</div><br>
+            <div class="image-rarity">1 in 225,000,000</div>
+            <img src="data/images/ShardSurfer.png" data-img-src="data/images/ShardSurfer.png"
+                data-gif-src="data/gifs/ShardSurfer.gif" alt="Shard Surfer">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="250000000"
+            search-terms="yellow angel 250m 250mil 250,000,000 250000000 ability">
+            <div class="image-label">Archangel</div><br>
+            <div class="image-rarity">1 in 250,000,000</div>
+            <img src="data/images/Archangel.png" data-img-src="data/images/Archangel.png"
+                data-gif-src="data/gifs/Archangel.gif" alt="Archangel">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="300000000"
+            search-terms="hell red blood 300,000,000 300000000 300m 300mil 50m 50mil 50,000,000 50000000">
+            <div class="image-label">Bloodlust</div><br>
+            <div class="image-rarity">1 in 300,000,000</div>
+            <img src="data/images/Bloodlust.png" data-img-src="data/images/Bloodlust.png"
+                data-gif-src="data/gifs/Bloodlust.gif" alt="Bloodlust">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="300000000"
+            search-terms="green time clock 300mil 300m 300000000 300,000,000 ability">
+            <div class="image-label">Overture : History</div><br>
+            <div class="image-rarity">1 in 300,000,000</div>
+            <img src="data/images/OvertureHistory.png" data-img-src="data/images/OvertureHistory.png"
+                data-gif-src="data/gifs/OvertureHistory.gif" alt="Overture : History">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="360000000"
+            search-terms="360,000,000 360000000 90,000,000 90000000 360m 360mil 90m 90mil">
+            <div class="image-label">Atlas</div><br>
+            <div class="image-rarity">1 in 360,000,000</div>
+            <img src="data/images/Atlas.png" data-img-src="data/images/Atlas.png" data-gif-src="data/gifs/Atlas.gif"
+                alt="Atlas">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="400000000"
+            search-terms="abyssal hunter 1,000,000,000 1b 1000000000 400000000 400m 400mil 400,000,000 blue rainy ability">
+            <div class="image-label">AbyssalHunter</div><br>
+            <div class="image-rarity">1 in 400,000,000</div>
+            <img src="data/images/AbyssalHunter.png" data-img-src="data/images/AbyssalHunter.png"
+                data-gif-src="data/gifs/AbyssalHunter.gif" alt="Abyssal Hunter">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="400000000"
+            search-terms="impeached impeach i'm peach im unobtainable april fools 400m 400mil 400000000 400,000,000 pink ability">
+            <div class="image-label">Impeached : i'm peach</div><br>
+            <div class="image-rarity">1 in 400,000,000</div>
+            <img src="data/images/ImpeachedImpeach.png" data-img-src="data/images/ImpeachedImpeach.png"
+                data-gif-src="data/gifs/ImpeachedImpeach.gif" alt="Impeached : i'm peach">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="430000000"
+            search-terms="gargantua starfall 430000000 430mil 430m 430,000,000 43000000 43mil 43m 43,000,000">
+            <div class="image-label">Gargantua</div><br>
+            <div class="image-rarity">1 in 430,000,000</div>
+            <img src="data/images/Gargantua.png" data-img-src="data/images/Gargantua.png"
+                data-gif-src="data/gifs/Gargantua.gif" alt="Gargantua">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="444000000" search-terms="444000000 444,000,000 444m 444mil">
+            <div class="image-label">Apostolos</div><br>
+            <div class="image-rarity">1 in 444,000,000</div>
+            <img src="data/images/Apostolos.png" data-img-src="data/images/Apostolos.png"
+                data-gif-src="data/gifs/Apostolos.gif" alt="Apostolos">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="500000000" search-terms="ruins 500m 500000000 500,000,000">
+            <div class="image-label">Ruins</div><br>
+            <div class="image-rarity">1 in 500,000,000</div>
+            <img src="data/images/Ruins.png" data-img-src="data/images/Ruins.png" data-gif-src="data/gifs/Ruins.gif"
+                alt="Ruins">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="503000000" search-terms="503000000 503,000,000 503m 503mil">
+            <div class="image-label">Matrix : Overdrive</div><br>
+            <div class="image-rarity">1 in 503,000,000</div>
+            <img src="data/images/MatrixOverdrive.png" data-img-src="data/images/MatrixOverdrive.png"
+                data-gif-src="data/images/MatrixOverdrive.png" alt="Matrix : Overdrive">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="750000000" search-terms="sovereign 750000000 750mil 750m 750,000,000">
+            <div class="image-label">Sovereign</div><br>
+            <div class="image-rarity">1 in 750,000,000</div>
+            <img src="data/images/Sovereign.png" data-img-src="data/images/Sovereign.png"
+                data-gif-src="data/gifs/Sovereign.gif" alt="Sovereign">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <div class="grid-item" data-rarity="825000000" search-terms="825000000 825,000,000 825m 825mil">
+            <div class="image-label">Aegis</div><br>
+            <div class="image-rarity">1 in 825,000,000</div>
+            <img src="data/images/Aegis.png" data-img-src="data/images/Aegis.png" data-gif-src="data/gifs/Aegis.gif"
+                alt="Aegis">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+        <!-- <div class="grid-item" data-rarity="000000000" search-terms="000000000">
+            <div class="image-label">Placeholder</div><br>
+            <div class="image-rarity">1 in 000000000</div>
+            <img src="data/images/Placeholder.png" data-img-src="data/images/Placeholder.png" data-gif-src="data/gifs/Placeholder.gif" alt="Placeholder">
+            <div class="input-container">
+                <input type="number" class="quantity" value="1" min="1">
+                <button class="add-button">Add</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div> -->
+    </div>
+
+    <div class="update-notice" id="updateNotice" style="display: none;">
+        <p>This website is still in the Beta phase. New features are slowly being added until the entire website is finished.</p>
+        <p>Feel free to give constructive feedback on Discord (@vexthecoder).</p>
+        <p>Version: <span id="versionNumber"></span></p>
+        <p class="subtext">(You won't see this notice until the next website update.)</p>
+        <button id="closeNotice">Close</button>
+    </div>
+
+    <div class="settings-modal">
+        <div class="settings-content">
+            <h2>Settings</h2>
+            <button id="settings-close" class="settings-close">×</button>
+            <div class="settings-item">
+                <label class="gif-toggle-text" for="gif-toggle">Switch to GIFs</label>
+                <div class="toggle">
+                    <input type="checkbox" id="gif-toggle">
+                    <label for="gif-toggle" class="toggle-slider"></label>
+                </div>
+            </div>
+            <div class="settings-item">
+                <label class="theme-select-text" for="theme-select">Theme</label>
+                <select id="theme-select">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="total-container">
+        <div class="total-box">
+            Your Inventory Value: <span id="total">0</span>
+            <button class="copy-button">Copy</button>
+            <button class="clear-button">Clear</button>
+        </div>
+    </div>
+    
+    
+
+    <div class="footer">
+        Made with love by <b><a href="https://discord.com/users/1018875765565177976" target="_blank">vex</a></b><br>
+        Open source on <b><a href="https://github.com/vexthecoder/sols-rng-value-calculator"
+                target="_blank">GitHub</a></b><br>
+        <b><a href="/changelog">View Changelog</a></b>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

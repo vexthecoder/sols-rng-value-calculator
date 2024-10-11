@@ -75,3 +75,11 @@ body.dark-mode .arrow-left::before {
     margin-left: 8px;
     color: #ffffff;
 }
+
+.pastel-mode .placeholder {
+
+}
+
+.chrome-mode .placeholder {
+    
+}
