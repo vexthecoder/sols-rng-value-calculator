@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const currentVersionNumber = await fetchVersionNumber();
     const savedVersionNumber = localStorage.getItem('currentVersionNumber');
     const currentUrl = window.location.href;
+    const showNotice = localStorage.getItem('showNotice');
 
     async function fetchVersionNumber() {
         try {
@@ -26,9 +27,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         versionDisplay.innerText = currentVersionNumber;
         updateNotice.style.display = 'block';
 
-        document.getElementById('closeNotice').addEventListener('click', () => {
+        document.getElementById('closeUpdateNotice').addEventListener('click', () => {
             updateNotice.style.display = 'none';
             localStorage.setItem('currentVersionNumber', currentVersionNumber);
+        });
+    }
+
+    if (!currentUrl.includes("/index.html") && showNotice !== false) {
+        const notice = document.getElementById('notice');
+
+        notice.style.display = 'block';
+
+        document.getElementById('closeNotice').addEventListener('click', () => {
+            notice.style.display = 'none';
+            localStorage.setItem('showNotice', false);
         });
     }
 
