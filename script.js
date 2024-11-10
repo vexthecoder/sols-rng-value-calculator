@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    if (!currentUrl.includes("/index.html") && showNotice !== false) {
+    if (!currentUrl.includes("/index.html") && showNotice !== "false") {
         const notice = document.getElementById('notice');
 
         notice.style.display = 'block';
