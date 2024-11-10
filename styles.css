@@ -459,6 +459,29 @@ input[type="checkbox"]:checked + .toggle-slider:before {
     size: 8;
 }
 
+.notice {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #fff;
+    border: 6px solid #f0f0f0;
+    border-radius: 10px;
+    padding: 15px;
+    z-index: 1000;
+    width: 300px;
+    color: black;
+}
+
+.notice p {
+    margin: 5px 0;
+    color: black;
+}
+
+.notice .subtext {
+    color: #7a7a7a;
+    size: 8;
+}
+
 #closeNotice {
     background-color: #007BFF;
     color: white;
@@ -483,5 +506,19 @@ input[type="checkbox"]:checked + .toggle-slider:before {
 }
 
 .dark-mode .update-notice .subtext {
+    color: #7a7a7a;
+}
+
+.dark-mode .notice {
+    background-color: #444;
+    color: white;
+    border: 6px solid #333;
+}
+
+.dark-mode .notice p {
+    color: white;
+}
+
+.dark-mode .notice .subtext {
     color: #7a7a7a;
 }
